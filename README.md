@@ -59,7 +59,7 @@ Team Name: **Error Makers**
 - As a user I should be able to get all communities and browse them to get inspired for a new good habit.
 
 - Fonts:  
-  ![Fonts](./public/assets/ColorPalette.png)
+  ![Color Pallet](./public/assets/Color-Palette.png)
   
 - Fonts:  
   ![Fonts](./public/assets/Fonts.png)
