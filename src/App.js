@@ -4,7 +4,8 @@ import personalProgressProvider from "./context/personal-progress/personalPorgre
 import leaderboardProvider from "./context/leaderboard/leaderboardContext";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Posts from "./components/Posts";
+import TopComunity from "./components/TopComunity";
 
 function App() {
   return (
