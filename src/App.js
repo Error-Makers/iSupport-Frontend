@@ -1,11 +1,13 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Posts from "./components/posts/Posts";
+import CommunityChat from "./components/chat/main";
 
 function App() {
-  return <div className="App">
-    <Posts/>
-  </div>;
+  return (
+    <div className="App">
+      <CommunityChat />
+    </div>
+  );
 }
 
 export default App;
