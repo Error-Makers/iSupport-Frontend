@@ -1,6 +1,7 @@
+import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CommunityChat from "./components/chat/main";
+import CommunityChat from "./components/communityChat";
 
 function App() {
   return (
