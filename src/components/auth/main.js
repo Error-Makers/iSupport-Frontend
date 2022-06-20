@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import base64 from "base-64";
-import jwt from "jsonwebtoken";
-import cookie from "react-cookie"
+import jwt_decode from 'jwt-decode';
+import cookie from 'react-cookies';
 import axios from "axios";
 
 export const AuthContect = React.createContext();
 
-const API = "http://isupport-server.herokuapp.com";
+const API = "https://halaauth-api.herokuapp.com";
 
 export default function AuthProvider(props) {
   const [user, setUser] = useState({});
@@ -25,7 +25,7 @@ export default function AuthProvider(props) {
   };
 
   const signup = async (username, password, Email, role) => {
-    userData = {
+    let userData = {
       username: username,
       password: password,
       Email: Email,
@@ -39,7 +39,7 @@ export default function AuthProvider(props) {
 
   const validateUser = (token) => {
     if(token){
-        const user = jwt.decode(token);
+        const user =  jwt_decode(token);
         loginState(true,user);
         cookie.save("token", token);
     }
