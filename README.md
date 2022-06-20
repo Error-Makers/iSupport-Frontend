@@ -57,3 +57,11 @@ Team Name: **Error Makers**
 - As an admin I should be able to delete a community if there were some suspicious behavioral patterns within the community.
 
 - As a user I should be able to get all communities and browse them to get inspired for a new good habit.
+
+## Color Pallet:  
+  ![Color Pallet](./public/assets/Color-Palette.png)
+  
+## Fonts:  
+  ![Fonts](./public/assets/Fonts.png)
+  
+  

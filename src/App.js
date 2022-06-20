@@ -1,8 +1,14 @@
+import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import CommunityChat from "./components/communityChat";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <CommunityChat />
+    </div>
+  );
 }
 
 export default App;
