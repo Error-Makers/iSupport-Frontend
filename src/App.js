@@ -7,8 +7,7 @@ import AuthComponent from "./pages/AuthLogin"
 function App() {
   return (
     <div className="App">
-      <AuthComponent/>
-      {/* <CommunityChat /> */}
+      <CommunityChat />
     </div>
   );
 }
