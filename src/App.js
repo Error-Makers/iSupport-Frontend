@@ -8,6 +8,7 @@ import ContactUs from "./pages/ContactUs";
 import Browse from "./pages/Browse";
 import Community from "./pages/Community";
 import AuthComponent from "./pages/AuthLogin";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="browse" element={<Browse />} />
         <Route path="community/:communityId" element={<Community />} />
         <Route path="auth" element={<AuthComponent />} />
+        <Route path="admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );
