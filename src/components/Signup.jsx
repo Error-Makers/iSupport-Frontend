@@ -2,6 +2,13 @@ import { useContext, useState } from "react";
 import { When } from "react-if";
 import Login from "./Login";
 import { AuthContect } from "../context/auth/main";
+import Card from "react-bootstrap/Card";
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Button from 'react-bootstrap/Button';
+import Img from 'react-bootstrap/Image';
 
 export default function Signup(props) {
   const context = useContext(AuthContect);
@@ -14,63 +21,120 @@ export default function Signup(props) {
     e.preventDefault();
     context.signup(username, password, Email, role);
   };
- 
+  const parent = {margin: '1rem',padding: '2rem 2rem',textAlign:'center'}
+  const child = {display: 'inline-block',padding: '1rem 1rem',verticalAlign: 'middle'}
+  
 
   return (
     <>
-        <div>
-          <h1>signup</h1>
-          <form onSubmit={signupHandller}>
-            <label>
-              <span>username</span>
-              <input
+    <div className="parent"  style={parent}>
+      <div className='child'  style={child}>
+      
+      <Card  style={{  height: "70%",borderColor:'#673AB7',borderRadius:'40px'}}>
+      <Card.Title style={{color: '#311B92',padding:'3%'}}>Signup</Card.Title>
+      
+       
+        <Card.Body> 
+       
+        <form onSubmit={signupHandller}>
+          
+        
+        <label style={{width: '100%',alignContent: 'center'}}>
+        <InputGroup className="mb-3"> 
+      <Form.Control aria-label="First name" placeholder="Firstname"  aria-describedby="basic-addon1" style={{ width:'1%'}}/>
+    
+      <Form.Control aria-label="Last name" placeholder="Lastname"/>
+    </InputGroup>
+    </label>
+    <br></br>
+          <label style={{ width:'100%' }}>
+            <InputGroup className="mb-3" >
+              {/* <InputGroup.Text id="basic-addon1">username</InputGroup.Text> */}
+              <Form.Control
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="username"
-                type="text"
-                name="username"
+                placeholder="Username"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
               />
-            </label>
+            </InputGroup>
+           
+          </label>
 
-            <br></br>
-            <label>
-              <span>password</span>
-              <input
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="password"
-                type="password"
-                name="password"
-              />
-            </label>
-            <br></br>
+          <br></br>
 
-            <label>
-              <span>Email</span>
-              <input
+          <label style={{ width:'100%' }}>
+          <InputGroup className="mb-3">
+              {/* <InputGroup.Text id="basic-addon1">Email</InputGroup.Text> */}
+              <Form.Control
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
-                type="email"
-                name="Email"
+                type="Email"
+                aria-label="Email"
+                aria-describedby="basic-addon1"
               />
-            </label>
+            </InputGroup>
+           
+          </label>
 
-            <br></br>
+          <br></br>
 
-            <label>
-              <span>Role</span>
-              <input
-                onChange={(e) => setRole(e.target.value)}
-                placeholder="role = [admin,user,writer,editor]"
-                type="text"
-                name="Role"
+          <label style={{ width:'100%' }}>
+          <InputGroup className="mb-3">
+              {/* <InputGroup.Text id="basic-addon1">password</InputGroup.Text> */}
+              <Form.Control
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                type="password"
+                aria-label="password"
+                aria-describedby="basic-addon1"
               />
-            </label>
-            <br></br>
-            <label>
-              <button type="submit">signup</button>
-            </label>
-          </form>
-          <a onClick={props.toggleShow}>if you have </a>
-        </div>
+            </InputGroup>
+           
+          </label>
+          <br></br>
+
+         
+
+          <label style={{ width:'100%' }}>
+          <InputGroup className="mb-3">
+          {/* <InputGroup.Text id="basic-addon1">Role</InputGroup.Text> */}
+        <DropdownButton
+          variant="outline-secondary"
+          title="Role"
+          id="input-group-dropdown-1"
+          onChange={(e) => setRole(e.target.value)}
+        >
+          <Dropdown.Item >admin</Dropdown.Item>
+          <Dropdown.Item >user</Dropdown.Item>
+          <Dropdown.Item >writer</Dropdown.Item>
+          <Dropdown.Item >editor</Dropdown.Item>
+          <Dropdown.Divider />
+         
+        </DropdownButton>
+      
+      </InputGroup>
+
+      
+          </label>
+         
+          <br></br>
+          <label >
+          <Button  type="submit" style={{ borderColor:'#673AB7',background:'#673AB7',  borderRadius:'39px',height:'39px',width:'160px'}}>Signup</Button>
+            {/* <button type="submit">signup</button> */}
+          </label>
+         
+        </form>
+        <Button variant="link" style={{fontSize:'10px',color:'#424242'}}onClick={props.toggleShow}>if you have an account</Button>
+       
+        </Card.Body>
+       
+      </Card>
+      </div>
+      {/* add something related to floating */}
+      <div className='child' style={child}>
+      <Img style = {{height:'40%',width:'80%'}} src="https://user-images.githubusercontent.com/75664971/174694686-5e46e440-ca17-42ac-ba09-4e488e56f285.svg" />
+      </div>
+    </div>
     </>
   );
 }
