@@ -1,17 +1,27 @@
-import React from 'react'
-import { personalProgressContext } from '../../context/personal-progress/personalPorgressContext'
-export default function personalProgress() {
-    const API = "http://isupport-server.herokuapp.com";
-    const [personalProgress, setPersonalProgress] = useState([]);
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+
+export default function PersonalProgress() {
+
+    const [personalProgress, setPersonalProgress] = useState({});
+    const API = process.env.REACT_APP_API;
+    const token = process.env.REACT_APP_TOKEN;
 
     // /community/:id/personalProgress
     async function getPersonalProgress(communityId) {
-        const response = await axios.get(API + `/community/${communityId}/personalProgress`);
+
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        const response = await axios.get(API + `/community/${communityId}/personalProgress`, config);
+        // console.log('response personal progress', response);
         setPersonalProgress(response.data);
     }
 
     useEffect(() => {
-        getPersonalProgress(props.communityId);
+        getPersonalProgress(1);
     }, [])
     return (
         <div>personalProgress</div>

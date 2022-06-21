@@ -40,17 +40,26 @@ const PostBody = styled.span`
   line-height: 27px;
 `;
 
+const API = process.env.REACT_APP_API;
+const token = process.env.REACT_APP_TOKEN;
+
 const Posts = (props) => {
 
 
-  const API = "http://isupport-server.herokuapp.com";
+
 
   const [posts, setPosts] = useState([]);
 
+  // 'https://jsonplaceholder.typicode.com/todos' just for test 
 
   // GET	/community/:id/get-posts	Get All posts inside the community with :id=communityId
   let getPosts = async (id) => {
-    const response = await axios.get(API + `/community/${id}/get-posts`);
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    const response = await axios.get(`${API}/community/${id}/get-posts`, config);
+    // console.log('response', response);
     setPosts(response.data);
   }
 
@@ -71,53 +80,61 @@ const Posts = (props) => {
   //   await axios.delete(`${API}+/community/${id}/delete-post/${postId} `);
   // }
   useEffect(() => {
-    getPosts(props.communityId);
+    getPosts(1);
   }, [])
 
 
 
   return (
     <>
-      {posts && (<PostsContainer>
-        <h1>Posts</h1>
-        {posts.map((item, idx) => (
-          <PostCard key={idx}>
-            <PostHeader>
-              <p
-                style={{
-                  color: 'var(--Text-Primary)',
-                  fontStyle: ' normal',
-                  fontWeight: '600',
-                  fontSize: '16px',
-                }}
-              >
-                Post title{item.title}
-              </p>
-              <p
-                style={{
-                  color: 'var(--Primary-Main)',
-                  fontStyle: ' normal',
-                  fontWeight: '400',
-                  fontSize: '16px',
-                }}
-              >
-                {' '}
-                Community
-              </p>
-            </PostHeader>
-            <PostBody>
-              This is an amazing postThis is an amazing postThis is an amazing
-              postThis is an amazing postThis is an amazing postThis is an amazing
-              postThis is an amazing post
-              {item.body}
-            </PostBody>
-            <PostFooter>
-              <p>8:57 PM 6/19/2022</p>
-              <p>moath abu hamad</p>
-            </PostFooter>
-          </PostCard>
-        ))}
-      </PostsContainer>)}
+      {
+        posts && (<PostsContainer>
+          <h1>Posts</h1>
+          {posts.map((item, idx) => (
+            <PostCard key={idx}>
+              <PostHeader>
+                <p
+                  style={{
+                    color: 'var(--Text-Primary)',
+                    fontStyle: ' normal',
+                    fontWeight: '600',
+                    fontSize: '16px',
+                  }}
+                >
+                  {/* Post title */}
+                  {item.post_title}
+                </p>
+                <p
+                  style={{
+                    color: 'var(--Primary-Main)',
+                    fontStyle: ' normal',
+                    fontWeight: '400',
+                    fontSize: '16px',
+                  }}
+                >
+                  {' '}
+                  Community
+                </p>
+              </PostHeader>
+              <PostBody>
+                {/* This is an amazing postThis is an amazing postThis is an amazing
+                postThis is an amazing postThis is an amazing postThis is an amazing
+                postThis is an amazing post */}
+                {item.post_body}
+              </PostBody>
+              <PostFooter>
+                <p>
+                  {/* 8:57 PM 6/19/2022 */}
+                  {item.createdAt}
+                </p>
+                <p>
+                  {/* moath abu hamad */}
+                  {item.author_name}
+                </p>
+              </PostFooter>
+            </PostCard>
+          ))}
+        </PostsContainer>)}
 
     </>
 
