@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/Home";
 import AboutUs from "./pages/About";
@@ -24,6 +25,7 @@ function App() {
         <Route path="admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
+
   );
 }
 

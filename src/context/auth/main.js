@@ -38,49 +38,50 @@ export default function AuthProvider(props) {
   };
 
   const validateUser = (token) => {
-    if(token){
-        const user =  jwt_decode(token);
-        loginState(true,user);
-        cookie.save("token", token);
+    if (token) {
+      const user = jwt_decode(token);
+      loginState(true, user);
+      cookie.save("token", token);
     }
-    else{
-        loginState(false,{});
+    else {
+      loginState(false, {});
     }
   }
 
-  const loginState = (isLoggedIn,user) => {
+  const loginState = (isLoggedIn, user) => {
     setIsLoggedIn(isLoggedIn);
     setUser(user);
   }
 
-    const logout = () => {
-        cookie.remove("token");
-        loginState(false,{});
-    }
+  const logout = () => {
+    cookie.remove("token");
+    loginState(false, {});
+  }
 
-    useEffect(() => {
-        const userInfo = cookie.load("token");
-        validateUser(userInfo);
-        setToken(userInfo);
-    },[]);
+  useEffect(() => {
+    const userInfo = cookie.load("token");
+    validateUser(userInfo);
+    setToken(userInfo);
+  }, []);
 
-    const canDo = (permission) => {
-        return user ? user.permissions.includes(permission) : false;
-    }
+  const canDo = (permission) => {
+    return user ? user.permissions.includes(permission) : false;
+  }
 
-    const state = {
-        user,
-        isLoggedIn,
-        login,
-        signup,
-        logout,
-        canDo,
-        token,
-    }
+  const state = {
+    user,
+    isLoggedIn,
+    login,
+    signup,
+    logout,
+    canDo,
+    token
 
-    return(
-        <AuthContect.Provider value={state}>
-            {props.children}
-        </AuthContect.Provider>
-    )
+  }
+
+  return (
+    <AuthContect.Provider value={state}>
+      {props.children}
+    </AuthContect.Provider>
+  )
 }
