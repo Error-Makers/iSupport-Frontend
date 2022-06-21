@@ -2,6 +2,17 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Messages from "./message";
 import NewMessage from "./newMessage";
+import styled from "styled-components";
+
+const ChatContainer = styled.div`
+  width: 50vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  overflow-y: auto;
+`;
 
 function CommunityChat() {
   const [socket, setSocket] = useState(null);
@@ -14,12 +25,11 @@ function CommunityChat() {
 
   return (
     <div className="App">
-      <header className="app-header">React Chat</header>
       {socket ? (
-        <div className="chat-container">
+        <ChatContainer className="chat-container">
           <Messages socket={socket} />
           <NewMessage socket={socket} />
-        </div>
+        </ChatContainer>
       ) : (
         <div>Not Connected</div>
       )}
