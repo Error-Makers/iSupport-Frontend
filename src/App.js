@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CommunityChat from "./components/communityChat";
+// import CommunityChat from "./components/communityChat";
+import AuthComponent from "./pages/AuthLogin"
 
 function App() {
   return (
     <div className="App">
-      <CommunityChat />
+      <AuthComponent/>
+      {/* <CommunityChat /> */}
     </div>
   );
 }
