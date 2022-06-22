@@ -1,18 +1,22 @@
 import {
-  Facebook,
-  Instagram,
-  MailOutline,
-  Phone,
-  Pinterest,
-  Room,
-  Twitter,
-} from '@mui/icons-material';
+  FaFacebook,
+  FaInstagram,
+  FaPhone,
+  FaPinterest,
+  FaMapMarkerAlt,
+  FaTwitter,
+} from 'react-icons/fa';
+import { IoMailOutline } from 'react-icons/io5';
+
 import styled from 'styled-components';
-import { mobile } from '../responsive';
+import { device } from '../media';
 
 const Container = styled.div`
   display: flex;
-  ${mobile({ flexDirection: 'column' })}
+  flex-direction: column;
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
 `;
 
 const Left = styled.div`
@@ -22,7 +26,9 @@ const Left = styled.div`
   padding: 20px;
 `;
 
-const Logo = styled.h1``;
+const Logo = styled.h1`
+  color: var(--Primary-Main);
+`;
 
 const Desc = styled.p`
   margin: 20px 0px;
@@ -47,11 +53,11 @@ const SocialIcon = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
-  ${mobile({ display: 'none' })}
 `;
 
 const Title = styled.h3`
   margin-bottom: 30px;
+  color: var(--Primary-Main);
 `;
 
 const List = styled.ul`
@@ -70,7 +76,7 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
-  ${mobile({ backgroundColor: '#fff8f8' })}
+  background-color: var(--Paper-Light);
 `;
 
 const ContactItem = styled.div`
@@ -79,15 +85,19 @@ const ContactItem = styled.div`
   align-items: center;
 `;
 
-const Payment = styled.img`
-  width: 50%;
-`;
-
 const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>LAMA.</Logo>
+        <Logo>
+          <img
+            src='https://www.nicepng.com/png/full/475-4756895_yoga-transparent-lotus-flower-logo.png'
+            alt='iSupport'
+            width='45'
+            height='40'
+          ></img>{' '}
+          iSupport
+        </Logo>
         <Desc>
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected
@@ -95,16 +105,16 @@ const Footer = () => {
         </Desc>
         <SocialContainer>
           <SocialIcon color='3B5999'>
-            <Facebook />
+            <FaFacebook />
           </SocialIcon>
           <SocialIcon color='E4405F'>
-            <Instagram />
+            <FaInstagram />
           </SocialIcon>
           <SocialIcon color='55ACEE'>
-            <Twitter />
+            <FaTwitter />
           </SocialIcon>
           <SocialIcon color='E60023'>
-            <Pinterest />
+            <FaPinterest />
           </SocialIcon>
         </SocialContainer>
       </Left>
@@ -112,30 +122,27 @@ const Footer = () => {
         <Title>Useful Links</Title>
         <List>
           <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
+          <ListItem>Sign Up</ListItem>
+          <ListItem>FAQ</ListItem>
+          <ListItem>Support Center</ListItem>
           <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
+          <ListItem>Blog</ListItem>
+          <ListItem>Careers</ListItem>
+          <ListItem>About Us</ListItem>
           <ListItem>Terms</ListItem>
         </List>
       </Center>
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{ marginRight: '10px' }} /> 622 Dixie Path , South
-          Tobinchester 98336
+          <FaMapMarkerAlt style={{ marginRight: '10px' }} /> Ammn , Jordan
         </ContactItem>
         <ContactItem>
-          <Phone style={{ marginRight: '10px' }} /> +1 234 56 78
+          <FaPhone style={{ marginRight: '10px' }} /> +1 234 56 78
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{ marginRight: '10px' }} /> contact@lama.dev
+          <IoMailOutline style={{ marginRight: '10px' }} /> contact@iSupport.com
         </ContactItem>
-        <Payment src='https://i.ibb.co/Qfvn4z6/payment.png' />
       </Right>
     </Container>
   );
