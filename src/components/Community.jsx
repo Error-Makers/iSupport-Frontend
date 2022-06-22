@@ -1,33 +1,3 @@
-import Header from '../components/Header';
-import Leaderboard from '../components/Leaderboard';
-import Posts from '../components/Posts';
-import PersonalProgress from '../components/PersonalProgress';
-import Footer from '../components/Footer';
-import CommunityChat from '../components/CommunityChat';
-import styled from 'styled-components';
-
-
-const Wrapper = styled.div`
-  
-`
-
-
-
-const Community = () => {
-  return (
-    <Wrapper>
-         <Header/>
-         <PersonalProgress/>
-         <Leaderboard/>
-         <Posts/>
-         <CommunityChat/>
-         <Footer/>
-    </Wrapper>
-  );
-};
-
-export default Community;
-
 // import React, { useState, useEffect } from 'react'
 // import axios from 'axios';
 // const API = 'http://localhost:3000';
@@ -56,4 +26,3 @@ export default Community;
 //         <div>leaderboard</div>
 //     )
 // }
-
