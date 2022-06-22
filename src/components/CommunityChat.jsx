@@ -6,8 +6,6 @@ import styled from "styled-components";
 import { device } from "../media";
 
 const ChatContainer = styled.div`
-  width: 50vw;
-  height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +13,7 @@ const ChatContainer = styled.div`
   overflow-y: auto;
   @media ${device.tablet} {
     border-radius: 40px;
-    box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -29,7 +27,7 @@ function CommunityChat() {
   }, [setSocket]);
 
   return (
-    <div className="App">
+    <div>
       {socket ? (
         <ChatContainer className="chat-container">
           <Messages socket={socket} />

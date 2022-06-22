@@ -5,8 +5,8 @@ const Form = styled.form`
   width: 100%;
   background-color: var(--Accent-Main);
   opacity: 0.7;
-  height: 10vh;
-  margin-top: 2vh;
+  height: 50px;
+  /* margin-top: 2vh; */
   display: flex;
   justify-content: center;
   align-items: center;
