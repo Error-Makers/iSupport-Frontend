@@ -1,21 +1,63 @@
-import Header from "../components/Header";
-import Leaderboard from "../components/Leaderboard";
-import Posts from "../components/Posts";
-import PersonalProgress from "../components/PersonalProgress";
-import Footer from "../components/Footer";
-import CommunityChat from "../components/CommunityChat";
-import styled from "styled-components";
 
-const Wrapper = styled.div``;
+
+import Header from '../components/Header';
+import Leaderboard from '../components/Leaderboard';
+import Posts from '../components/Posts';
+import PersonalProgress from '../components/PersonalProgress';
+import Footer from '../components/Footer';
+import CommunityChat from '../components/CommunityChat';
+import styled from 'styled-components';
+import { device } from '../media';
+
+const Wrapper = styled.div`
+  width: 100%;
+`;
+const CommunityGrid = styled.div`
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 0px;
+  grid-row-gap: 40px;
+  align-items: center;
+`;
+const Top = styled.div`
+
+`;
+const Middle = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+  gap: 40px;
+`;
+const Bottom = styled.div`
+  margin: 0 auto;
+  width: 80%;
+`;
 
 const Community = () => {
   return (
     <Wrapper>
       <Header />
-      <PersonalProgress />
-      <Leaderboard />
-      <Posts />
-      <CommunityChat />
+
+
+      <CommunityGrid>
+        <Top>
+          <PersonalProgress />
+        </Top>
+        <Middle>
+          <Posts />
+          <Leaderboard />
+        </Middle>
+        <Bottom>
+          <CommunityChat />
+        </Bottom>
+      </CommunityGrid>
       <Footer />
     </Wrapper>
   );

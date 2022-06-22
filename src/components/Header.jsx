@@ -50,6 +50,7 @@ const Link = styled.a`
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
+
   }
 `;
 
@@ -117,6 +118,7 @@ const Triangle = styled.div`
 `;
 
 const OptionsDiv = styled.div`
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -204,6 +206,7 @@ function HeaderBar() {
         </OptionsDiv>
       )}
     </>
+
   );
 }
 
