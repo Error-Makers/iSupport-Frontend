@@ -1,11 +1,10 @@
-import { AiOutlineSearch } from 'react-icons/ai';
 import React from 'react';
 import styled from 'styled-components';
 import { device } from '../media';
 
 const Container = styled.div`
   height: 60px;
-  
+
   background-color: aliceblue;
   @media ${device.mobileL} {
     height: '50px';
@@ -29,42 +28,29 @@ const Left = styled.div`
   align-items: center;
 `;
 
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-  @media ${device.mobileL} {
-    display: 'none';
-  }
-`;
-
-const Nav = styled.nav`
-    
-`
-const Logo= styled.div`
-    
-`
+const Nav = styled.nav``;
+const Logo = styled.div``;
 
 const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  @media ${device.mobileL}{ flex: 2; justify-content: center }
+  @media ${device.mobileL} {
+    flex: 2;
+    justify-content: center;
+  }
 `;
-
-
 
 const Header = () => {
   return (
     <Container>
       <Wrapper>
         <Left>
-        <Logo></Logo>
-        <Nav></Nav>
+          <Logo></Logo>
+          <Nav></Nav>
         </Left>
-        <Right>
-
-        </Right>
+        <Right></Right>
       </Wrapper>
     </Container>
   );

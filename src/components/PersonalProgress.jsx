@@ -28,7 +28,7 @@ import styled from 'styled-components';
 
 
 const PersonalProgressContainer = styled.div`
-  width: 50%;
+  width: 80%;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
@@ -41,7 +41,7 @@ const ProgressCard = styled.div`
   padding: 20px;
   background: var(--Paper-Light);
   border-radius: 20px;
-  box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
 `;
 
 const ProgressHeader = styled.div`
