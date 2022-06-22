@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+
 
 
 import axios from 'axios';
@@ -71,6 +73,8 @@ const MyPosts = styled.button`
 
 const PersonalProgress = () => {
   const [personalProgress, setPersonalProgress] = useState({});
+  let { communityId } = useParams();
+
   const API = process.env.REACT_APP_API;
   const token = process.env.REACT_APP_TOKEN;
   // /community/:id/personalProgress
@@ -83,7 +87,7 @@ const PersonalProgress = () => {
     setPersonalProgress(response.data);
   }
   useEffect(() => {
-    getPersonalProgress(1);
+    getPersonalProgress(communityId);
   }, [])
   return (
     < PersonalProgressContainer >

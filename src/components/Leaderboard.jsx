@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { device } from '../media';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 
 
 const Wrapper = styled.div`
@@ -62,8 +64,8 @@ const config = {
   headers: { Authorization: `Bearer ${token}` }
 };
 const Leaderboard = (props) => {
+  let { communityId } = useParams();
   const [leaderboard, setLeaderboard] = useState([]);
-  const [personalProgress, setPersonalProgress] = useState({});
 
 
   // /community/:id/leaderboard  Leaderboard Information for a Community with :id=communityId
@@ -76,7 +78,7 @@ const Leaderboard = (props) => {
   }
 
   useEffect(() => {
-    getLeaderboard(1);
+    getLeaderboard(communityId);
   }, [])
 
   return (

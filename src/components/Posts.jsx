@@ -1,6 +1,73 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import { Modal, Form, Button } from 'react-bootstrap'
+
+
+
+function CreatePostModel(props) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const postBodyRef = useRef();
+  const postTitleRef = useRef();
+
+  const handlePost = async (e) => {
+    e.preventDefault()
+    let body = {
+      post_title: postTitleRef.current.value,
+      post_body: postBodyRef.current.value
+
+    }
+    handleClose();
+    await props.handleCreatePostModel(body);
+
+
+  }
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Create Post
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>title</Form.Label>
+              <Form.Control ref={postTitleRef} as="textarea" rows={1} />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Post</Form.Label>
+              <Form.Control ref={postBodyRef} as="textarea" rows={3} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handlePost}>
+            post
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+
 
 const PostsContainer = styled.div`
   width: 90%;
@@ -50,12 +117,13 @@ const token = process.env.REACT_APP_TOKEN;
 
 const Posts = (props) => {
   const [posts, setPosts] = useState([]);
+  let { communityId } = useParams();
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
   // 'https://jsonplaceholder.typicode.com/todos' just for test
   // GET / community /: id / get - posts	Get All posts inside the community with : id = communityId
   let getPosts = async (id) => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
     const response = await axios.get(
       `${API}/community/${id}/get-posts`,
       config,
@@ -64,22 +132,41 @@ const Posts = (props) => {
     setPosts(response.data);
   };
 
-  //	/community/:id/create-post	Creates a New Post in a Joined Commuity :id=communityId
-  async function addPost(communityId, body) {
-    await axios.post(`${API}+/community/${communityId}/create-post `, body);
+  let handleCreatePostModel = async (body) => {
+    if (!body.post_title && !body.post_body) {
+
+    } else {
+
+      console.log(body);
+      await addPost(communityId, body);//communityId represent number of community 
+
+    }
   }
 
+  //	/community/:id/create-post	Creates a New Post in a Joined Commuity :id=communityId
+  async function addPost(communityId, body) {
+    // console.log(communityId);
+    try {
+      // console.log("body", body);
+      await axios.post(`${API}/community/${communityId}/create-post`, body, config);
+      getPosts(communityId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   // /update-post/:id	Search The Communities List and Update the Post with :id=postId
   async function updatePost(postId, body) {
-    await axios.patch(`${API}+/update-post/${postId} `, body);
+    await axios.patch(`${API}/update-post/${postId} `, body);
+    getPosts(communityId);
   }
 
   // Deletes a Post By Community ID and Post ID
   async function deletePost(id, postId) {
-    await axios.delete(`${API}+/community/${id}/delete-post/${postId} `);
+    await axios.delete(`${API}/community/${id}/delete-post/${postId} `);
+    getPosts(communityId);
   }
   useEffect(() => {
-    getPosts(1);
+    getPosts(communityId);
   }, []);
   return (
     <>
@@ -101,6 +188,7 @@ const Posts = (props) => {
                 {/* {item.post_title} */}
 
               </p>
+
               <p
                 style={{
                   color: 'var(--Primary-Main)',
@@ -132,6 +220,8 @@ const Posts = (props) => {
             </PostFooter>
           </PostCard>
         ))}
+
+        <CreatePostModel handleCreatePostModel={handleCreatePostModel} />
       </PostsContainer>
     </>
 
