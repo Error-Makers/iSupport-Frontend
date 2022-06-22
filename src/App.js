@@ -1,11 +1,6 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Posts from './components/Posts';
-import TopComunity from './components/TopComunity';
-import Footer from './components/Footer';
-import Leaderboard from './components/Leaderboard';
-import PersonalProgress from './components/PersonalProgress';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/Home';
 import AboutUs from './pages/About';

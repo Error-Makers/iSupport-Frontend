@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import Messages from "./message";
 import NewMessage from "./newMessage";
 import styled from "styled-components";
+import { device } from "../media";
 
 const ChatContainer = styled.div`
   width: 50vw;
@@ -12,6 +13,10 @@ const ChatContainer = styled.div`
   align-items: center;
   padding: 16px;
   overflow-y: auto;
+  @media ${device.tablet} {
+    border-radius: 40px;
+    box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.06);
+  }
 `;
 
 function CommunityChat() {
