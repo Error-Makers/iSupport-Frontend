@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -63,15 +63,17 @@ const Posts = (props) => {
   //   // console.log('response', response);
   //   setPosts(response.data);
   // };
+
   // //	/community/:id/create-post	Creates a New Post in a Joined Commuity :id=communityId
   // async function addPost(communityId, body) {
   //   await axios.post(`${API}+/community/${communityId}/create-post `, body);
   // }
+
   // // /update-post/:id	Search The Communities List and Update the Post with :id=postId
   // async function updatePost(postId, body) {
   //   await axios.patch(`${API}+/update-post/${postId} `, body);
   // }
-  // // /community/:id/delete-post/:postId
+
   // // Deletes a Post By Community ID and Post ID
   // async function deletePost(id, postId) {
   //   await axios.delete(`${API}+/community/${id}/delete-post/${postId} `);
@@ -81,54 +83,58 @@ const Posts = (props) => {
   // }, []);
   return (
     <>
-      <PostsContainer>
-        <h1>Posts</h1>
-        {[1, 2].map((item, idx) => (
-          <PostCard key={idx}>
-            <PostHeader>
-              <p
-                style={{
-                  color: 'var(--Text-Primary)',
-                  fontStyle: ' normal',
-                  fontWeight: '600',
-                  fontSize: '16px',
-                }}
-              >
-                Post title
-                {/* {item.post_title} */}
-              </p>
-              <p
-                style={{
-                  color: 'var(--Primary-Main)',
-                  fontStyle: ' normal',
-                  fontWeight: '400',
-                  fontSize: '16px',
-                }}
-              >
-                {' '}
-                Community
-              </p>
-            </PostHeader>
-            <PostBody>
-              This is an amazing postThis is an amazing postThis is an amazing
-              postThis is an amazing postThis is an amazing postThis is an
-              amazing postThis is an amazing post
-              {/* {item.post_body} */}
-            </PostBody>
-            <PostFooter>
-              <p>
-                8:57 PM 6/19/2022
-                {/* {item.createdAt} */}
-              </p>
-              <p>
-                moath abu hamad
-                {/* {item.author_name} */}
-              </p>
-            </PostFooter>
-          </PostCard>
-        ))}
-      </PostsContainer>
+        <PostsContainer>
+          <h1>Posts</h1>
+          {[1, 2, 3, 4, 5, 6].map((item, idx) => (
+
+            <PostCard key={idx}>
+              <PostHeader>
+                <p
+                  style={{
+                    color: 'var(--Text-Primary)',
+                    fontStyle: ' normal',
+                    fontWeight: '600',
+                    fontSize: '16px',
+                  }}
+                >
+                  Post title
+                  {/* {item.post_title} */}
+
+                </p>
+                <p
+                  style={{
+                    color: 'var(--Primary-Main)',
+                    fontStyle: ' normal',
+                    fontWeight: '400',
+                    fontSize: '16px',
+                  }}
+                >
+                  {' '}
+                  Community
+                </p>
+              </PostHeader>
+              <PostBody>
+                This is an amazing postThis is an amazing postThis is an amazing
+                postThis is an amazing postThis is an amazing postThis is an
+                amazing postThis is an amazing post
+                {/* {item.post_body} */}
+              </PostBody>
+              <PostFooter>
+                <p>
+                  8:57 PM 6/19/2022
+                  {/* {item.createdAt} */}
+                </p>
+                <p>
+                  moath abu hamad
+                  {/* {item.author_name} */}
+
+                </p>
+              </PostFooter>
+            </PostCard>
+          ))}
+        </PostsContainer>
     </>
+
   );
 };
 export default Posts;

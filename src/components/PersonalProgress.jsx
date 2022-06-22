@@ -128,3 +128,4 @@ const PersonalProgress = () => {
 };
 
 export default PersonalProgress;
+

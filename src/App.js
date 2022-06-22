@@ -10,6 +10,7 @@ import Community from './pages/Community';
 import AuthComponent from './pages/AuthLogin';
 import Admin from './pages/Admin';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
         <Route path='admin' element={<Admin />} />
       </Routes>
     </BrowserRouter>
+
   );
 }
 
