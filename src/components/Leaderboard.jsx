@@ -16,7 +16,7 @@ export default function Leaderboard(props) {
             headers: { Authorization: `Bearer ${token}` }
         };
         const response = await axios.get(API + `/community/${communityId}/leaderboard`, config);
-        console.log('response leaderboard', response);
+        // console.log('response leaderboard', response);
 
         setLeaderboard(response.data);
     }

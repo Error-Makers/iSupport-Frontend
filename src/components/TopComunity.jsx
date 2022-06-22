@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { device } from '../media';
+const API = process.env.REACT_APP_API;
+const token = process.env.REACT_APP_TOKEN;
 
 const Wrapper = styled.div`
   min-width: 100%;
@@ -63,6 +65,26 @@ const CommunityMembers = styled.span`
 `;
 
 const TopComunity = () => {
+  const [topCommuities, settopCommuities] = useState([]);
+
+
+  // /trending
+  async function gettopCommuities() {
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    const response = await axios.get(API + `/trending`, config);
+    console.log('response topCommuities', response);
+
+    settopCommuities(response.data);
+  }
+
+  useEffect(() => {
+    gettopCommuities();
+  }, []);
+
+
   return (
     <Wrapper>
       <h1>Top Community</h1>
@@ -70,8 +92,14 @@ const TopComunity = () => {
         {[1, 2, 3, 4, 5, 6].map((item, idx) => (
           <CommunityCard key={idx}>
             <CommunityImage src='https://images.unsplash.com/photo-1612810806695-30f7a8258391?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80' />
-            <CommunityMembers>500+ Members</CommunityMembers>
-            <CommunityTitle>Quit Smoking</CommunityTitle>
+            <CommunityMembers>
+              500+ Members
+              {/* {`{item.noOfusers}+12`} */}
+            </CommunityMembers>
+            <CommunityTitle>
+              Quit Smoking
+              {/* {item.community_name} */}
+            </CommunityTitle>
           </CommunityCard>
         ))}
       </TopComunityContainer>
