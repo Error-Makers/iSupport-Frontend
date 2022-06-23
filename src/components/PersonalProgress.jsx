@@ -1,30 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
 
-// import axios from 'axios';
 
-// export default function PersonalProgress() {
+import axios from 'axios';
 
-//     const [personalProgress, setPersonalProgress] = useState({});
-//     const API = process.env.REACT_APP_API;
-//     const token = process.env.REACT_APP_TOKEN;
-//     // /community/:id/personalProgress
-//     async function getPersonalProgress(communityId) {
-//         const config = {
-//             headers: { Authorization: `Bearer ${token}` }
-//         };
-//         const response = await axios.get(API + `/community/${communityId}/personalProgress`, config);
-//         // console.log('response personal progress', response);
-//         setPersonalProgress(response.data);
-//     }
-//     useEffect(() => {
-//         getPersonalProgress(1);
-//     }, [])
-//     return (
-//         <div>personalProgress</div>
-//     )
-// }
+
 
 
 const PersonalProgressContainer = styled.div`
@@ -90,9 +72,27 @@ const MyPosts = styled.button`
 `;
 
 const PersonalProgress = () => {
+  const [personalProgress, setPersonalProgress] = useState({});
+  let { communityId } = useParams();
+
+  const API = process.env.REACT_APP_API;
+  const token = process.env.REACT_APP_TOKEN;
+  // /community/:id/personalProgress
+  async function getPersonalProgress(communityId) {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    const response = await axios.get(API + `/community/${communityId}/personalProgress`, config);
+    // console.log('response personal progress', response);
+    setPersonalProgress(response.data);
+  }
+  useEffect(() => {
+    getPersonalProgress(communityId);
+  }, [])
   return (
-    <PersonalProgressContainer>
-      <ProgressCard>
+    < PersonalProgressContainer >
+      {personalProgress && (<ProgressCard>
+        {console.log(personalProgress)}
         <h4 style={{ color: '#673ab7' }}>My Progress</h4>
         <ProgressHeader>
           <p
@@ -120,10 +120,13 @@ const PersonalProgress = () => {
         <ProgressBody>
           <Streak></Streak>
           <Contributions></Contributions>
-          <MyPosts>My Posts</MyPosts>
+          <MyPosts>My Posts :{
+            personalProgress.numberOfTasks
+
+          }</MyPosts>
         </ProgressBody>
-      </ProgressCard>
-    </PersonalProgressContainer>
+      </ProgressCard>)}
+    </PersonalProgressContainer >
   );
 };
 
