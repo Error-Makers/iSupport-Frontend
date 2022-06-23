@@ -1,28 +1,50 @@
-// import React, { useState, useEffect } from 'react'
-// import axios from 'axios';
-// const API = 'http://localhost:3000';
+import React, { useContext, useState } from "react";
+import { Button, Modal, Form } from "react-bootstrap";
+import { AuthContect } from "../context/auth/main";
 
-// export default function Commuity(props) {
-//     const [commuities, setCommuities] = useState([]);
+const Community = () => {
+ const context = useContext(AuthContect);
+ const [show, setShow] = useState(false);
+ const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+const [communityName,setCommunityName]= useState('');
+const [communityDescription,setCommunityDescription]= useState('');
 
+const handleSubmit =(e)=>{
+    e.preventDefault();
+    context.createCommunity( communityName,communityDescription);
+}
+return (
+    <div>
+      <Button variant="primary" onClick={handleShow}>
+        Create New Community
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create New Community</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Community Name </Form.Label>
+              <Form.Control type="text" placeholder="Community Name" onChange={(e)=>setCommunityName(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicdescription">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Tell us about your community"
+                onChange={(e)=>setCommunityDescription(e.target.value)}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit" >
+              Submit
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </div>
+  );
+};
 
-//     // /commuities 
-//     async function getCommuities() {
-//         const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhbGEiLCJpYXQiOjE2NTU3Mzg2NDB9.y31y2Glnt_TOQZBCl_v4lwaQCcHIvtkQrWJ9hATth10';
-
-//         const config = {
-//             headers: { Authorization: `Bearer ${token}` }
-//         };
-//         const response = await axios.get(API + `/commuities`, config);
-//         console.log('response commuities', response);
-
-//         setCommuities(response.data);
-//     }
-
-//     useEffect(() => {
-//         getCommuities();
-//     }, [])
-//     return (
-//         <div>leaderboard</div>
-//     )
-// }
+export default Community;
