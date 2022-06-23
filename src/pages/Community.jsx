@@ -1,3 +1,5 @@
+
+
 import Header from '../components/Header';
 import Leaderboard from '../components/Leaderboard';
 import Posts from '../components/Posts';
@@ -42,6 +44,8 @@ const Community = () => {
   return (
     <Wrapper>
       <Header />
+
+
       <CommunityGrid>
         <Top>
           <PersonalProgress />
@@ -88,4 +92,3 @@ export default Community;
 //         <div>leaderboard</div>
 //     )
 // }
-

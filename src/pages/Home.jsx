@@ -1,5 +1,12 @@
+import HeaderBar from "../components/Header";
+
 const LandingPage = () => {
-  return <h1>Landing</h1>;
+  return (
+    <>
+      <HeaderBar />
+      <section style={{ height: "300vh" }}></section>
+    </>
+  );
 };
 
 export default LandingPage;
