@@ -40,6 +40,7 @@ const SubTabs = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   &.active {
     border-left: 10px solid #fefefe;
+    opacity: 0.7;
   }
 `;
 
