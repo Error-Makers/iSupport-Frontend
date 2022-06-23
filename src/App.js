@@ -9,6 +9,7 @@ import Browse from "./pages/Browse";
 import Community from "./pages/Community";
 import AuthComponent from "./pages/AuthLogin";
 import Admin from "./pages/Admin";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="community/:communityId" element={<Community />} />
         <Route path="auth" element={<AuthComponent />} />
         <Route path="admin" element={<Admin />} />
-        <Route path="*" element={<h1>Test</h1>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
