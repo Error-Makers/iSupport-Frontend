@@ -71,15 +71,19 @@ const Leaderboard = (props) => {
   // /community/:id/leaderboard  Leaderboard Information for a Community with :id=communityId
   async function getLeaderboard(communityId) {
 
-    const response = await axios.get(API + `/community/${communityId}/leaderboard`, config);
-    // console.log('response leaderboard', response);
+    // console.log('before response leaderboard');
+    const response = await axios.get(API + `/community/${communityId}/leaderboard`, config).then(res => {
+      // console.log('inside response leaderboard');
+      return res.data
+    });
+    // console.log('after response leaderboard');
 
-    setLeaderboard(response.data);
+    setLeaderboard(response);
   }
 
   useEffect(() => {
     getLeaderboard(communityId);
-  }, [])
+  }, []);
 
   return (
     <Wrapper>

@@ -92,7 +92,7 @@ const PersonalProgress = () => {
   return (
     < PersonalProgressContainer >
       {personalProgress && (<ProgressCard>
-        {console.log(personalProgress)}
+        {/* {console.log(personalProgress)} */}
         <h4 style={{ color: '#673ab7' }}>My Progress</h4>
         <ProgressHeader>
           <p
