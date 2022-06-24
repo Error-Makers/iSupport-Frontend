@@ -10,7 +10,7 @@ const MainHeader = styled.header`
   align-items: center;
   background-color: var(--Paper-Light);
   height: 10vh;
-  width: 100vw;
+  width: 100%;
   &.active {
     position: sticky;
     top: 0;
@@ -23,6 +23,7 @@ const Title = styled.h1`
   font-size: 2rem;
   font-weight: 400;
   margin-left: 1vw;
+  font-family: "M PLUS Rounded 1c", sans-serif;
 `;
 
 const Image = styled.img`

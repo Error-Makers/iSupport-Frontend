@@ -3,7 +3,7 @@ import banner from "../assets/404.png";
 
 const Section = styled.section`
   height: 80vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,6 +12,7 @@ const Section = styled.section`
 const Image = styled.img`
   width: 321.25px;
   height: 222.82px;
+  margin-left: 10%;
 `;
 
 const Container = styled.div`
@@ -19,7 +20,7 @@ const Container = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  padding-left: 4vw;
+  padding-left: 5vw;
   border-left: 4px solid rgba(0, 0, 0, 0.1);
 `;
 
