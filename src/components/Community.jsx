@@ -16,9 +16,11 @@ const handleSubmit =(e)=>{
 }
 return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+     
+      <Button variant="primary" onClick={handleShow} style={{marginLeft:'38%',backgroundColor:' #e91e63',borderColor:'#e91e63'}}>
         Create New Community
       </Button>
+     
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create New Community</Modal.Title>

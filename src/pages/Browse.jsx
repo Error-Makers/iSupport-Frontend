@@ -103,6 +103,8 @@ const Browse = () => {
     margin-left: 7%;
     box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   `;
+
+  
   // search: e.target.value.substr(0, 20)
   let filterdCommunity = communites.filter((item) => {
     return (
@@ -115,12 +117,17 @@ const Browse = () => {
       {/* variant="dark" */}
       {/* <Carousel  style={{marginTop: '4%'}} > */}
 
+<h1 style={{marginLeft:'27%',fontSize:'48px',paddingTop:'2%'}}>Search for Community</h1>
+
       <InputGroup
         className="mb-3"
         style={{
-          marginLeft: "11%",
+          marginLeft: "20%",
           marginTop: "2%",
-          width: "70%",
+          
+          width:'680px',
+         
+         
         }}
       >
         <Form.Control
@@ -130,12 +137,16 @@ const Browse = () => {
           aria-label="Search"
           aria-describedby="inputGroup-sizing-default"
           style={{
+            height: '60px',
             borderColor: "#e91e63",
             boxShadow: "rgba(0, 0, 0, 0.1) -4px 9px 25px -6px",
+            borderRadius:'30px'
           }}
         />
       </InputGroup>
-<AuthContect>
+      
+      <p style={{marginLeft:'45%'}}>OR</p>
+<AuthContect  >
  <Community />
 </AuthContect>
     
