@@ -3,7 +3,8 @@ import { AuthContect } from '../context/auth/main';
 import styled from 'styled-components';
 import unlock from '../assets/unlock.png';
 import Card from 'react-bootstrap/Card';
-
+import { useNavigate} from "react-router-dom";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 const Parent = styled.div`
@@ -51,7 +52,14 @@ const handleChange=(e)=>{
   setUsername(e.target.value);
 }
 
+let navigate = useNavigate();
+
   return (
+
+    <>
+    <Button onClick={() => navigate(-1)}>
+<BsFillArrowLeftCircleFill/>
+    </Button>
     <Parent>
       <Child>
         <Card
@@ -116,5 +124,6 @@ const handleChange=(e)=>{
         <Img src={unlock} />
       </Child>
     </Parent>
+    </>
   );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Community from "../components/Community";
 import  AuthContect  from "../context/auth/main";
+import { BsSearch } from "react-icons/bs";
 const Browse = () => {
   const [state, setState] = useState("");
   let communites = [
@@ -117,7 +118,7 @@ const Browse = () => {
       {/* variant="dark" */}
       {/* <Carousel  style={{marginTop: '4%'}} > */}
 
-<h1 style={{marginLeft:'27%',fontSize:'48px',paddingTop:'2%'}}>Search for Community</h1>
+<h1 style={{marginLeft:'27%',fontSize:'48px',paddingTop:'2%',color:'#311B92'}}>Search for Community</h1>
 
       <InputGroup
         className="mb-3"
@@ -130,19 +131,26 @@ const Browse = () => {
          
         }}
       >
+        <div style={{}}>
+        {/* <BsSearch  /> */}
+        </div>
         <Form.Control
+         
           onChange={(e) => setState(e.target.value.substr(0, 20))}
           type="text"
           placeholder="Search"
           aria-label="Search"
           aria-describedby="inputGroup-sizing-default"
           style={{
+          
+          
             height: '60px',
-            borderColor: "#e91e63",
             boxShadow: "rgba(0, 0, 0, 0.1) -4px 9px 25px -6px",
             borderRadius:'30px'
           }}
+         
         />
+         <BsSearch style={{fontSize:'30px',marginTop:'10px',zIndex:'1',position:'absolute',right:'12px',color:'#D1D1D1'}} />
       </InputGroup>
       
       <p style={{marginLeft:'45%'}}>OR</p>
