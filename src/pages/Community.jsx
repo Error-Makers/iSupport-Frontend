@@ -1,13 +1,12 @@
-
-
-import Header from '../components/Header';
-import Leaderboard from '../components/Leaderboard';
-import Posts from '../components/Posts';
-import PersonalProgress from '../components/PersonalProgress';
-import Footer from '../components/Footer';
-import CommunityChat from '../components/CommunityChat';
-import styled from 'styled-components';
-import { device } from '../media';
+import Header from "../components/Header";
+import Leaderboard from "../components/Leaderboard";
+import Posts from "../components/Posts";
+import PersonalProgress from "../components/PersonalProgress";
+import Footer from "../components/Footer";
+import CommunityChat from "../components/CommunityChat";
+import styled from "styled-components";
+import { device } from "../media";
+import Auth from "../context/auth/auth";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -21,9 +20,7 @@ const CommunityGrid = styled.div`
   grid-row-gap: 40px;
   align-items: center;
 `;
-const Top = styled.div`
-
-`;
+const Top = styled.div``;
 const Middle = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,24 +39,24 @@ const Bottom = styled.div`
 
 const Community = () => {
   return (
-    <Wrapper>
-      <Header />
-
-
-      <CommunityGrid>
-        <Top>
-          <PersonalProgress />
-        </Top>
-        <Middle>
-          <Posts />
-          <Leaderboard />
-        </Middle>
-        <Bottom>
-          <CommunityChat />
-        </Bottom>
-      </CommunityGrid>
-      <Footer />
-    </Wrapper>
+    <Auth>
+      <Wrapper>
+        <Header />
+        <CommunityGrid>
+          <Top>
+            <PersonalProgress />
+          </Top>
+          <Middle>
+            <Posts />
+            <Leaderboard />
+          </Middle>
+          <Bottom>
+            <CommunityChat />
+          </Bottom>
+        </CommunityGrid>
+        <Footer />
+      </Wrapper>
+    </Auth>
   );
 };
 

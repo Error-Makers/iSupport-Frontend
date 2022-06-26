@@ -1,7 +1,4 @@
 import { useContext, useState } from "react";
-import { When } from "react-if";
-import Login from "./Login";
-import { AuthContect } from "../context/auth/main";
 import Card from "react-bootstrap/Card";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
@@ -9,9 +6,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Button from "react-bootstrap/Button";
 import Img from "react-bootstrap/Image";
+import { LoginContext } from "../context/auth/main";
 
 export default function Signup(props) {
-  const context = useContext(AuthContect);
+  const context = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -21,7 +19,10 @@ export default function Signup(props) {
 
   const signupHandller = (e) => {
     e.preventDefault();
-    context.signup(username, password,firstname,lastname, Email, role);
+    context.signup(username, password, firstname, lastname, Email, role);
+    setTimeout(() => {
+      props.toggleShow();
+    }, 1000);
   };
   const parent = { margin: "1rem", padding: "2rem 2rem", textAlign: "center" };
   const child = {

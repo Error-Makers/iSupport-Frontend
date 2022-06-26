@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import styled from "styled-components";
 import Community from "../components/Community";
-import  AuthContect  from "../context/auth/main";
+import AuthContect from "../context/auth/main";
 import { BsSearch } from "react-icons/bs";
 const Browse = () => {
   const [state, setState] = useState("");
@@ -105,7 +105,6 @@ const Browse = () => {
     box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   `;
 
-  
   // search: e.target.value.substr(0, 20)
   let filterdCommunity = communites.filter((item) => {
     return (
@@ -118,46 +117,55 @@ const Browse = () => {
       {/* variant="dark" */}
       {/* <Carousel  style={{marginTop: '4%'}} > */}
 
-<h1 style={{marginLeft:'27%',fontSize:'48px',paddingTop:'2%',color:'#311B92'}}>Search for Community</h1>
+      <h1
+        style={{
+          marginLeft: "27%",
+          fontSize: "48px",
+          paddingTop: "2%",
+          color: "#311B92",
+        }}
+      >
+        Search for Community
+      </h1>
 
       <InputGroup
         className="mb-3"
         style={{
           marginLeft: "20%",
           marginTop: "2%",
-          
-          width:'680px',
-         
-         
+
+          width: "680px",
         }}
       >
-        <div style={{}}>
-        {/* <BsSearch  /> */}
-        </div>
+        <div style={{}}>{/* <BsSearch  /> */}</div>
         <Form.Control
-         
           onChange={(e) => setState(e.target.value.substr(0, 20))}
           type="text"
           placeholder="Search"
           aria-label="Search"
           aria-describedby="inputGroup-sizing-default"
           style={{
-          
-          
-            height: '60px',
+            height: "60px",
             boxShadow: "rgba(0, 0, 0, 0.1) -4px 9px 25px -6px",
-            borderRadius:'30px'
+            borderRadius: "30px",
           }}
-         
         />
-         <BsSearch style={{fontSize:'30px',marginTop:'10px',zIndex:'1',position:'absolute',right:'12px',color:'#D1D1D1'}} />
+        <BsSearch
+          style={{
+            fontSize: "30px",
+            marginTop: "10px",
+            zIndex: "1",
+            position: "absolute",
+            right: "12px",
+            color: "#D1D1D1",
+          }}
+        />
       </InputGroup>
-      
-      <p style={{marginLeft:'45%'}}>OR</p>
-<AuthContect  >
- <Community />
-</AuthContect>
-    
+
+      <p style={{ marginLeft: "45%" }}>OR</p>
+      <AuthContect>
+        <Community />
+      </AuthContect>
 
       {filterdCommunity.map((item, idx) => (
         <Parent key={idx}>
@@ -167,7 +175,7 @@ const Browse = () => {
 
           <Child>
             <Cards>
-              <Card >
+              <Card>
                 <Card.Body style={{ marginLeft: "12%", textAlign: "left" }}>
                   <Card.Title style={{ color: "#311B92" }}>
                     {item.community_name}
