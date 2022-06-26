@@ -17,7 +17,6 @@ const MainHeader = styled.header`
     z-index: 999;
     box-shadow: 10px 5px 7px rgba(0, 0, 0, 0.2);
   }
-  
 `;
 
 const Title = styled.h1`
@@ -76,7 +75,7 @@ const StyledButton = styled.a`
   font-weight: 600;
   color: initial;
   height: 7.5vh;
-  width: 15vw;
+  width: 17.5vw;
   margin: 0;
   background-color: transparent;
   border-radius: 10px;
@@ -156,7 +155,7 @@ const Avatar = styled.img`
   background: transparent;
 `;
 
-function HeaderBar() {
+function LandingHeader() {
   const headerRef = useRef();
   const [show, setShow] = useState(false);
   const handleNav = (e) => {
@@ -187,9 +186,13 @@ function HeaderBar() {
           <Title>iSupport</Title>
         </div>
         <Nav>
-          <Link href="/browse">Home</Link>
-          <Link href="/browse">Browse</Link>
-          <Link href="/browse">Profile</Link>
+          <Link href="/browse">Feature</Link>
+          <Link href="/browse">Discover</Link>
+          <Link href="/browse">Stories</Link>
+          <Link href="/browse" style={{ fontSize: "1rem", fontWeight: "500" }}>
+            Top Community
+          </Link>
+          <Link href="/browse">Blog</Link>
         </Nav>
         {loggedIn}
       </MainHeader>
@@ -209,4 +212,4 @@ function HeaderBar() {
   );
 }
 
-export default HeaderBar;
+export default LandingHeader;

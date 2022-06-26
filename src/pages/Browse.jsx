@@ -1,8 +1,10 @@
-import { Card, Button, Form, InputGroup } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
-import styled from 'styled-components';
-
+import { Card, Button, Form, InputGroup } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import styled from "styled-components";
+import Community from "../components/Community";
+import  AuthContect  from "../context/auth/main";
+import { BsSearch } from "react-icons/bs";
 const Browse = () => {
   const [state, setState] = useState('');
   let communites = [
@@ -102,6 +104,8 @@ const Browse = () => {
     margin-left: 7%;
     box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   `;
+
+  
   // search: e.target.value.substr(0, 20)
   let filterdCommunity = communites.filter((item) => {
     return (
@@ -114,45 +118,65 @@ const Browse = () => {
       {/* variant="dark" */}
       {/* <Carousel  style={{marginTop: '4%'}} > */}
 
+<h1 style={{marginLeft:'27%',fontSize:'48px',paddingTop:'2%',color:'#311B92'}}>Search for Community</h1>
+
       <InputGroup
-        className='mb-3'
+        className="mb-3"
         style={{
-          marginLeft: '11%',
-          marginTop: '2%',
-          width: '70%',
+          marginLeft: "20%",
+          marginTop: "2%",
+          
+          width:'680px',
+         
+         
         }}
       >
+        <div style={{}}>
+        {/* <BsSearch  /> */}
+        </div>
         <Form.Control
+         
           onChange={(e) => setState(e.target.value.substr(0, 20))}
-          type='text'
-          placeholder='Search'
-          aria-label='Search'
-          aria-describedby='inputGroup-sizing-default'
+          type="text"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="inputGroup-sizing-default"
           style={{
-            borderColor: '#e91e63',
-            boxShadow: 'rgba(0, 0, 0, 0.1) -4px 9px 25px -6px',
+          
+          
+            height: '60px',
+            boxShadow: "rgba(0, 0, 0, 0.1) -4px 9px 25px -6px",
+            borderRadius:'30px'
           }}
+         
         />
+         <BsSearch style={{fontSize:'30px',marginTop:'10px',zIndex:'1',position:'absolute',right:'12px',color:'#D1D1D1'}} />
       </InputGroup>
+      
+      <p style={{marginLeft:'45%'}}>OR</p>
+<AuthContect  >
+ <Community />
+</AuthContect>
+    
 
       {filterdCommunity.map((item, idx) => (
-        <Parent>
+        <Parent key={idx}>
           <Child>
             <Image src={item.url} />
           </Child>
 
           <Child>
             <Cards>
-              <Card>
-                <Card.Body style={{ marginLeft: '12%', textAlign: 'left' }}>
-                  <Card.Title style={{ color: '#311B92' }}>
+              <Card >
+                <Card.Body style={{ marginLeft: "12%", textAlign: "left" }}>
+                  <Card.Title style={{ color: "#311B92" }}>
                     {item.community_name}
                   </Card.Title>
                   <Card.Text
                     style={{
-                      fontSize: '14px',
-                      fontWeight: 'bold',
-                      color: '#303030',
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      color: "#303030",
                     }}
                   >
                     {item.aboutTheCommunity}
@@ -160,9 +184,9 @@ const Browse = () => {
 
                   <Button
                     style={{
-                      background: '#e91e63',
-                      borderColor: '#e91e63',
-                      marginLeft: '90%',
+                      background: "#e91e63",
+                      borderColor: "#e91e63",
+                      marginLeft: "90%",
                     }}
                   >
                     Go to

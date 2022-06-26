@@ -7,12 +7,13 @@ import axios from "axios";
 
 export const AuthContect = React.createContext();
 
-const API = "https://halaauth-api.herokuapp.com";
-
+const API = "https://isupport-backend-super.herokuapp.com";
+const token = process.env.REACT_APP_TOKEN;
 export default function AuthProvider(props) {
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(null);
+  
   // login username
   const login = async (username, password) => {
     const encodePassworde = base64.encode(`${username}:${password}`);
@@ -20,14 +21,31 @@ export default function AuthProvider(props) {
       await axios.post(`${API}/signin`)
     ).set("authorization", `Basic ${encodePassworde}`);
     //
-
+      console.log({response});
     validateUser(response.data.token);
   };
-
-  const signup = async (username, password, Email, role) => {
+  console.log(login);
+  const createCommunity = async (communityName, description) => {
+    let communityData = {
+      community_name: communityName,
+      community_desc: description
+    };
+    console.log(communityData.community_name+'ttttttttttt');
+    const config = {
+      headers: { Authorization: `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNvc28iLCJpYXQiOjE2NTU5ODA2Mzd9.nNIT6AoxD0_vn8tHCLczCEjgDaos9riMV8oqdByS6Bc"}` },
+    };
+    const response = await axios.post(`${API}/community`, communityData,config);
+    console.log({response});
+    
+    validateUser(response.data.token);
+  };
+  // console.log(createCommunity);
+  const signup = async (username, password,firstname,lastname, Email, role) => {
     let userData = {
       username: username,
       password: password,
+      firstname:firstname,
+      lastName:lastname,
       Email: Email,
       role: role,
     };
@@ -75,8 +93,8 @@ export default function AuthProvider(props) {
     signup,
     logout,
     canDo,
-    token
-
+    token,
+    createCommunity
   }
 
   return (

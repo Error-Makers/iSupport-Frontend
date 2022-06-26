@@ -3,19 +3,11 @@ import { AuthContect } from '../context/auth/main';
 import styled from 'styled-components';
 import unlock from '../assets/unlock.png';
 import Card from 'react-bootstrap/Card';
-
+import { useNavigate} from "react-router-dom";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
-export default function Login(props) {
-  const context = useContext(AuthContect);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const handleLogin = (e) => {
-    e.preventDefault();
-    context.login(username, password);
-  };
-  const Parent = styled.div`
+const Parent = styled.div`
     display: flex;
     text-align: center;
     width: 100%;
@@ -45,8 +37,29 @@ export default function Login(props) {
     font-size: 10px;
     color: #424242;
   `;
+export default function Login(props) {
+  const context = useContext(AuthContect);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    context.login(username, password);
+  };
+
+  
+const handleChange=(e)=>{
+  setUsername(e.target.value);
+}
+
+let navigate = useNavigate();
 
   return (
+
+    <>
+    <Button onClick={() => navigate(-1)}>
+<BsFillArrowLeftCircleFill/>
+    </Button>
     <Parent>
       <Child>
         <Card
@@ -65,8 +78,9 @@ export default function Login(props) {
                   <br></br>
                   <Form.Control
                     style={{}}
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={handleChange}
                     placeholder='username'
+                    value={username}
                     type='text'
                     name='username'
                   />
@@ -78,6 +92,7 @@ export default function Login(props) {
                   <Form.Control
                     style={{}}
                     onChange={(e) => setPassword(e.target.value)}
+                    value={password}
                     placeholder='password'
                     type='password'
                     name='password'
@@ -109,5 +124,6 @@ export default function Login(props) {
         <Img src={unlock} />
       </Child>
     </Parent>
+    </>
   );
 }
