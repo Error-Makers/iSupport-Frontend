@@ -8,38 +8,38 @@ import 'react-circular-progressbar/dist/styles.css';
 import axios from 'axios';
 
 const Wrapper = styled.div`
+  background-color: white;
+  padding-top: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
   @media ${device.tablet} {
     padding: 20px;
     height: 316px;
     width: 65%;
-    border-radius: 25px;
-    box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
   }
 `;
 
 const ProgressContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
   width: 100%;
   height: 100%;
-`;
-
-const ProgressHeader = styled.div`
-  display: flex;
-  flex: row;
-  justify-content: space-between;
 `;
 
 const ProgressBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  gap: 20px;
   color: var(--Text-Primary);
   @media ${device.tablet} {
     flex-direction: row;
@@ -66,13 +66,19 @@ const MyPosts = styled.button`
 `;
 
 const ProgressCircle = styled.div`
-  height: 140px;
-  width: 140px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 20px;
 `;
 const Contributions = styled.div`
   height: 150px;
   display: flex;
   flex-direction: column;
+  gap: 40px;
   color: var(--Accent-Main);
   font-style: normal;
   font-weight: 600;
@@ -106,38 +112,21 @@ const PersonalProgress = () => {
       {personalProgress && (
         <ProgressContainer>
           <h4 style={{ color: '#673ab7' }}>My Progress</h4>
-          <ProgressHeader>
-            <p
-              style={{
-                color: 'var(--Accent-Main)',
-                fontStyle: ' normal',
-                fontWeight: '600',
-                fontSize: '14px',
-              }}
-            >
-              User
-            </p>
-            <p
-              style={{
-                color: 'var(--Accent-Main)',
-                fontStyle: ' normal',
-                fontWeight: '600',
-                fontSize: '14px',
-              }}
-            >
-              {' '}
-              Community
-            </p>
-          </ProgressHeader>
           <ProgressBody>
-            <Contributions>
-              <span>500</span>
-              <span>Total Contribution</span>
-              <MyPosts>My Posts :{personalProgress.numberOfTasks}</MyPosts>
-            </Contributions>
             <ProgressCircle>
-              <CircularProgressbar value={percentage} text={`${percentage}%`} />
-              <span>Current Progress</span>
+              <div style={{ width: '150px', height: '150px' }}>
+                <CircularProgressbar
+                  value={percentage}
+                  text={`${percentage}%`}
+                />
+              </div>
+              <h5>Progress</h5>
+            </ProgressCircle>
+            <ProgressCircle>
+              <div style={{ width: '150px', height: '150px' }}>
+                <CircularProgressbar value={100} text={`${7} Days`} />
+              </div>
+              <h5>Streak</h5>
             </ProgressCircle>
           </ProgressBody>
         </ProgressContainer>

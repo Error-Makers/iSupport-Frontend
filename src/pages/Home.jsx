@@ -3,9 +3,9 @@ import FeaturedCommunity from '../components/landing/components/FeaturedCommunit
 import Features from '../components/landing/components/Features';
 import Hero from '../components/landing/components/Hero';
 import Footer from '../components/Footer';
-import TopComunity from '../components/TopComunity';
 import Navbar from '../components/landing/components/NavBar';
-
+import Segment from '../components/landing/components/Segment';
+import Stories from '../components/landing/components/Stories';
 const Home = () => {
   return (
     <>
@@ -13,7 +13,8 @@ const Home = () => {
       <Hero />
       <Features />
       <FeaturedCommunity />
-      <Features />
+      <Stories />
+      <Segment/>
       |<Footer />
     </>
   );

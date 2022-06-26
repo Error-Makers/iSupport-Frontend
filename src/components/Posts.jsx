@@ -25,7 +25,7 @@ function CreatePostModel(props) {
   };
   return (
     <>
-      <Button variant='primary' onClick={handleShow}>
+      <Button variant='primary' style={{backgroundColor:"#EA1E63" , border:'none'}} onClick={handleShow}>
         Create Post
       </Button>
 
@@ -70,9 +70,10 @@ const PostsContainer = styled.div`
   justify-content: center;
   margin: 0 auto;
   font-family: 'Open Sans';
-  border-radius: 20px;
-
+  border-radius: 5px;
+  background-color: white;
   padding: 20px;
+  height: 590px;
   @media ${device.tablet} {
     box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
   }
@@ -98,7 +99,7 @@ const PostCard = styled.div`
   margin-inline: 20px;
   padding: 10px 20px 0px 20px;
   background: var(--Paper-Light);
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
 `;
 
@@ -176,7 +177,7 @@ const Posts = (props) => {
   return (
     <>
       <PostsContainer>
-        <h1>Posts</h1>
+      <h4 style={{ color: '#673ab7' }}>Recent Posts</h4>
         <PostList>
           {posts.map((item, idx) => (
             <PostCard key={idx}>

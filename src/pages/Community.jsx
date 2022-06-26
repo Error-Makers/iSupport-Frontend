@@ -10,20 +10,32 @@ import ThisCommunity from '../components/ThisCommunity';
 
 const Wrapper = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfbff;
 `;
+
+const HeadPic = styled.div`
+  height: 33vh;
+  width: 100%;
+  background-size: cover;
+  background-position-y: 80%;
+  background-image: url(https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+`;
+
 const CommunityGrid = styled.div`
   margin: 5vh auto;
   display: grid;
   width: 100%;
   grid-template-columns: 100%;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto;
   grid-column-gap: 0px;
-  grid-row-gap: 5vh;
+  grid-row-gap: 50px;
   align-items: center;
   @media ${device.tablet} {
     width: 70%;
-    margin: 15vh auto;
-    grid-row-gap: 12vh;
+    margin: 15vh auto 0 auto;
+    grid-row-gap: 30px;
   }
 `;
 const Top = styled.div`
@@ -48,17 +60,13 @@ const Middle = styled.div`
   align-items: center;
   gap: 40px;
 `;
-const Bottom = styled.div`
-  margin: 0 auto;
-  width: 100%;
-`;
 
 const Community = () => {
   return (
     <Wrapper>
-      <Header />
+      <HeadPic />
+      <ThisCommunity />
       <CommunityGrid>
-        <ThisCommunity />
         <Top>
           <PersonalProgress />
           <Leaderboard />
@@ -66,9 +74,6 @@ const Community = () => {
         <Middle>
           <Posts />
         </Middle>
-        <Bottom>
-          <CommunityChat />
-        </Bottom>
       </CommunityGrid>
       <Footer />
     </Wrapper>

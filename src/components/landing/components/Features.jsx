@@ -8,8 +8,7 @@ import Asset10 from '../assets/Asset10.png';
 
 const Wrapper = styled.section`
   width: 100%;
-  min-height: 100%;
-  padding: 40px 20px;
+  padding: 60px 20px;
   display: flex;
 `;
 
@@ -20,11 +19,12 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 20px;
+  gap: 50px;
 `;
 
 const FeatureTitle = styled.h2`
   text-align: center;
-  font-size: 45px;
+  font-size: 37px;
   margin: 40px auto;
   font-weight: 700;
   color: var(--Primary-Dark);
@@ -55,8 +55,8 @@ const FeatureDiv = styled.div`
 `;
 
 const FeatureImage = styled.img`
-  width: 75%;
-  height: 55%;
+  width: 65%;
+  height: 45%;
   margin: auto;
 `;
 const FeatureName = styled.span`

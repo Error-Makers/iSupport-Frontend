@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;
+  background-color: white;
   display: flex;
   height: 316px;
   flex-direction: column;
@@ -14,10 +15,10 @@ const Wrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   padding: 20px;
+  box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;  
   @media ${device.tablet} {
     width: 30%;
-    border-radius: 25px;
-    box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -30,7 +31,7 @@ const LeaderboardCard = styled.div`
   display: flex;
   align-items: left;
   gap: 10px;
-  margin: 5px auto ;
+  margin: 5px auto;
   justify-content: space-around;
   background: var(--Paper-Light);
 `;
@@ -83,7 +84,7 @@ const Leaderboard = (props) => {
   return (
     <Wrapper>
       <LeaderboardContainer>
-      <h4 style={{ color: '#673ab7' }}>Leaderboard</h4>
+        <h4 style={{ color: '#673ab7' }}>Leaderboard</h4>
         {leaderboard.map((item, idx) => (
           <LeaderboardCard key={idx}>
             <LeaderboardImage
@@ -97,7 +98,7 @@ const Leaderboard = (props) => {
               </LeaderboardTitle>
               <LeaderboardMembers>
                 {/* 500+ Contributions */}
-                {item.progress - 1 + ` +  Contributions `}
+                {item.progress + `  Contributions `}
               </LeaderboardMembers>
             </div>
           </LeaderboardCard>

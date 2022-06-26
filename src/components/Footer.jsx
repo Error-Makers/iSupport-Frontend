@@ -108,7 +108,7 @@ const Footer = () => {
           left: '-200px',
           height: '500px',
           width: '2000px',
-          zIndex: '-1',
+          zIndex: '1',
         }}
       />
       <Left>

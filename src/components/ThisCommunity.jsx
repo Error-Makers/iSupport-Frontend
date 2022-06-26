@@ -8,7 +8,14 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  position: absolute;
+  top: -100px;
+  padding: 20px;
+  z-index: 5;
+  border-radius: 5px;
+  box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
+  background-color: #ffff;
+  gap: 30px;
   @media ${device.tablet} {
     flex-direction: row;
   }
@@ -18,7 +25,6 @@ const CardBody = styled.div`
   flex-direction: column;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 40px;
   text-align: left;
   gap: 20px;
 `;
@@ -35,17 +41,35 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   z-index: 0;
-`;
-const Container = styled.div`
+  position: relative;
   @media ${device.tablet} {
-    border-radius: 25px;
-    box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
+    width: 70%;
   }
-  padding: 30px;
+`;
+
+const JoinButton = styled.button`
+  margin-top: auto;
+  background-color: var(--Accent-Main);
+  min-width: 20%;
+  max-width: 50%;
+  padding: 5px 20px;
+  border-radius: 15px;
+  border-style: none;
+  box-shadow: rgba(245, 244, 247, 0.25) 0 1px 1px inset;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.05, 0.03, 0.35, 1);
+  &:active,
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const Image = styled.img`
-  border-radius: 10px;
+  border-radius: 50%;
   object-fit: cover;
   height: 150px;
   width: 150px;
@@ -56,7 +80,7 @@ let community = {
   community_id: 1,
   community_name: 'Football',
   aboutTheCommunity:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+    'The football community. News, results and discussion about the beautiful game.',
   url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
   createdAt: '2022-06-21T08:37:41.318Z',
 };
@@ -64,15 +88,14 @@ let community = {
 const ThisCommunity = () => {
   return (
     <Wrapper>
-      <Container>
-        <Card>
-          <Image src={community.url} />
-          <CardBody>
-            <CardTitle>{community.community_name}</CardTitle>
-            <CardText>{community.aboutTheCommunity}</CardText>
-          </CardBody>
-        </Card>
-      </Container>
+      <Card>
+        <Image src={community.url} />
+        <CardBody>
+          <CardTitle>{community.community_name}</CardTitle>
+          <CardText>{community.aboutTheCommunity}</CardText>
+        </CardBody>
+        <JoinButton>Join {community.community_name}</JoinButton>
+      </Card>
     </Wrapper>
   );
 };

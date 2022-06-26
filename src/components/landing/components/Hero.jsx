@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { device } from '../../../media';
 
 const Wrapper = styled.div`
-  height: 90%;
+  height: 100%;
   width: 100%;
-  min-height: 550px;
   background-image: url(https://images2.imgbox.com/ad/87/PklpBVH6_o.png);
-  background-position: 50%;
+  background-position: 20%;
   background-size: cover;
+  @media ${device.tablet} {
+    background-position: 50%;
+  }
 `;
 
 const MainHeading = styled.h1`
@@ -28,7 +30,7 @@ const Container = styled.div`
   justify-content: center;
   margin: auto;
   @media ${device.tablet} {
-    width: 50%; 
+    width: 50%;
   }
 `;
 
@@ -70,13 +72,9 @@ const Hero = () => {
   return (
     <Wrapper>
       <Container>
-        <MainHeading>
-          Build Habits,
-          Unlock your Potential
-        </MainHeading>
+        <MainHeading>Build Habits, Unlock your Potential</MainHeading>
         <HeroText>
-          Build the best version of yourself by
-          mastering your habits
+          Build the best version of yourself by mastering your habits
         </HeroText>
         <ButtonWrapper>
           <HeroButton>Get Started</HeroButton>

@@ -8,8 +8,7 @@ import mask from '../assets/mask.png';
 
 const Wrapper = styled.section`
   width: 100%;
-  min-height: 100%;
-  padding: 40px 20px;
+  padding: 60px 20px;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -22,7 +21,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px 20px;
-  gap: 30px;
+  gap: 50px;
 `;
 
 const TopTitle = styled.h2`
@@ -39,31 +38,30 @@ const TopWrapper = styled.div`
   flex-direction: column;
   margin: 0 auto;
   gap: 1rem;
+  @media ${device.tablet} {
+    width: 90%;
+    flex-direction: row;
+    gap: 40px;
+  }
 `;
 
 const TopDiv = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 50%;
   justify-content: center;
   align-items: center;
-  @media ${device.tablet} {
-    width: 90%;
-    flex-direction: row;
-    gap: 120px;
-  }
 `;
 
 const TopImage = styled.img`
-  width: 250px;
-  height: 250px;
-  border-radius: 25%;
+  width: 220px;
+  height: 300px;
+  border-radius: 10px;
 `;
 const TopName = styled.span`
   font-weight: 600;
   font-size: 30px;
-  text-align: left;
+  text-align: center;
   color: var(--Accent-Dark);
 `;
 const TopText = styled.span`
@@ -115,26 +113,36 @@ const TopdCommunity = () => {
         }}
       />
       <Container>
-        <TopTitle>Top Communities</TopTitle>
+        <TopTitle>Featured Communities</TopTitle>
         <TopWrapper>
           <TopDiv>
-            <TopImage src={Asset7} alt='a' />
+            <TopImage
+              src='https://images.unsplash.com/photo-1558244402-286dd748c593?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
+              alt='a'
+            />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <TopName>Origami</TopName>
-              <TopText>15k+ Members</TopText>
+              <TopText>5k+ Members</TopText>
             </div>
           </TopDiv>
-          <ButtonWrapper>
-            <TopButton>Explore All Communities</TopButton>
-          </ButtonWrapper>
           <TopDiv>
+            <TopImage src='https://images.unsplash.com/photo-1631635490744-229e551afade?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' alt='a' />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <TopName>Hiking</TopName>
+              <TopText>10k+ Members</TopText>
+            </div>
+          </TopDiv>
+          <TopDiv>
+            <TopImage src='https://images.unsplash.com/photo-1559570278-eb8d71d06403?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80' alt='a' />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <TopName>Movies</TopName>
               <TopText>15k+ Members</TopText>
             </div>
-            <TopImage src={Asset8} alt='a' />
           </TopDiv>
         </TopWrapper>
+        <ButtonWrapper>
+          <TopButton>Explore All Communities</TopButton>
+        </ButtonWrapper>
       </Container>
     </Wrapper>
   );

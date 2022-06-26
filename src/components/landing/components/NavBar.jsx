@@ -6,7 +6,7 @@ import { device } from '../../../media';
 import logo from '../../../assets/logo.png'
 
 const Nav = styled.div`
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10;
   background: #ffffff;
@@ -132,10 +132,10 @@ const NavBar = () => {
             Blog
           </Link>
         </li>
-      </Menu>
       <ButtonWrapper>
         <NavButton>Login</NavButton>
       </ButtonWrapper>
+      </Menu>
       {/* Hamburger */}
       <Hamburger onClick={handleClick}>
         <FaBars />
