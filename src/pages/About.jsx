@@ -25,9 +25,10 @@ const CardImage = styled.img`
   height: 160px;
   width: 160px;
   border-radius: 50%;
-  border: 5px solid #272133;
+  border: 2px solid #272133;
   margin-top: 20px;
-  margin-left: 20%;
+  margin-left: 25%;
+ 
   box-shadow: 0 5px 10px var(--Accent-Light);
 
   &:hover {
