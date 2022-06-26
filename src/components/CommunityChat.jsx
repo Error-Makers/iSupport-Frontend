@@ -12,7 +12,7 @@ const ChatContainer = styled.div`
   padding: 16px;
   overflow-y: auto;
   @media ${device.tablet} {
-    border-radius: 40px;
+    border-radius: 25px;
     box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
   }
 `;
