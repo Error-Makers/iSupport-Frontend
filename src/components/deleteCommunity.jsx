@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { Table } from "react-bootstrap";
 
 const Section = styled.section`
   position: fixed;
@@ -75,8 +76,16 @@ const Button = styled.button`
   }
 `;
 
+const Td = styled.td`
+  text-align: center;
+`;
+const Th = styled.td`
+  text-align: center;
+  font-weight: 600;
+`;
+
 const DeleteCommunities = () => {
-  const API = "https://isupport-backend-super.herokuapp.com/";
+  const API = process.env.REACT_APP_SERVER;
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImthcmFtYWRtaW4iLCJpYXQiOjE2NTU5OTI4NTN9.cG5z0fjVCTJDRPORSeMxlZnLe88EAnC-W-CyKmHyU28";
   const config = {
@@ -135,22 +144,35 @@ const DeleteCommunities = () => {
   );
   let communities = data.map((ele) => {
     return (
-      <CommunityContainer>
-        <span>Community: {ele.community_name}</span>
-        <span>Created At: {new Date(ele.createdAt).toLocaleDateString()}</span>
-        <Button
-          onClick={() => {
-            handleDelete(ele.community_id);
-          }}
-        >
-          Delete Community
-        </Button>
-      </CommunityContainer>
+      <tr>
+        <Td>{ele.community_id}</Td>
+        <Td>{ele.community_name}</Td>
+        <Td>{new Date(ele.createdAt).toLocaleDateString()}</Td>
+        <Td>
+          <Button
+            onClick={() => {
+              handleDelete(ele.community_id);
+            }}
+          >
+            Delete
+          </Button>
+        </Td>
+      </tr>
     );
   });
   return (
     <Section>
-      {communities}
+      <Table>
+        <thead>
+          <tr>
+            <Th>ID</Th>
+            <Th>Community</Th>
+            <Th>Created At:</Th>
+            <Th>Actions</Th>
+          </tr>
+        </thead>
+        <tbody>{communities}</tbody>
+      </Table>
       <IndexList ref={indexRef} onClick={classesHandler}>
         {indices}
       </IndexList>
