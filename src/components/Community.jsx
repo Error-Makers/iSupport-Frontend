@@ -39,7 +39,10 @@ return (
                 onChange={(e)=>setCommunityDescription(e.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" type="submit" >
+            <Button variant="primary" type="submit"  style={{
+                      background: "#e91e63",
+                      borderColor: "#e91e63",
+                    }}>
               Submit
             </Button>
           </Form>
