@@ -5,8 +5,11 @@ import styled from "styled-components";
 import Community from "../components/Community";
 import  AuthContect  from "../context/auth/main";
 import { BsSearch } from "react-icons/bs";
-const Browse = () => {
+const Browse = (props) => {
   const [state, setState] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(2);
+
   let communites = [
     {
       community_id: 1,
@@ -105,14 +108,22 @@ const Browse = () => {
     box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   `;
 
-  
+  const idxOfLst = currentPage * postsPerPage;
+  const idxOfFirst = idxOfLst - postsPerPage;
+  const currentPosts = communites.slice(idxOfFirst,idxOfLst);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   // search: e.target.value.substr(0, 20)
-  let filterdCommunity = communites.filter((item) => {
+  let filterdCommunity = currentPosts.filter((item) => {
     return (
       item.community_name.toLowerCase().indexOf(state.toLowerCase()) !== -1
     );
   });
-
+  let pageNumbers = [];
+  for (let i = 0; i < Math.ceil(communites.length/ postsPerPage); i++) {
+      pageNumbers.push(i);
+  }
+ 
+  
   return (
     <div>
       {/* variant="dark" */}
@@ -197,6 +208,24 @@ const Browse = () => {
           </Child>
         </Parent>
       ))}
+       <div style={{margin:'auto',width:'50%'}}>
+            <nav style={{textAlign:'center'}} >
+                    <ul className="pagination" >
+                         {
+                            pageNumbers.map((number) => {
+                                return (
+                                    <li  key={number} className='page-item' >
+                                        <button onClick={()=>paginate(number)} href='!#' className='page-link' > 
+                                        {number} 
+                                        </button>
+                                      
+                                        </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </nav>
+             </div>
     </div>
   );
 };
