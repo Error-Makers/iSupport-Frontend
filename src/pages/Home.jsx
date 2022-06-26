@@ -1,12 +1,22 @@
-import HeaderBar from "../components/Header";
+import React from 'react';
+import FeaturedCommunity from '../components/landing/components/FeaturedCommunity';
+import Features from '../components/landing/components/Features';
+import Hero from '../components/landing/components/Hero';
+import Footer from '../components/Footer';
+import TopComunity from '../components/TopComunity';
+import Navbar from '../components/landing/components/NavBar';
 
-const LandingPage = () => {
+const Home = () => {
   return (
     <>
-      <HeaderBar />
-      <section style={{ height: "300vh" }}></section>
+      <Navbar />
+      <Hero />
+      <Features />
+      <FeaturedCommunity />
+      <Features />
+      |<Footer />
     </>
   );
 };
 
-export default LandingPage;
+export default Home;

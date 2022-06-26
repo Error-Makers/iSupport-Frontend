@@ -10,13 +10,14 @@ const MainHeader = styled.header`
   align-items: center;
   background-color: var(--Paper-Light);
   height: 10vh;
-  width: 100vw;
+  width: 100%;
   &.active {
     position: sticky;
     top: 0;
     z-index: 999;
     box-shadow: 10px 5px 7px rgba(0, 0, 0, 0.2);
   }
+  
 `;
 
 const Title = styled.h1`

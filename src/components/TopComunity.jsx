@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   padding: 40px;
   gap: 30px;
   @media ${device.tablet} {
-    border-radius: 40px;
+    border-radius: 25px;
     box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.06);
   }
 `;
