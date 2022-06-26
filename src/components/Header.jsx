@@ -24,10 +24,11 @@ const Title = styled.h1`
   font-weight: 400;
   margin-left: 1vw;
   font-family: "M PLUS Rounded 1c", sans-serif;
+  color: var(--Primary-Dark);
 `;
 
 const Image = styled.img`
-  width: 4rem;
+  width: 3.3rem;
   height: 2rem;
 `;
 
