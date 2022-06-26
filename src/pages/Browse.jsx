@@ -6,8 +6,6 @@ import Community from "../components/Community";
 import AuthContect from "../context/auth/main";
 import { BsSearch } from "react-icons/bs";
 
-
-
 const Browse = (props) => {
   const [state, setState] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,67 +14,67 @@ const Browse = (props) => {
   let communites = [
     {
       community_id: 1,
-      community_name: "Football",
+      community_name: 'Football',
       aboutTheCommunity:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-      url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-      createdAt: "2022-06-21T08:37:41.318Z",
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+      url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+      createdAt: '2022-06-21T08:37:41.318Z',
     },
     {
       community_id: 2,
-      community_name: "smoke",
+      community_name: 'smoke',
       aboutTheCommunity:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-      url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-      createdAt: "2022-06-21T08:37:24.349Z",
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+      url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+      createdAt: '2022-06-21T08:37:24.349Z',
     },
     {
       community_id: 3,
-      community_name: "healthy life style",
+      community_name: 'healthy life style',
       aboutTheCommunity:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-      url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-      createdAt: "2022-06-21T08:37:41.318Z",
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+      url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+      createdAt: '2022-06-21T08:37:41.318Z',
     },
     {
       community_id: 4,
-      community_name: "entreatment",
+      community_name: 'entreatment',
       aboutTheCommunity:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-      url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-      createdAt: "2022-06-21T08:37:24.349Z",
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+      url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+      createdAt: '2022-06-21T08:37:24.349Z',
     },
     {
       community_id: 5,
-      community_name: "reading",
+      community_name: 'reading',
       aboutTheCommunity:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-      url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-      createdAt: "2022-06-21T08:37:24.349Z",
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+      url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+      createdAt: '2022-06-21T08:37:24.349Z',
     },
     {
       community_id: 6,
-      community_name: "food",
+      community_name: 'food',
       aboutTheCommunity:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-      url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-      createdAt: "2022-06-21T08:37:41.318Z",
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+      url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+      createdAt: '2022-06-21T08:37:41.318Z',
     },
     {
       community_id: 7,
-      community_name: "sport",
+      community_name: 'sport',
       aboutTheCommunity:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-      url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-      createdAt: "2022-06-21T08:37:24.349Z",
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+      url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+      createdAt: '2022-06-21T08:37:24.349Z',
     },
     {
       community_id: 8,
-      community_name: "Study",
+      community_name: 'Study',
       aboutTheCommunity:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-      url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-      createdAt: "2022-06-21T08:37:24.349Z",
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga',
+      url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+      createdAt: '2022-06-21T08:37:24.349Z',
     },
 
     {
