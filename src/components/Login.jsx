@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import { AuthContect } from "../context/auth/main";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import { FaGoogle, FaFacebookF } from "react-icons/fa";
+import { AiFillGoogleCircle } from "react-icons/ai";
+import { FaFacebook } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 import { Form, InputGroup } from "react-bootstrap";
 
@@ -13,52 +13,57 @@ const Parent = styled.div`
   display: table;
 `;
 const Child = styled.div`
-  
   background-color: #fff;
-  
-  
   display: table-cell;
   padding: 0 30px;
-   display :flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   width: 100%;
-   
-   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
 
 const Image = styled.div`
   // background: url("https://user-images.githubusercontent.com/75664971/175835664-d12571e6-6099-450c-b325-967728e09b91.png")
   //   no-repeat fixed right;
 
-    background-image:
-    linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
-    url('https://user-images.githubusercontent.com/75664971/175835664-d12571e6-6099-450c-b325-967728e09b91.png');
-  
-    object-fit: cover;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(245, 246, 252, 0.52),
+      rgba(117, 19, 93, 0.73)
+    ),
+    url("https://user-images.githubusercontent.com/75664971/175835664-d12571e6-6099-450c-b325-967728e09b91.png");
+
+  object-fit: cover;
   background-size: 100%;
   width: 65%;
-  
+
   display: table-cell;
   hight: 100%;
 `;
 const Text = styled.h1`
-font-size: 1.5em;
-// color:#e91e63;
-color: var(--Primary-Main);
-text-align: center;
-font-weight: bold;
+  font-size: 1.5em;
+  // color:#e91e63;
+  color: var(--Primary-Main);
+  text-align: center;
+  font-weight: bold;
 `;
-
-
 
 const FormStyle = styled.div`
-width: 100%;
-
-color:#673ab7;
+  width: 100%;
+  color: #673ab7;
 `;
 
+const Icons = styled.div`
+  color: #673ab7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+`;
 export default function Login(props) {
   const context = useContext(AuthContect);
   const [username, setUsername] = useState("");
@@ -81,29 +86,21 @@ export default function Login(props) {
 
       <Parent>
         <Image>
-          <img />
+          <img alt=''/>
         </Image>
 
         <Child>
-        <Text>Welcome Back </Text>
+          <Text>Welcome Back </Text>
           <form onSubmit={handleLogin}>
-           
-           
-
             <FormStyle>
-              
-            
-
-
-            <InputGroup className="mb-3">
+              <InputGroup className="mb-3">
                 {/* <InputGroup.Text id="basic-addon1">username</InputGroup.Text> */}
                 <Form.Control
-                   onChange={handleChange}
-                   value={username}
+                  onChange={handleChange}
+                  value={username}
                   placeholder="Username"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
-                 
                 />
               </InputGroup>
 
@@ -116,8 +113,6 @@ export default function Login(props) {
                   name="username"
                 />
               </InputGroup> */}
-
-              
 
               <InputGroup className="mb-3">
                 <Form.Control
@@ -143,52 +138,53 @@ export default function Login(props) {
               Sign in
             </Button>
 
-            {/* <p style={{textAlign: 'center',marginTop:'2%',marginLeft:'5%',color:'gray'}}>OR</p> */}
-
-            {/* <Button
-              type="submit"
+            <p
               style={{
-                backgroundColor: "transparent",
-                borderColor: "#673AB7", 
-                textAlign: 'center',
-                height: "39px",
-                width: "60%",
-               
-                color:'#673AB7',
-               
+                textAlign: "center",
+                color: "gray",
+
+                textAlign: "center",
+                borderBottom: "1px solid #000",
+                lineHeight: "0.1em",
+                margin: "10px 0 20px",
+                marginTop: "20px",
               }}
             >
-            <FaGoogle/> Sign in with google 
-            </Button>
+              {" "}
+              <span
+                style={{
+                  background: "#fff",
+                  padding: "0 10px",
+                  fontSize: "13px",
+                }}
+              >
+                Or continue with
+              </span>
+            </p>
 
-            <Button
-              type="submit"
-              style={{
-                backgroundColor: "transparent",
-                borderColor: "#673AB7", 
-                textAlign: 'center',
-                height: "39px",
-                width: "60%",
-                marginLeft:'24%',
-                color:'#673AB7',
-               marginTop:'1%'
-              }}
-            >
-             <FaFacebookF/> Sign in with facebook
-            </Button> */}
-
+            <Icons>
+              <a>
+                <AiFillGoogleCircle style={{ fontSize: "34px" }} />
+              </a>
+              <a>
+                
+                <FaFacebook style={{ fontSize: "30px" }} />
+              </a>
+            </Icons>
+           
             <Button
               variant="link"
               style={{
                 fontSize: "10px",
-                color: "#673AB7",
+                color: "#673ab7",
+                width: "100%",
                 textAlign: "center",
-                marginTop: "2%",
+                marginTop: "10px",
               }}
               onClick={props.toggleShow}
             >
               Don't have an account,{" "}
-              <spab style={{ fontWeight: "bold" }}>Click here</spab>
+              <span style={{ fontWeight: "bold" }}>Click here</span>
             </Button>
           </form>
         </Child>

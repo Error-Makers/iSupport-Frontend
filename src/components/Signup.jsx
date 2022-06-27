@@ -2,35 +2,21 @@ import { useContext, useState } from "react";
 // import { When } from "react-if";
 // import Login from "./Login";
 import { AuthContect } from "../context/auth/main";
-import Card from "react-bootstrap/Card";
+
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import styled from "styled-components";
-import { FaGoogle,FaFacebookF } from "react-icons/fa"; 
+import { AiFillGoogleCircle } from "react-icons/ai";
+import { FaFacebook } from "react-icons/fa";
 
 
-
-export default function Signup(props) {
-  const context = useContext(AuthContect);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [Email, setEmail] = useState("");
-  // const [role, setRole] = useState("");
-
-  const signupHandller = (e) => {
-    e.preventDefault();
-    context.signup(username, password, firstname, lastname, Email);
-  };
-
-  const Parent = styled.div`
+const Parent1 = styled.div`
     width: 100%;
     height: 100%;
     display: table;
   `;
-  const Child = styled.div`
+  const Child1 = styled.div`
     
     
     background-color: #fff;
@@ -47,7 +33,7 @@ export default function Signup(props) {
     
   `;
 
-  const Image = styled.div`
+  const Image1 = styled.div`
     // background: url("https://user-images.githubusercontent.com/75664971/175835750-ea519f51-9753-4e1f-b75c-85035ca2d89f.png") no-repeat fixed right;
     
 
@@ -64,7 +50,7 @@ export default function Signup(props) {
     hight: 100%;
   `;
 
-  const Text = styled.h1`
+  const Text1 = styled.h1`
   font-size: 1.5em;
   // color:#e91e63;
   color: var(--Primary-Main);
@@ -74,26 +60,52 @@ export default function Signup(props) {
   
 `;
 
-const FormStyle = styled.div`
+const FormStyle1 = styled.div`
 width: 100%;
 color:#673ab7;
-
-
-
 `
+
+const Icons1 = styled.div`
+  color: #673ab7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+`;
+
+export default function Signup(props) {
+  const context = useContext(AuthContect);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [Email, setEmail] = useState("");
+  // const [role, setRole] = useState("");
+
+  const signupHandller = (e) => {
+    // e.preventDefault();
+    context.signup(username, password, firstname, lastname, Email);
+  };
+  const handleChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  
 
   return (
     <>
-      <Parent>
-      <Image>
+      <Parent1>
+      <Image1>
           <img />
-        </Image>
-        <Child>
-          <Text>Welcome To iSupport</Text>
+        </Image1>
+        <Child1>
+          <Text1>Welcome To iSupport</Text1>
 
           {/* <Card.Body> */}
             <form onSubmit={signupHandller} >
-              <FormStyle>
+              <FormStyle1>
              
               <InputGroup className="mb-3">
               
@@ -101,12 +113,14 @@ color:#673ab7;
                   aria-label="First name"
                   placeholder="Firstname"
                   onChange={(e) => setFirstname(e.target.value)}
+                  value={firstname}
                   aria-describedby="basic-addon1"
                 />
 
                 <Form.Control
                   aria-label="Last name"
                   onChange={(e) => setLastname(e.target.value)}
+                  value={lastname}
                   placeholder="Lastname"
                   style={{marginLeft:'2%'}}
                 />
@@ -120,6 +134,7 @@ color:#673ab7;
                 {/* <InputGroup.Text id="basic-addon1">username</InputGroup.Text> */}
                 <Form.Control
                   onChange={(e) => setUsername(e.target.value)}
+                  value={username}
                   placeholder="Username"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
@@ -132,6 +147,7 @@ color:#673ab7;
                 {/* <InputGroup.Text id="basic-addon1">Email</InputGroup.Text> */}
                 <Form.Control
                   onChange={(e) => setEmail(e.target.value)}
+                  value={Email}
                   placeholder="Email"
                   type="Email"
                   aria-label="Email"
@@ -145,6 +161,7 @@ color:#673ab7;
                 {/* <InputGroup.Text id="basic-addon1">password</InputGroup.Text> */}
                 <Form.Control
                   onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                   placeholder="Password"
                   type="password"
                   aria-label="password"
@@ -152,7 +169,7 @@ color:#673ab7;
                 />
               </InputGroup>
 
-              </FormStyle>
+              </FormStyle1>
 
            
 
@@ -171,62 +188,41 @@ color:#673ab7;
                 Sign up
               </Button>
 
-              {/* <p
-                style={{
-                  textAlign: "center",
-                 marginTop:'2%',
-               
-                  color: "gray",
-                }}
-              >
-                OR
-              </p> */}
+              <p
+              style={{
+                textAlign: "center",
+                color: "gray",
 
-              {/* <Button
-                type="submit"
+                textAlign: "center",
+                borderBottom: "1px solid #000",
+                lineHeight: "0.1em",
+                margin: "10px 0 20px",
+                marginTop: "20px",
+              }}
+            >
+              {" "}
+              <span
                 style={{
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                  textAlign: "center",
-                 
-                  width: "100%",
-                  
-                  color: "#673AB7",
+                  background: "#fff",
+                  padding: "0 10px",
+                  fontSize: "13px",
                 }}
               >
-                <FaGoogle /> 
-              </Button>
+                Or continue with
+              </span>
+            </p>
 
-              <Button
-                type="submit"
-                style={{
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                  textAlign: "center",
-                 
-                  width: "100%",
-                  
-                  color: "#673AB7",
-                }}
-              >
-                 <FaFacebookF />
-              </Button> */}
+            <Icons1>
+              <a>
+                <AiFillGoogleCircle style={{ fontSize: "34px" }} />
+              </a>
+              <a>
+                
+                <FaFacebook style={{ fontSize: "30px" }} />
+              </a>
+            </Icons1>
 
-              {/* <Button
-                type="submit"
-                style={{
-                  backgroundColor: "transparent",
-                  borderColor: "#673AB7",
-                  textAlign: "center",
-                  height: "39px",
-                  width: "60%",
-                  marginLeft: "24%",
-                  color: "#673AB7",
-                  marginTop: "1%",
-                }}
-              >
-                <FaFacebookF /> Sign up with facebook
-              </Button> */}
+             
             </form>
 
             <Button
@@ -246,10 +242,10 @@ color:#673ab7;
               <span style={{ fontWeight: "bold" }}>Click here</span>
             </Button>
           {/* </Card.Body> */}
-        </Child>
+        </Child1>
 
       
-      </Parent>
+      </Parent1>
     </>
   );
 }
