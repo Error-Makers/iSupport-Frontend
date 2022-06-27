@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
-import { When } from "react-if";
-import Login from "./Login";
+// import { When } from "react-if";
+// import Login from "./Login";
 import { AuthContect } from "../context/auth/main";
 import Card from "react-bootstrap/Card";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import Button from "react-bootstrap/Button";
-import Img from "react-bootstrap/Image";
+import styled from "styled-components";
+import { FaGoogle,FaFacebookF } from "react-icons/fa"; 
+
+
 
 export default function Signup(props) {
   const context = useContext(AuthContect);
@@ -17,150 +18,238 @@ export default function Signup(props) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [Email, setEmail] = useState("");
-  const [role, setRole] = useState("");
+  // const [role, setRole] = useState("");
 
   const signupHandller = (e) => {
     e.preventDefault();
-    context.signup(username, password,firstname,lastname, Email, role);
+    context.signup(username, password, firstname, lastname, Email);
   };
-  const parent = { margin: "1rem", padding: "2rem 2rem", textAlign: "center" };
-  const child = {
-    display: "inline-block",
-    padding: "1rem 1rem",
-    verticalAlign: "middle",
-  };
+
+  const Parent = styled.div`
+    width: 100%;
+    height: 100%;
+    display: table;
+  `;
+  const Child = styled.div`
+    
+    
+    background-color: #fff;
+    // padding: 70px 20px 10px 70px;
+    width: 35%;
+    display: table-cell;
+    padding: 0 30px;
+     display :flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     height: 100%;
+    
+  `;
+
+  const Image = styled.div`
+    // background: url("https://user-images.githubusercontent.com/75664971/175835750-ea519f51-9753-4e1f-b75c-85035ca2d89f.png") no-repeat fixed right;
+    
+
+    background-image:
+    linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+    url('https://user-images.githubusercontent.com/75664971/175835750-ea519f51-9753-4e1f-b75c-85035ca2d89f.png');
+
+      // background: linear-gradient(to right,#673ab7,#e91e63) no-repeat fixed right;
+    object-fit: cover;
+    background-size: 100%;
+    width: 65%;
+    
+    display: table-cell;
+    hight: 100%;
+  `;
+
+  const Text = styled.h1`
+  font-size: 1.5em;
+  // color:#e91e63;
+  color: var(--Primary-Main);
+  text-align: center;
+  font-weight: bold;
+  
+  
+`;
+
+const FormStyle = styled.div`
+width: 100%;
+color:#673ab7;
+
+
+
+`
 
   return (
     <>
-      <div className="parent" style={parent}>
-        <div className="child" style={child}>
-          <Card
-            style={{
-              height: "70%",
-              borderColor: "#673AB7",
-              borderRadius: "40px",
-            }}
-          >
-            <Card.Title style={{ color: "#311B92", padding: "3%" }}>
-              Signup
-            </Card.Title>
+      <Parent>
+      <Image>
+          <img />
+        </Image>
+        <Child>
+          <Text>Welcome To iSupport</Text>
 
-            <Card.Body>
-              <form onSubmit={signupHandller}>
-                <label style={{ width: "100%", alignContent: "center" }}>
-                  <InputGroup className="mb-3">
-                    <Form.Control
-                      aria-label="First name"
-                      placeholder="Firstname"
-                      onChange={(e) => setFirstname(e.target.value)}
-                      aria-describedby="basic-addon1"
-                      style={{ width: "1%" }}
-                    />
+          {/* <Card.Body> */}
+            <form onSubmit={signupHandller} >
+              <FormStyle>
+             
+              <InputGroup className="mb-3">
+              
+                <Form.Control
+                  aria-label="First name"
+                  placeholder="Firstname"
+                  onChange={(e) => setFirstname(e.target.value)}
+                  aria-describedby="basic-addon1"
+                />
 
-                    <Form.Control
-                      aria-label="Last name"
-                      onChange={(e) => setLastname(e.target.value)}
-                      placeholder="Lastname"
-                    />
-                  </InputGroup>
-                </label>
-                <br></br>
-                <label style={{ width: "100%" }}>
-                  <InputGroup className="mb-3">
-                    {/* <InputGroup.Text id="basic-addon1">username</InputGroup.Text> */}
-                    <Form.Control
-                      onChange={(e) => setUsername(e.target.value)}
-                      placeholder="Username"
-                      aria-label="Username"
-                      aria-describedby="basic-addon1"
-                    />
-                  </InputGroup>
-                </label>
+                <Form.Control
+                  aria-label="Last name"
+                  onChange={(e) => setLastname(e.target.value)}
+                  placeholder="Lastname"
+                  style={{marginLeft:'2%'}}
+                />
+              </InputGroup>
 
-                <br></br>
+              
 
-                <label style={{ width: "100%" }}>
-                  <InputGroup className="mb-3">
-                    {/* <InputGroup.Text id="basic-addon1">Email</InputGroup.Text> */}
-                    <Form.Control
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email"
-                      type="Email"
-                      aria-label="Email"
-                      aria-describedby="basic-addon1"
-                    />
-                  </InputGroup>
-                </label>
+             
+             
+              <InputGroup className="mb-3">
+                {/* <InputGroup.Text id="basic-addon1">username</InputGroup.Text> */}
+                <Form.Control
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </InputGroup>
 
-                <br></br>
+            
+             
+              <InputGroup className="mb-3">
+                {/* <InputGroup.Text id="basic-addon1">Email</InputGroup.Text> */}
+                <Form.Control
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  type="Email"
+                  aria-label="Email"
+                  aria-describedby="basic-addon1"
+                />
+              </InputGroup>
 
-                <label style={{ width: "100%" }}>
-                  <InputGroup className="mb-3">
-                    {/* <InputGroup.Text id="basic-addon1">password</InputGroup.Text> */}
-                    <Form.Control
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
-                      type="password"
-                      aria-label="password"
-                      aria-describedby="basic-addon1"
-                    />
-                  </InputGroup>
-                </label>
-                <br></br>
+             
+              
+              <InputGroup className="mb-3">
+                {/* <InputGroup.Text id="basic-addon1">password</InputGroup.Text> */}
+                <Form.Control
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
+                  type="password"
+                  aria-label="password"
+                  aria-describedby="basic-addon1"
+                />
+              </InputGroup>
 
-                <label style={{ width: "100%" }}>
-                  <InputGroup className="mb-3">
-                    {/* <InputGroup.Text id="basic-addon1">Role</InputGroup.Text> */}
-                    <DropdownButton
-                      variant="outline-secondary"
-                      title="Role"
-                      id="input-group-dropdown-1"
-                      onChange={(e) => setRole(e.target.value)}
-                    >
-                      <Dropdown.Item>admin</Dropdown.Item>
-                      <Dropdown.Item>user</Dropdown.Item>
-                      <Dropdown.Item>writer</Dropdown.Item>
-                      <Dropdown.Item>editor</Dropdown.Item>
-                      <Dropdown.Divider />
-                    </DropdownButton>
-                  </InputGroup>
-                </label>
+              </FormStyle>
 
-                <br></br>
-                <label>
-                  <Button
-                    type="submit"
-                    style={{
-                      borderColor: "#673AB7",
-                      background: "#673AB7",
-                      borderRadius: "39px",
-                      height: "39px",
-                      width: "160px",
-                    }}
-                  >
-                    Signup
-                  </Button>
-                  {/* <button type="submit">signup</button> */}
-                </label>
-              </form>
+           
+
               <Button
-                variant="link"
-                style={{ fontSize: "10px", color: "#424242" }}
-                onClick={props.toggleShow}
+                type="submit"
+                style={{
+                  borderColor: "#673ab7",
+                  background: "#673ab7",
+                  textAlign: "center",
+                  height: "39px",
+                  width: "100%",
+                 
+                 
+                }}
               >
-                if you have an account
+                Sign up
               </Button>
-            </Card.Body>
-          </Card>
-        </div>
-        {/* add something related to floating */}
-        <div className="child" style={child}>
-          <Img
-            style={{ height: "40%", width: "80%" }}
-            src="https://user-images.githubusercontent.com/75664971/174694686-5e46e440-ca17-42ac-ba09-4e488e56f285.svg"
-          />
-        </div>
-      </div>
+
+              {/* <p
+                style={{
+                  textAlign: "center",
+                 marginTop:'2%',
+               
+                  color: "gray",
+                }}
+              >
+                OR
+              </p> */}
+
+              {/* <Button
+                type="submit"
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                  textAlign: "center",
+                 
+                  width: "100%",
+                  
+                  color: "#673AB7",
+                }}
+              >
+                <FaGoogle /> 
+              </Button>
+
+              <Button
+                type="submit"
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                  textAlign: "center",
+                 
+                  width: "100%",
+                  
+                  color: "#673AB7",
+                }}
+              >
+                 <FaFacebookF />
+              </Button> */}
+
+              {/* <Button
+                type="submit"
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "#673AB7",
+                  textAlign: "center",
+                  height: "39px",
+                  width: "60%",
+                  marginLeft: "24%",
+                  color: "#673AB7",
+                  marginTop: "1%",
+                }}
+              >
+                <FaFacebookF /> Sign up with facebook
+              </Button> */}
+            </form>
+
+            <Button
+              variant="link"
+              style={{
+                fontSize: "10px",
+                color:'#673ab7',
+                width: "100%",
+                textAlign: "center",
+                marginTop:'10px',
+                
+                
+              }}
+              onClick={props.toggleShow}
+            >
+              If you have an account,{" "}
+              <span style={{ fontWeight: "bold" }}>Click here</span>
+            </Button>
+          {/* </Card.Body> */}
+        </Child>
+
+      
+      </Parent>
     </>
   );
 }
