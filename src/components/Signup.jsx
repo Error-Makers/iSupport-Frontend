@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
-// import { When } from "react-if";
-// import Login from "./Login";
-import { AuthContect } from "../context/auth/main";
+import Card from "react-bootstrap/Card";
 
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Img from "react-bootstrap/Image";
+import { LoginContext } from "../context/auth/main";
+
 import styled from "styled-components";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
@@ -76,7 +77,7 @@ const Icons1 = styled.div`
 `;
 
 export default function Signup(props) {
-  const context = useContext(AuthContect);
+  const context = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -85,8 +86,12 @@ export default function Signup(props) {
   // const [role, setRole] = useState("");
 
   const signupHandller = (e) => {
-    // e.preventDefault();
-    context.signup(username, password, firstname, lastname, Email);
+    e.preventDefault();
+    context.signup(username, password, firstname, lastname, Email, role);
+    setTimeout(() => {
+      props.toggleShow();
+    }, 1000);
+
   };
   const handleChange = (e) => {
     setUsername(e.target.value);

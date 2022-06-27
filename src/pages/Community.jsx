@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import CommunityChat from "../components/CommunityChat";
 import styled from "styled-components";
 import { device } from "../media";
+import Auth from "../context/auth/auth";
 import ThisCommunity from "../components/ThisCommunity";
 import HeaderBar from "../components/Header";
 
@@ -39,6 +40,7 @@ const CommunityGrid = styled.div`
     grid-row-gap: 30px;
   }
 `;
+
 const Top = styled.div`
   margin: 0 auto;
   width: 100%;
@@ -64,7 +66,7 @@ const Middle = styled.div`
 
 const Community = () => {
   return (
-    <>
+    <Auth>
       <Wrapper>
         <HeaderBar />
         <HeadPic />
@@ -80,7 +82,7 @@ const Community = () => {
         </CommunityGrid>
         <Footer />
       </Wrapper>
-    </>
+    </Auth>
   );
 };
 

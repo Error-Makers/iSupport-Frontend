@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import { AuthContect } from "../context/auth/main";
+import { LoginContext } from "../context/auth/main";
 
 const Community = () => {
-  const context = useContext(AuthContect);
+  const context = useContext(LoginContext);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,11 +24,10 @@ const Community = () => {
           marginLeft: "38%",
           backgroundColor: " #e91e63",
           borderColor: "#e91e63",
-          height: "7.5vh",
-          width: "15vw",
         }}
       >
-        Create a Community
+        Create New Community
+
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -52,14 +52,8 @@ const Community = () => {
                 onChange={(e) => setCommunityDescription(e.target.value)}
               />
             </Form.Group>
-            <Button
-              variant="primary"
-              type="submit"
-              style={{
-                background: "#e91e63",
-                borderColor: "#e91e63",
-              }}
-            >
+            <Button variant="primary" type="submit">
+
               Submit
             </Button>
           </Form>
