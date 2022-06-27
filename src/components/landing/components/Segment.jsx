@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { device } from '../../../media';
+import React from "react";
+import styled from "styled-components";
+import { device } from "../../../media";
 
 const Wrapper = styled.div`
   height: 50%;
@@ -12,7 +12,6 @@ const Wrapper = styled.div`
     background-position: 50%;
   }
 `;
-
 
 const Container = styled.div`
   width: 90%;

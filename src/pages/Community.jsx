@@ -1,12 +1,13 @@
-import Header from '../components/Header';
-import Leaderboard from '../components/Leaderboard';
-import Posts from '../components/Posts';
-import PersonalProgress from '../components/PersonalProgress';
-import Footer from '../components/Footer';
-import CommunityChat from '../components/CommunityChat';
-import styled from 'styled-components';
-import { device } from '../media';
-import ThisCommunity from '../components/ThisCommunity';
+import Header from "../components/Header";
+import Leaderboard from "../components/Leaderboard";
+import Posts from "../components/Posts";
+import PersonalProgress from "../components/PersonalProgress";
+import Footer from "../components/Footer";
+import CommunityChat from "../components/CommunityChat";
+import styled from "styled-components";
+import { device } from "../media";
+import ThisCommunity from "../components/ThisCommunity";
+import HeaderBar from "../components/Header";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -63,20 +64,23 @@ const Middle = styled.div`
 
 const Community = () => {
   return (
-    <Wrapper>
-      <HeadPic />
-      <ThisCommunity />
-      <CommunityGrid>
-        <Top>
-          <PersonalProgress />
-          <Leaderboard />
-        </Top>
-        <Middle>
-          <Posts />
-        </Middle>
-      </CommunityGrid>
-      <Footer />
-    </Wrapper>
+    <>
+      <Wrapper>
+        <HeaderBar />
+        <HeadPic />
+        <ThisCommunity />
+        <CommunityGrid>
+          <Top>
+            <PersonalProgress />
+            <Leaderboard />
+          </Top>
+          <Middle>
+            <Posts />
+          </Middle>
+        </CommunityGrid>
+        <Footer />
+      </Wrapper>
+    </>
   );
 };
 
