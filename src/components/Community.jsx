@@ -4,6 +4,7 @@ import { LoginContext } from "../context/auth/main";
 
 const Community = () => {
   const context = useContext(LoginContext);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,6 +27,7 @@ const Community = () => {
         }}
       >
         Create New Community
+
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -51,6 +53,7 @@ const Community = () => {
               />
             </Form.Group>
             <Button variant="primary" type="submit">
+
               Submit
             </Button>
           </Form>

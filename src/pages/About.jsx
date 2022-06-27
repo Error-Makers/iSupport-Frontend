@@ -22,14 +22,12 @@ const Card1 = styled.div`
   margin-bottom: 10px;
 `;
 const CardImage = styled.img`
-  height: 160px;
-  width: 160px;
-  border-radius: 50%;
-  border: 2px solid #272133;
-  margin-top: 20px;
-  margin-left: 25%;
- 
-  box-shadow: 0 5px 10px var(--Accent-Light);
+  height: auto;
+  width: 100%;
+  object-fit: "cover";
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  // box-shadow: 0 5px 10px var(--Accent-Light);
 
   &:hover {
   }
@@ -49,8 +47,6 @@ const SocialIcons = styled.ul`
   i {
     color: #fff;
     position: absolute;
-    top: 0.95em;
-    left: 0.96em;
     transition: all 265ms ease-out;
   }
 `;
@@ -59,46 +55,84 @@ display: inline-block;
 margin: 0.1em;
 position: relative;
 font-size: 1em;
-hight:5em
+
 
 &:hover{
-  font-size: 2em;
-  color:var(--Accent-Light)
+
 }
+`;
+const SocialIcon = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  background-color: #${(props) => props.color};
 `;
 const HeroImg = styled.img`
   height: 40%;
   width: 55%;
-  margin-left:35%;
-  margin-top: 10px;
+  // margin-left: 35%;
+  // margin-top: 10px;
 `;
 
 const Major = styled.p`
-  margin-top: 10px;
+  // margin-top: 10px;
   font-size: 1em;
   color: var(--Text-Primary);
   text-align: center;
+`;
+const Button = styled.button`
+z-index: 1;
+// margin-top: 27%;
+// position: absolute;
+// left: 5%;
+width: 20%;
+font-weight: bold;
+background: #673ab7;
+color:white;
+border-radius:20px;
+padding:5px
 `;
 const Title = styled.h1`
   color: var(--Accent-Light);
   text-align: center;
   font-family: Open Sans, sans-serif;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
 `;
+const P = styled.p`
+  z-index: 1;
+  // margin-top: 17%;
+  // position: absolute;
+  // left: 5%;
+  // width: 30%;
+  font-weight: bold;
+  color: #673ab7;
 
+`;
 const AboutUs = () => {
   return (
     <div>
       <Header />
-      <div style={{width:'100%',height:'40%'}}>
-        
-        <h1 style={{zIndex:'1',marginTop:'15%',position:'absolute',left:'5%',fontWeight:'bold',color:'#673ab7'}}>
-            About Our Team
-            </h1>
-          <HeroImg src={goodTeam} alt="img" />
-          
- 
+      <div style={{ width: "100%", height: "auto",display:'flex',justifyContent:'space-around',alignItems:'center'}}>
+        <div style={{width:'30%'}}>
+        <h1
+          style={{
+            zIndex: "1",
+            fontWeight: "bold",
+            color: "#673ab7",
+          }}
+        >
+          About Our Team
+        </h1>
+        <P style={{}}>
+          We're a team of makers, thinkers, and explorers. We approach work and
+          play with curiosity and experimentation, using what we learn to create
+          meaningful digital products that connect with people, just like you.
+        </P>
+        <Button>Login</Button>
+        </div>
+        <HeroImg src={goodTeam} alt="img" />
       </div>
       <Title>Meet our Team </Title>
 
@@ -111,7 +145,7 @@ const AboutUs = () => {
                   width: "20rem",
                   marginLeft: "20px",
                   marginBottom: "20px",
-                  border: "1px solid #673ab7",
+                  borderRadius: "20px",
                   boxShadow: "0 2px 5px var(--Accent-Light)",
                 }}
                 key={idx}
@@ -123,18 +157,23 @@ const AboutUs = () => {
                   <div>
                     <SocialIcons>
                       <SocialLi>
-                        <a href={item.github} className="btn">
+                     
+                        <a href={item.github} className="">
+                        <SocialIcon color='303030'>
                           <FaGithub>
                             <i class="fab fa-github"></i>
                           </FaGithub>{" "}
+                          </SocialIcon>
                         </a>
                       </SocialLi>
                       <SocialLi>
                         {" "}
-                        <a href={item.linkedIn} className="btn">
+                        <a href={item.linkedIn} className="">
+                        <SocialIcon color='55ACEE'>
                           <FaLinkedin>
                             <i class="fab fa-github"></i>{" "}
                           </FaLinkedin>{" "}
+                          </SocialIcon>
                         </a>
                       </SocialLi>
                     </SocialIcons>

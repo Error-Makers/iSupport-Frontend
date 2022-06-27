@@ -17,6 +17,7 @@ const MainHeader = styled.header`
     z-index: 999;
     box-shadow: 10px 5px 7px rgba(0, 0, 0, 0.2);
   }
+  
 `;
 
 const Title = styled.h1`
@@ -24,10 +25,11 @@ const Title = styled.h1`
   font-weight: 400;
   margin-left: 1vw;
   font-family: "M PLUS Rounded 1c", sans-serif;
+  color: var(--Primary-Dark);
 `;
 
 const Image = styled.img`
-  width: 4rem;
+  width: 3.3rem;
   height: 2rem;
 `;
 

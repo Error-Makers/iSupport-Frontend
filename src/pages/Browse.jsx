@@ -1,6 +1,6 @@
 import { Card, Button, Form, InputGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Community from "../components/Community";
 import AuthContect from "../context/auth/main";
@@ -74,48 +74,153 @@ const Browse = () => {
     },
   ];
 
-  const Parent = styled.div`
-    margin: 1rem;
-    text-align: center;
-    display: flex;
-    z-index: 0;
-  `;
-  const Child = styled.div`
-    display: inline-block;
-    padding: 1rem 1rem;
-  `;
 
-  const Image = styled.img`
-    border-radius: 10px;
-    object-fit: cover;
-    hight: 10%;
-    width: 10%;
-    position: absolute;
-    z-index: 1;
-    margin-top: 2%;
-    margin-left: 5%;
-  `;
-  const Cards = styled.div`
-    border-radius: 10px;
-    margin-bottom: 1%;
-    padding-top: 10px;
-    width: 75%;
-    height: 12rem;
-    margin-left: 7%;
-    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
-  `;
+const Search = styled.input`
+  width: 35vw;
+  height: 7.5vh;
+  border: 1px solid var(--Accent-Main);
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+  &:focus {
+    box-shadow: 0px 0px 5px #e91e63;
+  }
+`;
 
+let communites = [
+  {
+    community_id: 1,
+    community_name: "Football",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:41.318Z",
+  },
+  {
+    community_id: 2,
+    community_name: "smoke",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:24.349Z",
+  },
+  {
+    community_id: 3,
+    community_name: "healthy life style",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:41.318Z",
+  },
+  {
+    community_id: 4,
+    community_name: "entreatment",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:24.349Z",
+  },
+  {
+    community_id: 5,
+    community_name: "reading",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:24.349Z",
+  },
+  {
+    community_id: 6,
+    community_name: "food",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:41.318Z",
+  },
+  {
+    community_id: 7,
+    community_name: "sport",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:24.349Z",
+  },
+  {
+    community_id: 8,
+    community_name: "Study",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:24.349Z",
+  },
+
+  {
+    community_id: 9,
+    community_name: "healthy life style",
+    aboutTheCommunity:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
+    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+    createdAt: "2022-06-21T08:37:41.318Z",
+  },
+];
+
+const Browse = (props) => {
+  const [state, setState] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(4);
+
+
+  const idxOfLst = currentPage * postsPerPage;
+  const idxOfFirst = idxOfLst - postsPerPage;
+  const currentPosts = communites.slice(idxOfFirst, idxOfLst);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   // search: e.target.value.substr(0, 20)
-  let filterdCommunity = communites.filter((item) => {
+  let filterdCommunity = currentPosts.filter((item) => {
     return (
       item.community_name.toLowerCase().indexOf(state.toLowerCase()) !== -1
     );
   });
+  let pageNumbers = [];
+  for (let i = 1; i < Math.ceil(communites.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
-    <div>
-      {/* variant="dark" */}
-      {/* <Carousel  style={{marginTop: '4%'}} > */}
+    <>
+      <HeaderBar />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <ControlsContainer>
+          <Search
+            onChange={(e) => setState(e.target.value.substr(0, 20))}
+            type="text"
+            placeholder="Search"
+          />
+          <Community />
+        </ControlsContainer>
+      </div>
+      <div>
+        <Parent style={{}}>
+          {filterdCommunity.map((item, idx) => (
+            <div key={idx}>
+              {/* <Image src={item.url} /> */}
+              <Cards>
+                <Card>
+                  <Card.Body style={{ textAlign: "left" }}>
+                    {/* <Image src={item.url} /> */}
+                    <Card.Img variant="top" src={item.url} />
+                    <Card.Title style={{ color: "#311B92" }}>
+                      {item.community_name}
+                    </Card.Title>
+                    <Card.Text
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: "bold",
+                        color: "#303030",
+                      }}
+                    >
+                      {item.aboutTheCommunity.slice(0, 30)}
+                    </Card.Text>
 
       <h1
         style={{
@@ -206,6 +311,7 @@ const Browse = () => {
         </Parent>
       ))}
     </div>
+
   );
 };
 

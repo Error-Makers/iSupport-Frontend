@@ -46,6 +46,7 @@ export default function Login(props) {
     if (context.loggedIn) navigate("/browse");
   }, [context.loggedIn]);
 
+
   const handleLogin = (e) => {
     e.preventDefault();
     context.login(username, password);
@@ -122,6 +123,7 @@ export default function Login(props) {
         </Child>
         <Child>
           <Img src={unlock} />
+
         </Child>
       </Parent>
     </>
