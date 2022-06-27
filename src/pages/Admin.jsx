@@ -51,7 +51,7 @@ const Admin = () => {
   const [showUsersSettings, setShowUsersSettings] = useState(true);
 
   const setView = (action) => {
-    if (action == "DELETE") {
+    if (action === "DELETE") {
       setShowUsersSettings(true);
     } else {
       setShowUsersSettings(false);
