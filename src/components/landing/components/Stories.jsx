@@ -1,17 +1,19 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import styled from 'styled-components';
-
+import './test.css';
 const Wrapper = styled.section`
   width: 500px;
   height: 700px;
   padding: 60px 20px;
   display: flex;
+  margin: auto;
 `;
 
 const Stories = () => {
   return (
     <Wrapper>
+      <div className='blur'></div>
       <Carousel>
         <Carousel.Item>
           <img

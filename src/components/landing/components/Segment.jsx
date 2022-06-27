@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import { device } from '../../../media';
 
 const Wrapper = styled.div`
-  height: 50%;
+  min-height: 40vh;
   width: 100%;
   background-image: url(https://wallpaperaccess.com/full/42271.jpg);
   background-position: 20%;
   background-size: cover;
+  margin: 0;
   @media ${device.tablet} {
     background-position: 50%;
   }
 `;
-
 
 const Container = styled.div`
   width: 90%;
