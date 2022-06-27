@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Community from "../components/Community";
+
 import HeaderBar from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -133,7 +134,6 @@ const Browse = (props) => {
   const [state, setState] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(4);
-
   const idxOfLst = currentPage * postsPerPage;
   const idxOfFirst = idxOfLst - postsPerPage;
   const currentPosts = communites.slice(idxOfFirst, idxOfLst);
@@ -148,7 +148,6 @@ const Browse = (props) => {
   for (let i = 1; i < Math.ceil(communites.length / postsPerPage); i++) {
     pageNumbers.push(i);
   }
-
   return (
     <>
       <HeaderBar />
