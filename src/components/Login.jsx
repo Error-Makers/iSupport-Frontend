@@ -1,41 +1,68 @@
 import { useContext, useState } from "react";
 import { AuthContect } from "../context/auth/main";
 import styled from "styled-components";
-import unlock from "../assets/unlock.png";
-import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import { AiFillGoogleCircle } from "react-icons/ai";
+import { FaFacebook } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Form, InputGroup } from "react-bootstrap";
+
 const Parent = styled.div`
-  display: flex;
-  text-align: center;
   width: 100%;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+  display: table;
 `;
 const Child = styled.div`
-  display: inline-block;
-  padding: 1rem 1rem;
-  vertical-align: middle;
+  background-color: #fff;
+  display: table-cell;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
 
-const Img = styled.img`
-  height: 20%;
-  width: 48%;
+const Image = styled.div`
+  // background: url("https://user-images.githubusercontent.com/75664971/175835664-d12571e6-6099-450c-b325-967728e09b91.png")
+  //   no-repeat fixed right;
+
+  background-image: linear-gradient(
+      to bottom,
+      rgba(245, 246, 252, 0.52),
+      rgba(117, 19, 93, 0.73)
+    ),
+    url("https://user-images.githubusercontent.com/75664971/175835664-d12571e6-6099-450c-b325-967728e09b91.png");
+
+  object-fit: cover;
+  background-size: 100%;
+  width: 65%;
+
+  display: table-cell;
+  hight: 100%;
 `;
 const Text = styled.h1`
   font-size: 1.5em;
+  // color:#e91e63;
   color: var(--Primary-Main);
-  padding: 10px;
   text-align: center;
+  font-weight: bold;
 `;
 
-const Anchor = styled.a`
-  text-align: left;
-  font-size: 10px;
-  color: #424242;
+const FormStyle = styled.div`
+  width: 100%;
+  color: #673ab7;
+`;
+
+const Icons = styled.div`
+  color: #673ab7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
 `;
 export default function Login(props) {
   const context = useContext(AuthContect);
@@ -55,72 +82,111 @@ export default function Login(props) {
 
   return (
     <>
-    
-        <BsFillArrowLeftCircleFill  onClick={() => navigate(-1)} style={{ fontSize: "30px" ,color: "#673AB7",marginLeft:'3%',position:'absolute',marginTop:'3%'}} />
-   
+      {/* <BsFillArrowLeftCircleFill  onClick={() => navigate(-1)} style={{ fontSize: "30px" ,color: "#673AB7",marginLeft:'3%',position:'absolute',marginTop:'3%'}} /> */}
 
       <Parent>
-        <Child>
-          <Card
-            style={{
-              width: "150%",
-              height: "70%",
-              borderColor: "#673AB7",
-              borderRadius: "40px",
-            }}
-          >
-            <Card.Body>
-              <Form onSubmit={handleLogin}>
-                <Text>login </Text>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label style={{ width: "90%" }}>
-                    <br></br>
-                    <Form.Control
-                      style={{}}
-                      onChange={handleChange}
-                      placeholder="username"
-                      value={username}
-                      type="text"
-                      name="username"
-                    />
-                  </Form.Label>
-                </Form.Group>
+        <Image>
+          <img alt=''/>
+        </Image>
 
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label style={{ width: "90%" }}>
-                    <Form.Control
-                      style={{}}
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
-                      placeholder="password"
-                      type="password"
-                      name="password"
-                    />
-                  </Form.Label>
-                </Form.Group>
-                <br />
-
-                <Button
-                  type="submit"
-                  style={{
-                    borderColor: "#673AB7",
-                    background: "#673AB7",
-                    borderRadius: "39px",
-                    height: "39px",
-                    width: "160px",
-                  }}
-                >
-                  Login
-                </Button>
-              </Form>
-              <Anchor onClick={props.toggleShow}>
-                If you don't have account, Click here
-              </Anchor>
-            </Card.Body>
-          </Card>
-        </Child>
         <Child>
-          <Img src={unlock} />
+          <Text>Welcome Back </Text>
+          <form onSubmit={handleLogin}>
+            <FormStyle>
+              <InputGroup className="mb-3">
+                {/* <InputGroup.Text id="basic-addon1">username</InputGroup.Text> */}
+                <Form.Control
+                  onChange={handleChange}
+                  value={username}
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </InputGroup>
+
+              {/* <InputGroup className="mb-3">
+                <Form.Control
+                  onChange={handleChange}
+                  placeholder="username"
+                  value={username}
+                  type="text"
+                  name="username"
+                />
+              </InputGroup> */}
+
+              <InputGroup className="mb-3">
+                <Form.Control
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  placeholder="password"
+                  type="password"
+                  name="password"
+                />
+              </InputGroup>
+            </FormStyle>
+
+            <Button
+              type="submit"
+              style={{
+                borderColor: "#673AB7",
+                background: "#673AB7",
+                textAlign: "center",
+                height: "39px",
+                width: "100%",
+              }}
+            >
+              Sign in
+            </Button>
+
+            <p
+              style={{
+                textAlign: "center",
+                color: "gray",
+
+                textAlign: "center",
+                borderBottom: "1px solid #000",
+                lineHeight: "0.1em",
+                margin: "10px 0 20px",
+                marginTop: "20px",
+              }}
+            >
+              {" "}
+              <span
+                style={{
+                  background: "#fff",
+                  padding: "0 10px",
+                  fontSize: "13px",
+                }}
+              >
+                Or continue with
+              </span>
+            </p>
+
+            <Icons>
+              <a>
+                <AiFillGoogleCircle style={{ fontSize: "34px" }} />
+              </a>
+              <a>
+                
+                <FaFacebook style={{ fontSize: "30px" }} />
+              </a>
+            </Icons>
+           
+            <Button
+              variant="link"
+              style={{
+                fontSize: "10px",
+                color: "#673ab7",
+                width: "100%",
+                textAlign: "center",
+                marginTop: "10px",
+              }}
+              onClick={props.toggleShow}
+            >
+              Don't have an account,{" "}
+              <span style={{ fontWeight: "bold" }}>Click here</span>
+            </Button>
+          </form>
         </Child>
       </Parent>
     </>
