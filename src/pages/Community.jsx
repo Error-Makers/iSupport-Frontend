@@ -1,5 +1,3 @@
-
-
 import Header from '../components/Header';
 import Leaderboard from '../components/Leaderboard';
 import Posts from '../components/Posts';
@@ -8,21 +6,48 @@ import Footer from '../components/Footer';
 import CommunityChat from '../components/CommunityChat';
 import styled from 'styled-components';
 import { device } from '../media';
+import ThisCommunity from '../components/ThisCommunity';
 
 const Wrapper = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfbff;
 `;
+
+const HeadPic = styled.div`
+  height: 33vh;
+  width: 100%;
+  background-size: cover;
+  background-position-y: 80%;
+  background-image: url(https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+`;
+
 const CommunityGrid = styled.div`
-  margin: 20px;
+  margin: 5vh auto;
   display: grid;
-  grid-template-columns: 100vw;
-  grid-template-rows: auto auto auto;
+  width: 100%;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto;
   grid-column-gap: 0px;
-  grid-row-gap: 40px;
+  grid-row-gap: 50px;
   align-items: center;
+  @media ${device.tablet} {
+    width: 70%;
+    margin: 15vh auto 0 auto;
+    grid-row-gap: 30px;
+  }
 `;
 const Top = styled.div`
-
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
 `;
 const Middle = styled.div`
   display: flex;
@@ -30,33 +55,25 @@ const Middle = styled.div`
   @media ${device.tablet} {
     flex-direction: row;
   }
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   align-items: center;
   gap: 40px;
-`;
-const Bottom = styled.div`
-  margin: 0 auto;
-  width: 80%;
 `;
 
 const Community = () => {
   return (
     <Wrapper>
-      <Header />
-
-
+      <HeadPic />
+      <ThisCommunity />
       <CommunityGrid>
         <Top>
           <PersonalProgress />
+          <Leaderboard />
         </Top>
         <Middle>
           <Posts />
-          <Leaderboard />
         </Middle>
-        <Bottom>
-          <CommunityChat />
-        </Bottom>
       </CommunityGrid>
       <Footer />
     </Wrapper>
@@ -64,31 +81,3 @@ const Community = () => {
 };
 
 export default Community;
-
-// import React, { useState, useEffect } from 'react'
-// import axios from 'axios';
-// const API = 'http://localhost:3000';
-
-// export default function Commuity(props) {
-//     const [commuities, setCommuities] = useState([]);
-
-//     // /commuities
-//     async function getCommuities() {
-//         const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhbGEiLCJpYXQiOjE2NTU3Mzg2NDB9.y31y2Glnt_TOQZBCl_v4lwaQCcHIvtkQrWJ9hATth10';
-
-//         const config = {
-//             headers: { Authorization: `Bearer ${token}` }
-//         };
-//         const response = await axios.get(API + `/commuities`, config);
-//         console.log('response commuities', response);
-
-//         setCommuities(response.data);
-//     }
-
-//     useEffect(() => {
-//         getCommuities();
-//     }, [])
-//     return (
-//         <div>leaderboard</div>
-//     )
-// }
