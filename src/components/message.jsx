@@ -7,17 +7,17 @@ const MainContanier = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  width: 100%;
 `;
 
 const MessageContanier = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 10vh;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   color: var(--Text-Primary);
   margin-bottom: 0.2rem;
-  width: 40vw;
+  width: 80%;
 `;
 
 const Sender = styled.div`
@@ -33,15 +33,15 @@ const Sender = styled.div`
 
 const MessageText = styled.div`
   display: flex;
-  height: 10vh;
   padding: 0.5rem;
   background-color: var(--Primary-Light);
   color: var(--Text-Primary);
   margin-bottom: 0.2rem;
-  width: 30vw;
   display: flex;
   margin-left: 3%;
   border-radius: 15px;
+  min-width: 70%;
+  min-height: 30px;
 `;
 
 const Triangle = styled.div`

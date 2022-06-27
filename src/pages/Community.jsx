@@ -8,6 +8,8 @@ import styled from "styled-components";
 import { device } from "../media";
 import ThisCommunity from "../components/ThisCommunity";
 import HeaderBar from "../components/Header";
+import { useState } from "react";
+import { BsFillChatFill } from "react-icons/bs";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -62,9 +64,43 @@ const Middle = styled.div`
   gap: 40px;
 `;
 
+const Chat = styled.div`
+  width: 60px;
+  height: 60px;
+  background-color: var(--Primary-Main);
+  position: fixed;
+  border-radius: 50%;
+  bottom: 5vh;
+  right: 5vw;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+`;
+
+const Logo = styled(BsFillChatFill)`
+  color: var(--Paper-Light);
+  height: 35px;
+  width: 35px;
+`;
+
 const Community = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
+      <Chat onClick={handleShow}>
+        <Logo />
+      </Chat>
+      <CommunityChat
+        show={show}
+        handleClose={handleClose}
+        handleShow={handleShow}
+      />
       <Wrapper>
         <HeaderBar />
         <HeadPic />
