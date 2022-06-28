@@ -82,7 +82,7 @@ const Community = () => {
         </CommunityGrid>
         <Footer />
       </Wrapper>
-    </Auth>
+     </Auth>
   );
 };
 
