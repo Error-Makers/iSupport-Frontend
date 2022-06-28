@@ -52,6 +52,7 @@ const Text1 = styled.h1`
   color: var(--Primary-Main);
   text-align: center;
   font-weight: bold;
+  margin-bottom: 0.5em;
 `;
 
 const FormStyle1 = styled.div`
@@ -92,25 +93,25 @@ export default function Signup(props) {
           <img />
         </Image1>
         <Child1>
-          <Text1>Welcome To iSupport</Text1>
+          <Text1>Welcome to iSupport</Text1>
 
           {/* <Card.Body> */}
           <form onSubmit={signupHandller}>
             <FormStyle1>
               <InputGroup className="mb-3">
                 <Form.Control
-                  aria-label="First name"
-                  placeholder="Firstname"
+                  aria-label="FirstName"
+                  placeholder="First Name"
                   onChange={(e) => setFirstname(e.target.value)}
                   value={firstname}
                   aria-describedby="basic-addon1"
                 />
 
                 <Form.Control
-                  aria-label="Last name"
+                  aria-label="LastName"
                   onChange={(e) => setLastname(e.target.value)}
                   value={lastname}
-                  placeholder="Lastname"
+                  placeholder="Last Name"
                   style={{ marginLeft: "2%" }}
                 />
               </InputGroup>
@@ -120,7 +121,7 @@ export default function Signup(props) {
                 <Form.Control
                   onChange={(e) => setUsername(e.target.value)}
                   value={username}
-                  placeholder="Username"
+                  placeholder="User Name"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
