@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styled from 'styled-components';
-import { device } from '../media';
-import Form from 'react-bootstrap/Form';
-import { MdEdit } from 'react-icons/md';
+import React, { useEffect, useState, useContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import styled from "styled-components";
+import { device } from "../media";
+import Form from "react-bootstrap/Form";
+import { MdEdit } from "react-icons/md";
 
-import axios from 'axios';
-import HeaderBar from '../components/Header';
-import Footer from '../components/Footer';
-
-const API = process.env.REACT_APP_API;
-const token = process.env.REACT_APP_TOKEN;
-const config = {
-  headers: { Authorization: `Bearer ${token}` },
-};
+import axios from "axios";
+import HeaderBar from "../components/Header";
+import Footer from "../components/Footer";
+import { LoginContext } from "../context/auth/main";
+import UpdateUser from "../components/ProfileModal";
 
 const Wrapper = styled.div`
   margin: auto;
@@ -126,24 +122,32 @@ const Image = styled.img`
 
 let community = {
   community_id: 1,
-  community_name: 'Football',
+  community_name: "Football",
   aboutTheCommunity:
-    'The football community. News, results and discussion about the beautiful game.',
-  url: 'https://www.citypng.com/public/uploads/small/11639594314mvt074h0zt5cijvfdn7gqxbrya72bzqulyd5bhqhemb5iasfe7gbydmr2jxk8lcclcp6qrgaoiuiavf4sendwc3jvwadddqmli2d.png',
-  createdAt: '2022-06-21T08:37:41.318Z',
+    "The football community. News, results and discussion about the beautiful game.",
+  url: "https://www.citypng.com/public/uploads/small/11639594314mvt074h0zt5cijvfdn7gqxbrya72bzqulyd5bhqhemb5iasfe7gbydmr2jxk8lcclcp6qrgaoiuiavf4sendwc3jvwadddqmli2d.png",
+  createdAt: "2022-06-21T08:37:41.318Z",
 };
 
 const Profile = () => {
+  const API = process.env.REACT_APP_API;
+  const context = useContext(LoginContext);
+  const config = {
+    headers: { Authorization: `Bearer ${context.user.token}` },
+  };
   const [user, setUser] = useState({});
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   async function getUserInformation() {
     const res = await axios
-      .get(API + `/user/1`, config)
+      .get(API + `user/${context.user.user_id}`, config)
       .then((res) => {
         return res.data;
       })
       .catch((err) => err);
-    // console.log(res);
     setUser(res);
   }
   useEffect(() => {
@@ -152,61 +156,66 @@ const Profile = () => {
 
   return (
     <>
+      <UpdateUser
+        show={show}
+        handleShow={handleShow}
+        handleClose={handleClose}
+      />
       <HeaderBar />
       <Wrapper>
         <HeadPic />
         <Card>
-          <Edit>
-            <MdEdit style={{ width: '30px', height: '30px', color: 'white' }} />
+          <Edit onClick={handleShow}>
+            <MdEdit style={{ width: "30px", height: "30px", color: "white" }} />
           </Edit>
 
           <PicB>
             <Image src={community.url} />
           </PicB>
           <CardBody>
-            <CardTitle>name</CardTitle>
+            <CardTitle>{context.user.username}</CardTitle>
           </CardBody>
           <Info>
-            <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>First Name</Form.Label>
               <Form.Control
-                style={{ pointerEvents: 'none' }}
+                style={{ pointerEvents: "none" }}
                 readOnly
-                type='text'
-                value={`${user.username}`}
+                type="text"
+                value={`${context.user.firstName}`}
               />
             </Form.Group>
-            <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Last Name</Form.Label>
               <Form.Control
-                style={{ pointerEvents: 'none' }}
+                style={{ pointerEvents: "none" }}
                 readOnly
-                type='text'
-                value={`${user.lastname}`}
+                type="text"
+                value={`${context.user.lastName}`}
               />
             </Form.Group>
-            <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email</Form.Label>
               <Form.Control
-                style={{ pointerEvents: 'none' }}
+                style={{ pointerEvents: "none" }}
                 readOnly
-                type='text'
-                value={`${user.email}`}
+                type="text"
+                value={`${context.user.email}`}
               />
             </Form.Group>
-            <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Password</Form.Label>
               <Form.Control
-                style={{ pointerEvents: 'none' }}
+                style={{ pointerEvents: "none" }}
                 readOnly
-                type='text'
-                value='******'
+                type="text"
+                value="******"
               />
             </Form.Group>
           </Info>
         </Card>
       </Wrapper>
-      <Footer/>
+      <Footer />
     </>
   );
 };

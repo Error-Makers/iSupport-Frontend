@@ -4,6 +4,7 @@ import logo from "../assets/logo.png";
 import { useRef, useState, useContext } from "react";
 import avatar from "../assets/avatar.png";
 import { LoginContext } from "../context/auth/main";
+import { useNavigate } from "react-router-dom";
 
 const MainHeader = styled.header`
   display: flex;
@@ -97,27 +98,6 @@ const LoginInfo = styled.div`
   width: 20vw;
   height: 10vh;
 `;
-const UserInfo = styled.div`
-  height: 10vh;
-  margin-left: 1vw;
-`;
-
-const UserName = styled.h5`
-  color: var(--Text-Primary);
-  font-size: 1rem;
-  text-align: center;
-  margin-top: 45%;
-`;
-
-const Triangle = styled.div`
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 10px 7.5px 0 7.5px;
-  border-color: var(--Primary-Main) transparent transparent transparent;
-  margin-left: 20px;
-  cursor: pointer;
-`;
 
 const OptionsDiv = styled.div`
   display: flex;
@@ -159,6 +139,7 @@ const Avatar = styled.img`
 `;
 
 function HeaderBar() {
+  const navigate = useNavigate();
   const headerRef = useRef();
   let context = useContext(LoginContext);
   const [show, setShow] = useState(false);
@@ -199,6 +180,8 @@ function HeaderBar() {
           <Option
             onClick={() => {
               setShow(!show);
+              context.logout();
+              navigate("/");
             }}
           >
             Log out
