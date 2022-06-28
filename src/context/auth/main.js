@@ -13,13 +13,14 @@ export default function LoginProvider(props) {
   const [user, setUser] = useState({});
 
   const login = async (username, password) => {
+    console.log(username, password);
     const response = await superagent
       .post(`${API}signin`)
       .set(
         "authorization",
         `Basic ${base64.encode(`${username}:${password}`)}`
       );
-
+    console.log(response);
     validateMyUser(response.body);
   };
 

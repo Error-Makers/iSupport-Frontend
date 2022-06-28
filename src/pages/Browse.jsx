@@ -1,11 +1,13 @@
 import { Card, Button, Form, InputGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import styled from "styled-components";
 import Community from "../components/Community";
 
 import HeaderBar from "../components/Header";
 import Footer from "../components/Footer";
+import axios from "axios";
+import { LoginContext } from "../context/auth/main";
 
 const Parent = styled.div`
   display: flex;
@@ -54,89 +56,29 @@ const Search = styled.input`
   }
 `;
 
-let communites = [
-  {
-    community_id: 1,
-    community_name: "Football",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:41.318Z",
-  },
-  {
-    community_id: 2,
-    community_name: "smoke",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-  {
-    community_id: 3,
-    community_name: "healthy life style",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:41.318Z",
-  },
-  {
-    community_id: 4,
-    community_name: "entreatment",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-  {
-    community_id: 5,
-    community_name: "reading",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-  {
-    community_id: 6,
-    community_name: "food",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:41.318Z",
-  },
-  {
-    community_id: 7,
-    community_name: "sport",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-  {
-    community_id: 8,
-    community_name: "Study",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-
-  {
-    community_id: 9,
-    community_name: "healthy life style",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:41.318Z",
-  },
-];
-
 const Browse = (props) => {
+  const API = process.env.REACT_APP_SERVER;
+  const context = useContext(LoginContext);
   const [state, setState] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(4);
+  const [communites, setCommunities] = useState([]);
+  useEffect(() => {
+    console.log(context);
+    const config = context.user
+      ? {
+          headers: { Authorization: `Bearer ${context.user.token}` },
+        }
+      : "";
+    const fetchData = async () => {
+      let response = await axios.get(`${API}communities`, config);
+      setCommunities(response.data);
+    };
+    fetchData();
+  });
   const idxOfLst = currentPage * postsPerPage;
   const idxOfFirst = idxOfLst - postsPerPage;
-  const currentPosts = communites.slice(idxOfFirst, idxOfLst);
+  const currentPosts = communites;
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   // search: e.target.value.substr(0, 20)
   let filterdCommunity = currentPosts.filter((item) => {
@@ -164,13 +106,16 @@ const Browse = (props) => {
       <div>
         <Parent style={{}}>
           {filterdCommunity.map((item, idx) => (
-            <div key={idx}>
+            <div key={item.community_id}>
               {/* <Image src={item.url} /> */}
               <Cards>
                 <Card>
                   <Card.Body style={{ textAlign: "left" }}>
                     {/* <Image src={item.url} /> */}
-                    <Card.Img variant="top" src={item.url} />
+                    <Card.Img
+                      variant="top"
+                      src={`https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg`}
+                    />
                     <Card.Title style={{ color: "#311B92" }}>
                       {item.community_name}
                     </Card.Title>
