@@ -36,15 +36,15 @@ const Community = () => {
           // marginLeft: "38%",
           backgroundColor: " #e91e63",
           borderColor: "transparent",
-          color:"white",
+          color: "white",
           width: "20%",
           height: "7vh",
           position: "absolute",
-          top: '32vh',
-          right:"10vw",
-          boxShadow: "10px 5px 7px rgba(0, 0, 0, 0.5);",
-          fontWeight:"600",
-          zIndex:"5"
+          top: "32vh",
+          right: "10vw",
+          boxShadow: "10px 5px 7px rgba(0, 0, 0, 0.5)",
+          fontWeight: "600",
+          zIndex: "5",
         }}
       >
         Create New Community
