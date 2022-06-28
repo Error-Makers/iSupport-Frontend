@@ -4,6 +4,7 @@ import { keyframes } from "styled-components";
 import { useState } from "react";
 import DeleteUsers from "../components/deleteUser";
 import DeleteCommunities from "../components/deleteCommunity";
+import Auth from "../context/auth/auth";
 
 const Section = styled.section`
   postion: relative;
@@ -51,18 +52,20 @@ const Admin = () => {
   const [showUsersSettings, setShowUsersSettings] = useState(true);
 
   const setView = (action) => {
-    if (action == "DELETE") {
+    if (action === "DELETE") {
       setShowUsersSettings(true);
     } else {
       setShowUsersSettings(false);
     }
   };
   return (
+    // <Auth capability="delete all">
     <Section>
       <Button href="/">Return to Main View</Button>
       <SideBar setView={setView} />
       {showUsersSettings ? <DeleteUsers /> : <DeleteCommunities />}
     </Section>
+    // </Auth>
   );
 };
 

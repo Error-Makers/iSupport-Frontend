@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Community from "../components/Community";
 import  HeaderBar from "../components/Header";
+
 import Footer from "../components/Footer";
 
 const Wrapper = styled.div`
@@ -41,9 +42,7 @@ const StyledButton = styled.button`
   // }
 `;
 const Cards = styled.div`
-
   width: 20vw;
-  
 `;
 
 const Search = styled.input`
@@ -56,12 +55,51 @@ const Search = styled.input`
   position: absolute;
   left: 12%;
   top: 45%;
+
   z-index: 1;
 font-size:1.2rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
   
 `;
+
+const SearchButton = styled.button`
+hight:8%;
+`
+
+const Header1 = styled.div`
+  width: 100%;
+  height:100%;
+  background:#d1c4e9 ;
+  
+  // background-image:
+  //     linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
+     
+
+      // background-image:
+  //   linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+  //   url('https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFjdGl2aXR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1300&q=60');
+    object-fit: cover;
+    // background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const Image = styled.div`
+// background-image:
+//     linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
+
+// background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7))
+
+// color: #fff;
+position:absolute;
+ left:50%;
+top:20%;
+// z-index: 1;
+
+`
 
 let communites = [
   {
@@ -189,6 +227,7 @@ const Browse = (props) => {
       <Community />
 
       <Wrapper>
+
         <Parent style={{}}>
           {filterdCommunity.map((item, idx) => (
             <div key={idx}>

@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { device } from "../media";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { LoginContext } from "../context/auth/main";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -58,21 +59,21 @@ const LeaderboardMembers = styled.span`
 `;
 
 const API = process.env.REACT_APP_SERVER;
-const token = process.env.REACT_APP_TOKEN;
-const config = {
-  headers: { Authorization: `Bearer ${token}` },
-};
+
 const Leaderboard = (props) => {
+  let context = useContext(LoginContext);
+  const token = context.user.token;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
   let { communityId } = useParams();
   const [leaderboard, setLeaderboard] = useState([]);
 
-  // /community/:id/leaderboard  Leaderboard Information for a Community with :id=communityId
   async function getLeaderboard(communityId) {
     const response = await axios.get(
       API + `community/${communityId}/leaderboard`,
       config
     );
-    // console.log('response leaderboard', response);
 
     setLeaderboard(response.data);
   }

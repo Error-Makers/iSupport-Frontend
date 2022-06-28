@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
-import { device } from '../media';
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import React, { useState, useEffect, useContext } from "react";
+import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import { device } from "../media";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
-import axios from 'axios';
+import axios from "axios";
+import { LoginContext } from "../context/auth/main";
 
 const Wrapper = styled.div`
   background-color: white;
@@ -90,15 +91,16 @@ const PersonalProgress = () => {
   let { communityId } = useParams();
 
   const API = process.env.REACT_APP_API;
-  const token = process.env.REACT_APP_TOKEN;
-  // /community/:id/personalProgress
+  const context = useContext(LoginContext);
+  const token = context.user.token;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
   async function getPersonalProgress(communityId) {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
     const response = await axios.get(
       API + `/community/${communityId}/personalProgress`,
-      config,
+      config
     );
     // console.log('response personal progress', response);
     setPersonalProgress(response.data);
@@ -111,10 +113,10 @@ const PersonalProgress = () => {
     <Wrapper>
       {personalProgress && (
         <ProgressContainer>
-          <h4 style={{ color: '#673ab7' }}>My Progress</h4>
+          <h4 style={{ color: "#673ab7" }}>My Progress</h4>
           <ProgressBody>
             <ProgressCircle>
-              <div style={{ width: '150px', height: '150px' }}>
+              <div style={{ width: "150px", height: "150px" }}>
                 <CircularProgressbar
                   value={percentage}
                   text={`${percentage}%`}
@@ -123,7 +125,7 @@ const PersonalProgress = () => {
               <h5>Progress</h5>
             </ProgressCircle>
             <ProgressCircle>
-              <div style={{ width: '150px', height: '150px' }}>
+              <div style={{ width: "150px", height: "150px" }}>
                 <CircularProgressbar value={100} text={`${7} Days`} />
               </div>
               <h5>Streak</h5>

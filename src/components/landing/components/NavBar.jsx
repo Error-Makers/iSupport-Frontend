@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link } from 'react-scroll';
-import styled from 'styled-components';
-import { device } from '../../../media';
-import logo from '../../../assets/logo.png'
+import React, { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-scroll";
+import styled from "styled-components";
+import { device } from "../../../media";
+import logo from "../../../assets/logo.png";
 
 const Nav = styled.div`
   position: fixed;
@@ -25,7 +25,7 @@ const Logo = styled.h1`
   align-items: center;
   justify-content: left;
   gap: 10px;
-  color: #43618E;
+  color: #43618e;
 `;
 
 const Menu = styled.div`
@@ -70,7 +70,6 @@ const MenuItem = styled.li`
   line-height: 40px;
 `;
 
-
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -102,39 +101,38 @@ const NavBar = () => {
   return (
     <Nav>
       <Logo>
-        <img src={logo} alt='iSupport' width='45' height='33'/>
+        <img src={logo} alt="iSupport" width="45" height="33" />
         iSupport
       </Logo>
-      {/* menu */}
       <Menu>
         <li>
-          <Link to='hero' smooth={true} duration={500}>
+          <Link to="hero" smooth={true} duration={500}>
             Features
           </Link>
         </li>
         <li>
-          <Link to='about' smooth={true} duration={500}>
+          <Link to="about" smooth={true} duration={500}>
             Discover
           </Link>
         </li>
         <li>
-          <Link to='skills' smooth={true} duration={500}>
+          <Link to="skills" smooth={true} duration={500}>
             Stories
           </Link>
         </li>
         <li>
-          <Link to='work' smooth={true} duration={500}>
+          <Link to="work" smooth={true} duration={500}>
             Communities
           </Link>
         </li>
         <li>
-          <Link to='contact' smooth={true} duration={500}>
+          <Link to="contact" smooth={true} duration={500}>
             Blog
           </Link>
         </li>
-      <ButtonWrapper>
-        <NavButton>Login</NavButton>
-      </ButtonWrapper>
+        <ButtonWrapper>
+          <NavButton>Login</NavButton>
+        </ButtonWrapper>
       </Menu>
       {/* Hamburger */}
       <Hamburger onClick={handleClick}>
@@ -144,27 +142,27 @@ const NavBar = () => {
       {/* Mobile menu */}
       <MobileMenu>
         <MenuItem>
-          <Link to='hero' smooth={true} duration={500} onClick={handleClick}>
+          <Link to="hero" smooth={true} duration={500} onClick={handleClick}>
             Home
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to='about' smooth={true} duration={500} onClick={handleClick}>
+          <Link to="about" smooth={true} duration={500} onClick={handleClick}>
             About
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to='skills' smooth={true} duration={500} onClick={handleClick}>
+          <Link to="skills" smooth={true} duration={500} onClick={handleClick}>
             Skills
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to='work' smooth={true} duration={500} onClick={handleClick}>
+          <Link to="work" smooth={true} duration={500} onClick={handleClick}>
             Work
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to='contact' smooth={true} duration={500} onClick={handleClick}>
+          <Link to="contact" smooth={true} duration={500} onClick={handleClick}>
             Contact
           </Link>
         </MenuItem>
