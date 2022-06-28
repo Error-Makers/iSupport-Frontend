@@ -60,7 +60,7 @@ let community = {
   community_name: 'Football',
   aboutTheCommunity:
     'The football community. News, results and discussion about the beautiful game.',
-  url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
+  url: 'https://www.citypng.com/public/uploads/small/11639594314mvt074h0zt5cijvfdn7gqxbrya72bzqulyd5bhqhemb5iasfe7gbydmr2jxk8lcclcp6qrgaoiuiavf4sendwc3jvwadddqmli2d.png',
   createdAt: '2022-06-21T08:37:41.318Z',
 };
 
