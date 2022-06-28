@@ -72,10 +72,13 @@ const Leaderboard = (props) => {
       API + `community/${communityId}/leaderboard`,
       config
     );
-    // console.log('response leaderboard', response);
 
-    setLeaderboard(response.data);
-  }
+
+    setLeaderboard(response);
+  };
+
+
+
 
   useEffect(() => {
     getLeaderboard(communityId);
@@ -105,7 +108,8 @@ const Leaderboard = (props) => {
         ))}
       </LeaderboardContainer>
     </Wrapper>
-  );
+  )
 };
+
 
 export default Leaderboard;
