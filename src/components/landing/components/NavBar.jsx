@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 import styled from "styled-components";
@@ -10,7 +10,6 @@ const Nav = styled.div`
   top: 0;
   z-index: 10;
   background: transparent;
-  /* box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); */
   color: #000000;
   width: 100%;
   height: 10vh;
@@ -18,6 +17,15 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  &.active {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    box-shadow: 10px 5px 7px rgba(0, 0, 0, 0.2);
+    background-color: var(--Paper-Light);
+    height: 10vh;
+    width: 100%;
+  }
 `;
 
 const Logo = styled.h1`
@@ -97,9 +105,21 @@ const NavButton = styled.button`
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
+  const headerRef = useRef();
   const handleClick = () => setNav(!nav);
+  const handleNav = (e) => {
+    if (window.scrollY > 50) {
+      let array = [].slice.call(headerRef.current.classList);
+      if (array.indexOf("active") == -1) {
+        headerRef.current.classList.add("active");
+      }
+    } else {
+      headerRef.current.classList.remove("active");
+    }
+  };
+  window.addEventListener("scroll", handleNav);
   return (
-    <Nav>
+    <Nav ref={headerRef}>
       <Logo>
         <img src={logo} alt="iSupport" width="45" height="33" />
         iSupport
