@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../context/auth/main";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -65,9 +65,13 @@ const Icons = styled.div`
   gap: 10px;
 `;
 export default function Login(props) {
+  let navigate = useNavigate();
   const context = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  useEffect(() => {
+    if (context.loggedIn) navigate("/browse");
+  });
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -78,15 +82,13 @@ export default function Login(props) {
     setUsername(e.target.value);
   };
 
-  let navigate = useNavigate();
-
   return (
     <>
       {/* <BsFillArrowLeftCircleFill  onClick={() => navigate(-1)} style={{ fontSize: "30px" ,color: "#673AB7",marginLeft:'3%',position:'absolute',marginTop:'3%'}} /> */}
 
       <Parent>
         <Image>
-          <img alt=''/>
+          <img alt="" />
         </Image>
 
         <Child>
@@ -167,11 +169,10 @@ export default function Login(props) {
                 <AiFillGoogleCircle style={{ fontSize: "34px" }} />
               </a>
               <a>
-                
                 <FaFacebook style={{ fontSize: "30px" }} />
               </a>
             </Icons>
-           
+
             <Button
               variant="link"
               style={{

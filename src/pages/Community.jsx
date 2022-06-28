@@ -96,7 +96,7 @@ const Community = () => {
     <>
       <Wrapper>
         <HeaderBar />
-        <>
+        <Auth>
           <Chat onClick={handleShow}>
             <Logo />
           </Chat>
@@ -116,7 +116,7 @@ const Community = () => {
               <Posts />
             </Middle>
           </CommunityGrid>
-        </>
+        </Auth>
         <Footer />
       </Wrapper>
     </>
