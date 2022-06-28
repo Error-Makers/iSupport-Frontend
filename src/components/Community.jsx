@@ -36,15 +36,15 @@ const Community = () => {
           // marginLeft: "38%",
           backgroundColor: " #e91e63",
           borderColor: "transparent",
-          color:"white",
+          color: "white",
           width: "20%",
           height: "7vh",
           position: "absolute",
-          top: '32vh',
-          right:"10vw",
-          boxShadow: "10px 5px 7px rgba(0, 0, 0, 0.5);",
-          fontWeight:"600",
-          zIndex:"5"
+          top: "32vh",
+          right: "10vw",
+          boxShadow: "10px 5px 7px rgba(0, 0, 0, 0.5)",
+          fontWeight: "600",
+          zIndex: "5",
         }}
       >
         Create New Community
@@ -79,7 +79,6 @@ const Community = () => {
                 backgroundColor: "#673ab7",
                 borderColor: "#673ab7",
                 boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-                // color:'black'
               }}
             >
               Submit

@@ -1,10 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { device } from '../../../media';
+import React from "react";
+import styled from "styled-components";
+import { device } from "../../../media";
 
-import Asset7 from '../assets/Asset7.png';
-import Asset8 from '../assets/Asset8.png';
-import mask from '../assets/mask.png';
+import Asset7 from "../assets/Asset7.png";
+import Asset8 from "../assets/Asset8.png";
+import mask from "../assets/mask.png";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.section`
   width: 100%;
@@ -98,19 +99,21 @@ const ButtonWrapper = styled.div`
 `;
 
 const TopdCommunity = () => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper name="discover">
       {/* <img
         src={mask}
-        alt='xd'
+        alt="xd"
         style={{
-          position: 'absolute',
-          overflow: 'hidden',
-          left: '-200px',
-          top: '-50px',
-          height: '1100px',
-          width: '2500px',
-          zIndex: '-1',
+          position: "absolute",
+          overflow: "hidden",
+          left: "-200px",
+          top: "-50px",
+          height: "1100px",
+          width: "2500px",
+          zIndex: "-1",
         }}
       /> */}
       <Container>
@@ -118,37 +121,43 @@ const TopdCommunity = () => {
         <TopWrapper>
           <TopDiv>
             <TopImage
-              src='https://images.unsplash.com/photo-1558244402-286dd748c593?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-              alt='a'
+              src="https://images.unsplash.com/photo-1558244402-286dd748c593?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              alt="a"
             />
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               <TopName>Origami</TopName>
               <TopText>5k+ Members</TopText>
             </div>
           </TopDiv>
           <TopDiv>
             <TopImage
-              src='https://images.unsplash.com/photo-1631635490744-229e551afade?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-              alt='a'
+              src="https://images.unsplash.com/photo-1631635490744-229e551afade?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              alt="a"
             />
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               <TopName>Hiking</TopName>
               <TopText>10k+ Members</TopText>
             </div>
           </TopDiv>
           <TopDiv>
             <TopImage
-              src='https://images.unsplash.com/photo-1559570278-eb8d71d06403?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80'
-              alt='a'
+              src="https://images.unsplash.com/photo-1559570278-eb8d71d06403?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80"
+              alt="a"
             />
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               <TopName>Movies</TopName>
               <TopText>15k+ Members</TopText>
             </div>
           </TopDiv>
         </TopWrapper>
         <ButtonWrapper>
-          <TopButton>Explore All Communities</TopButton>
+          <TopButton
+            onClick={() => {
+              navigate("/auth");
+            }}
+          >
+            Explore All Communities
+          </TopButton>
         </ButtonWrapper>
       </Container>
     </Wrapper>

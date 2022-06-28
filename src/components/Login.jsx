@@ -48,6 +48,7 @@ const Text = styled.h1`
   color: var(--Primary-Main);
   text-align: center;
   font-weight: bold;
+  margin-bottom: 0.5em;
 `;
 
 const FormStyle = styled.div`
@@ -92,7 +93,7 @@ export default function Login(props) {
         </Image>
 
         <Child>
-          <Text>Welcome Back </Text>
+          <Text>Welcome back </Text>
           <form onSubmit={handleLogin}>
             <FormStyle>
               <InputGroup className="mb-3">
@@ -100,7 +101,7 @@ export default function Login(props) {
                 <Form.Control
                   onChange={handleChange}
                   value={username}
-                  placeholder="Username"
+                  placeholder="User Name"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
@@ -120,7 +121,7 @@ export default function Login(props) {
                 <Form.Control
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
-                  placeholder="password"
+                  placeholder="Password"
                   type="password"
                   name="password"
                 />

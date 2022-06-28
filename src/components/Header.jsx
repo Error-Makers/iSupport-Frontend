@@ -1,11 +1,12 @@
-import styled from 'styled-components';
-import { keyframes } from 'styled-components';
-import logo from '../assets/logo.png';
-import { useRef, useState, useContext } from 'react';
-import avatar from '../assets/avatar.png';
-import { LoginContext } from '../context/auth/main';
-import './landing/components/navbar.css'
 
+import styled from "styled-components";
+import { keyframes } from "styled-components";
+import logo from "../assets/logo.png";
+import { useRef, useState, useContext } from "react";
+import avatar from "../assets/avatar.png";
+import { LoginContext } from "../context/auth/main";
+import "./landing/components/navbar.css";
+import { useNavigate } from "react-router-dom";
 
 const MainHeader = styled.header`
   display: flex;
@@ -20,13 +21,14 @@ const Title = styled.h1`
   font-size: 2rem;
   font-weight: 400;
   margin-left: 1vw;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-family: "M PLUS Rounded 1c", sans-serif;
   color: var(--Primary-Dark);
 `;
 
 const Image = styled.img`
   width: 3.3rem;
   height: 2rem;
+  cursor: pointer;
 `;
 
 const Nav = styled.nav`
@@ -93,27 +95,6 @@ const LoginInfo = styled.div`
   width: 20vw;
   height: 10vh;
 `;
-const UserInfo = styled.div`
-  height: 10vh;
-  margin-left: 1vw;
-`;
-
-const UserName = styled.h5`
-  color: var(--Text-Primary);
-  font-size: 1rem;
-  text-align: center;
-  margin-top: 45%;
-`;
-
-const Triangle = styled.div`
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 10px 7.5px 0 7.5px;
-  border-color: var(--Primary-Main) transparent transparent transparent;
-  margin-left: 20px;
-  cursor: pointer;
-`;
 
 const OptionsDiv = styled.div`
   display: flex;
@@ -155,6 +136,8 @@ const Avatar = styled.img`
 `;
 
 function HeaderBar() {
+  const navigate = useNavigate();
+
   let context = useContext(LoginContext);
   const [show, setShow] = useState(false);
   const [isActive, setIsActive] = useState(false);
@@ -162,7 +145,7 @@ function HeaderBar() {
     setIsActive(e);
   };
 
-  window.addEventListener('scroll', function () {
+  window.addEventListener("scroll", function () {
     var winTop = window.scrollY;
     if (winTop >= 50) {
       handleScroll(true);
@@ -172,33 +155,40 @@ function HeaderBar() {
   });
   const loggedIn = context.loggedIn ? (
     <LoginInfo>
-      <Avatar src={avatar} alt='logo' onClick={() => setShow(!show)} />
+      <Avatar src={avatar} alt="logo" onClick={() => setShow(!show)} />
     </LoginInfo>
   ) : (
-    <StyledButton href='/auth'>Login</StyledButton>
+    <StyledButton href="/auth">Login</StyledButton>
   );
 
   return (
     <>
-      <MainHeader className={isActive ? 'header' : ''}>
-        <div style={{ display: 'flex' }}>
-          <Image src={logo} />
+      <MainHeader className={isActive ? "header" : ""}>
+        <div style={{ display: "flex" }}>
+          <Image
+            src={logo}
+            onClick={() => {
+              navigate("/");
+            }}
+          />
           <Title>iSupport</Title>
         </div>
         <Nav>
-          <Link href='/'>Home</Link>
-          <Link href='/browse'>Browse</Link>
-          <Link href='/profile'>Profile</Link>
+          <Link href="/">Home</Link>
+          <Link href="/browse">Browse</Link>
+          <Link href="/profile">Profile</Link>
         </Nav>
         {loggedIn}
       </MainHeader>
       {show && (
         <OptionsDiv>
-          <Option style={{ height: '15vh' }}>{context.user.username}</Option>
+          <Option style={{ height: "15vh" }}>{context.user.username}</Option>
           <Option>Profile Settings</Option>
           <Option
             onClick={() => {
               setShow(!show);
+              context.logout();
+              navigate("/");
             }}
           >
             Log out
