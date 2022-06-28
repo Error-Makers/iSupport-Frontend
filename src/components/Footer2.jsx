@@ -16,18 +16,18 @@ const Wrapper = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
+  background-color: #01002e;
 `;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  background-color: #01002E;
-  
+  padding-top: 20px;
+
   @media ${device.tablet} {
     flex-direction: row;
     min-height: 45vh;
-    
   }
 `;
 
@@ -138,8 +138,6 @@ const Footer2 = () => {
           <List>
             <ListItem>Home</ListItem>
             <ListItem>Sign Up</ListItem>
-            <ListItem>FAQ</ListItem>
-            <ListItem>Support Center</ListItem>
             <ListItem>My Account</ListItem>
             <ListItem>Blog</ListItem>
             <ListItem>Careers</ListItem>

@@ -7,6 +7,7 @@ import CommunityChat from '../components/CommunityChat';
 import styled from 'styled-components';
 import { device } from '../media';
 import ThisCommunity from '../components/ThisCommunity';
+import HeaderBar from '../components/Header';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -64,6 +65,7 @@ const Middle = styled.div`
 const Community = () => {
   return (
     <Wrapper>
+      <HeaderBar/>
       <HeadPic />
       <ThisCommunity />
       <CommunityGrid>

@@ -28,8 +28,9 @@ const CardBody = styled.div`
   text-align: left;
   gap: 20px;
 `;
-const CardTitle = styled.h4`
+const CardTitle = styled.h3`
   color: var(--Primary-Main);
+  font-weight: 700;
 `;
 const CardText = styled.div`
   color: var(--Text-Primary);

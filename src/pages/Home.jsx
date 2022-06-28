@@ -15,6 +15,7 @@ const Home = () => {
       <Hero />
       <Features />
       <FeaturedCommunity />
+      <Stories/>
       <Segment />
       <Footer2 />
     </>

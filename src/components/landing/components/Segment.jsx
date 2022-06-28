@@ -5,6 +5,8 @@ import { device } from '../../../media';
 const Wrapper = styled.div`
   min-height: 40vh;
   width: 100%;
+  display: flex;
+  align-items: center;
   background-image: url(https://wallpaperaccess.com/full/42271.jpg);
   background-position: 20%;
   background-size: cover;
@@ -15,26 +17,28 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  width: 90%;
-  max-width: 1300px;
+  width: 100%;
+  height: 40vh;
+  padding: 90px 0;
   display: flex;
-  height: 100%;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
   margin: auto;
-  @media ${device.tablet} {
-    width: 50%;
-  }
+  gap: 20px;
 `;
 
 const ButtonWrapper = styled.div`
-  padding-top: 180px;
   width: 100%;
   display: flex;
   justify-content: center;
   flex-flow: wrap;
   gap: 0.5rem;
+`;
+
+const Text = styled.h1`
+  color: white;
+  font-weight: 700;
 `;
 
 const HeroButton = styled.button`
@@ -59,8 +63,9 @@ const Segment = () => {
   return (
     <Wrapper>
       <Container>
+        <Text>Begin Your Adventure</Text>
         <ButtonWrapper>
-          <HeroButton>Get Started</HeroButton>
+          <HeroButton>Sign Up</HeroButton>
         </ButtonWrapper>
       </Container>
     </Wrapper>
