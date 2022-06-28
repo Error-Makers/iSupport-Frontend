@@ -1,19 +1,31 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import axios from "axios";
 import { LoginContext } from "../context/auth/main";
 
 const Community = () => {
-  const context = useContext(LoginContext);
-
   const [show, setShow] = useState(false);
+  const context = useContext(LoginContext);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [communityName, setCommunityName] = useState("");
   const [communityDescription, setCommunityDescription] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    context.createCommunity(communityName, communityDescription);
+    const API = process.env.REACT_APP_SERVER;
+    let token = context.user.token;
+    let communityData = {
+      community_name: communityName,
+      community_desc: communityDescription,
+    };
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await axios.post(`${API}community`, communityData, config);
+    console.log(response);
   };
   return (
     <div>
@@ -23,19 +35,17 @@ const Community = () => {
         style={{
           // marginLeft: "38%",
           backgroundColor: " #fff",
-           borderColor: "transparent",
-          width: '20%',
-          height: '10%',
+          borderColor: "transparent",
+          width: "20%",
+          height: "10%",
           position: "absolute",
-          top: '45%',
-          left: '67%',
-          boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
-          color:'black'
-
+          top: "45%",
+          left: "67%",
+          boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+          color: "black",
         }}
       >
         Create New Community
-
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -64,13 +74,12 @@ const Community = () => {
               variant="primary"
               type="submit"
               style={{
-                backgroundColor:'#673ab7',
-                borderColor:'#673ab7',
-                boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+                backgroundColor: "#673ab7",
+                borderColor: "#673ab7",
+                boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
                 // color:'black'
               }}
             >
-
               Submit
             </Button>
           </Form>
