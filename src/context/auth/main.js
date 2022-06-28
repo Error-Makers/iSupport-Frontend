@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import base64 from "base-64";
+import cookie from "react-cookies";
 import superagent from "superagent";
 import axios from "axios";
 import jwt from "jwt-decode";
-import cookie from "react-cookies";
 
 const API = process.env.REACT_APP_SERVER;
 export const LoginContext = React.createContext();
@@ -13,13 +13,14 @@ export default function LoginProvider(props) {
   const [user, setUser] = useState({});
 
   const login = async (username, password) => {
+    console.log(username, password);
     const response = await superagent
       .post(`${API}signin`)
       .set(
         "authorization",
         `Basic ${base64.encode(`${username}:${password}`)}`
       );
-
+    console.log(response);
     validateMyUser(response.body);
   };
 
@@ -64,8 +65,8 @@ export default function LoginProvider(props) {
     validateMyUser(myUserInfo);
   }, []);
 
-  const canDo = (capability) => {
-    return user?.actions?.includes(capability);
+  const canDo = (permission) => {
+    return user ? user.permissions.includes(permission) : false;
   };
 
   const state = {

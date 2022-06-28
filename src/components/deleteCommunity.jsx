@@ -76,7 +76,7 @@ const Button = styled.button`
 `;
 
 const DeleteCommunities = () => {
-  const API = "https://isupport-backend-super.herokuapp.com/";
+  const API = process.env.REACT_APP_SERVER;
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImthcmFtYWRtaW4iLCJpYXQiOjE2NTU5OTI4NTN9.cG5z0fjVCTJDRPORSeMxlZnLe88EAnC-W-CyKmHyU28";
   const config = {
