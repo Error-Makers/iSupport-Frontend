@@ -4,6 +4,7 @@ import logo from '../assets/logo.png';
 import { useRef, useState, useContext } from 'react';
 import avatar from '../assets/avatar.png';
 import { LoginContext } from '../context/auth/main';
+import { useNavigate } from 'react-router-dom';
 import './landing/components/navbar.css'
 
 
