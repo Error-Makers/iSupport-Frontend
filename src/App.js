@@ -10,7 +10,9 @@ import Community from "./pages/Community";
 import AuthComponent from "./pages/AuthLogin";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
-import Profile from "./components/Profile";
+import Profile from "./pages/Profile";
+
+
 
 import LoginProvider from "./context/auth/main";
 

@@ -113,7 +113,7 @@ const TopdCommunity = () => {
         }}
       />
       <Container>
-        <TopTitle>Featured Communities</TopTitle>
+        <TopTitle>Popular Communities</TopTitle>
         <TopWrapper>
           <TopDiv>
             <TopImage
@@ -126,14 +126,20 @@ const TopdCommunity = () => {
             </div>
           </TopDiv>
           <TopDiv>
-            <TopImage src='https://images.unsplash.com/photo-1631635490744-229e551afade?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' alt='a' />
+            <TopImage
+              src='https://images.unsplash.com/photo-1631635490744-229e551afade?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+              alt='a'
+            />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <TopName>Hiking</TopName>
               <TopText>10k+ Members</TopText>
             </div>
           </TopDiv>
           <TopDiv>
-            <TopImage src='https://images.unsplash.com/photo-1559570278-eb8d71d06403?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80' alt='a' />
+            <TopImage
+              src='https://images.unsplash.com/photo-1559570278-eb8d71d06403?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=626&q=80'
+              alt='a'
+            />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <TopName>Movies</TopName>
               <TopText>15k+ Members</TopText>

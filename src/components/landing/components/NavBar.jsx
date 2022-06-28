@@ -9,7 +9,7 @@ const Nav = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
-  background: #ffffff;
+  background: transparent;
   /* box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); */
   color: #000000;
   width: 100%;

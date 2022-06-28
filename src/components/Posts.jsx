@@ -27,8 +27,9 @@ function CreatePostModel(props) {
   return (
     <>
       <Button
-        variant="primary"
-        style={{ backgroundColor: "#EA1E63", border: "none" }}
+        variant='primary'
+        style={{ backgroundColor: '#EA1E63', border: 'none' }}
+
         onClick={handleShow}
       >
         Create Post
@@ -180,7 +181,8 @@ const Posts = (props) => {
   return (
     <>
       <PostsContainer>
-        <h4 style={{ color: "#673ab7" }}>Recent Posts</h4>
+        <h4 style={{ color: '#673ab7' }}>Recent Posts</h4>
+
         <PostList>
           {posts.map((item, idx) => (
             <PostCard key={idx}>
