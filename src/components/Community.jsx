@@ -20,11 +20,14 @@ const Community = () => {
         variant="primary"
         onClick={handleShow}
         style={{
-          marginLeft: "38%",
-          backgroundColor: " #e91e63",
-          borderColor: "#e91e63",
-          height: "7.5vh",
-          width: "15vw",
+          // marginLeft: "38%",
+          backgroundColor: " #673ab7",
+          borderColor: "#673ab7",
+          width: '40%',
+          height: '10%',
+          position: "absolute",
+          right: '58%',
+          top: '65%'
         }}
       >
         Create a Community
