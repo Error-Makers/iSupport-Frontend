@@ -20,7 +20,6 @@ export default function LoginProvider(props) {
         "authorization",
         `Basic ${base64.encode(`${username}:${password}`)}`
       );
-    console.log(response);
     validateMyUser(response.body);
   };
 

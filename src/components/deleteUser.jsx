@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { Table } from "react-bootstrap";
 
 const Section = styled.section`
   position: fixed;
@@ -44,17 +45,6 @@ const Index = styled.div`
     background: #e9e9e9;
   }
 `;
-const UserContainer = styled.div`
-  margin: 0 auto 1vh auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: var(--Paper-Main);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 80%;
-  height: 10vh;
-  border-radius: 7.5px;
-`;
 
 const Button = styled.button`
   background-color: var(--Accent-Main);
@@ -75,8 +65,16 @@ const Button = styled.button`
   }
 `;
 
+const Td = styled.td`
+  text-align: center;
+`;
+const Th = styled.td`
+  text-align: center;
+  font-weight: 600;
+`;
+
 const DeleteUsers = () => {
-  const API = "https://isupport-backend-super.herokuapp.com/";
+  const API = process.env.REACT_APP_SERVER;
   const indexRef = useRef();
   const [data, setData] = useState([]);
   const [raw, setRaw] = useState([]);
@@ -110,7 +108,6 @@ const DeleteUsers = () => {
   };
 
   const handleDelete = async (id) => {
-    // /user/:id
     let response = await axios.delete(`${API}user/${id}`);
     if (response.status == 201) fetchData();
   };
@@ -129,22 +126,35 @@ const DeleteUsers = () => {
   );
   let users = data.map((ele) => {
     return (
-      <UserContainer>
-        <span>User: {ele.username}</span>
-        <span>User Since: {new Date(ele.joidAt).toLocaleDateString()}</span>
-        <Button
-          onClick={() => {
-            handleDelete(ele.user_id);
-          }}
-        >
-          Ban User
-        </Button>
-      </UserContainer>
+      <tr>
+        <Td>{ele.user_id}</Td>
+        <Td>{ele.username}</Td>
+        <Td>{new Date(ele.joidAt).toLocaleDateString()}</Td>
+        <Td>
+          <Button
+            onClick={() => {
+              handleDelete(ele.user_id);
+            }}
+          >
+            Ban
+          </Button>
+        </Td>
+      </tr>
     );
   });
   return (
     <Section>
-      {users}
+      <Table>
+        <thead>
+          <tr>
+            <Th>ID</Th>
+            <Th>Username</Th>
+            <Th>Joined</Th>
+            <Th>Actions</Th>
+          </tr>
+        </thead>
+        <tbody>{users}</tbody>
+      </Table>
       <IndexList ref={indexRef} onClick={classesHandler}>
         {indices}
       </IndexList>
