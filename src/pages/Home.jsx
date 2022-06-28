@@ -13,10 +13,9 @@ const Home = () => {
     <>
       <Navbar />
       <Hero />
-      <Features />
-      <FeaturedCommunity />
-      <Stories/>
-      <Segment />
+      <Features  />
+      <FeaturedCommunity  />
+      <Segment   />
       <Footer2 />
     </>
   );

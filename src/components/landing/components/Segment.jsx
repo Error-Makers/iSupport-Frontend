@@ -63,7 +63,7 @@ const Segment = () => {
   return (
     <Wrapper>
       <Container>
-        <Text>Begin Your Adventure</Text>
+        <Text>Begin Your Journey</Text>
         <ButtonWrapper>
           <HeroButton>Sign Up</HeroButton>
         </ButtonWrapper>
@@ -73,3 +73,5 @@ const Segment = () => {
 };
 
 export default Segment;
+
+

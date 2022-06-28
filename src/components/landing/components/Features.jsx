@@ -35,7 +35,7 @@ const FeatureWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: baseline;
   margin: 0 auto;
   gap: 4rem;
   @media ${device.tablet} {
@@ -47,7 +47,7 @@ const FeatureDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 0 auto;
+  margin: auto;
   width: 100%;
   @media ${device.tablet} {
     width: 30%;
@@ -55,44 +55,44 @@ const FeatureDiv = styled.div`
 `;
 
 const FeatureImage = styled.img`
-  width: 65%;
-  height: 45%;
+  width: 250px;
+  height: 200px;
   margin: auto;
 `;
 const FeatureName = styled.span`
   font-weight: 600;
   font-size: 30px;
-  text-align: left;
+  text-align: center;
   color: var(--Accent-Dark);
 `;
 const FeatureText = styled.span`
-  text-align: left;
+  text-align: center;
   font-size: 20px;
   font-weight: 5 00;
 `;
 
 const Features = () => {
   return (
-    <Wrapper>
+    <Wrapper name="features" >
       <Container>
         <FeatureTitle>Features</FeatureTitle>
         <FeatureWrapper>
           <FeatureDiv>
             <FeatureImage src={Asset11} alt='a' />
             <FeatureName>Communities</FeatureName>
-            <FeatureText>connect, support, and compete with others</FeatureText>
+            <FeatureText>connect, support, and compete with others.</FeatureText>
           </FeatureDiv>
           <FeatureDiv>
             <FeatureImage src={Asset10} alt='a' />
             <FeatureName>Chat</FeatureName>
             <FeatureText>
-              Share precious moments with community members
+              Share precious moments with community members.
             </FeatureText>
           </FeatureDiv>
           <FeatureDiv>
             <FeatureImage src={Asset4} alt='a' />
             <FeatureName>Personal Progress</FeatureName>
-            <FeatureText>Track your progress and achive your goals</FeatureText>
+            <FeatureText>Track your progress and achive your goals.</FeatureText>
           </FeatureDiv>
         </FeatureWrapper>
       </Container>

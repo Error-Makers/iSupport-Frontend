@@ -34,15 +34,17 @@ const Community = () => {
         onClick={handleShow}
         style={{
           // marginLeft: "38%",
-          backgroundColor: " #fff",
+          backgroundColor: " #e91e63",
           borderColor: "transparent",
+          color:"white",
           width: "20%",
-          height: "10%",
+          height: "7vh",
           position: "absolute",
-          top: "45%",
-          left: "67%",
-          boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-          color: "black",
+          top: '32vh',
+          right:"10vw",
+          boxShadow: "10px 5px 7px rgba(0, 0, 0, 0.5);",
+          fontWeight:"600",
+          zIndex:"5"
         }}
       >
         Create New Community
@@ -55,7 +57,7 @@ const Community = () => {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Community Name </Form.Label>
+              <Form.Label>Community Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Community Name"

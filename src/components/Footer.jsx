@@ -30,6 +30,7 @@ const Left = styled.div`
   flex-direction: column;
   padding: 20px;
   margin-top: auto;
+  z-index: 2;
 `;
 
 const Logo = styled.h1`
@@ -63,6 +64,7 @@ const Center = styled.div`
   flex: 1;
   padding: 20px;
   margin-top: auto;
+  z-index: 2;
 `;
 
 const Title = styled.h3`
@@ -88,6 +90,7 @@ const Right = styled.div`
   padding: 20px;
   margin-top: auto;
   min-height: 273px;
+  z-index: 2;
 `;
 
 const ContactItem = styled.div`
@@ -108,7 +111,7 @@ const Footer = () => {
           left: "-200px",
           height: "500px",
           width: "2000px",
-          zIndex: "-10",
+          zIndex: "1",
         }}
       />
       <Left>
