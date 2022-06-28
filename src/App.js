@@ -11,20 +11,26 @@ import AuthComponent from "./pages/AuthLogin";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
+import LoginProvider from "./context/auth/main";
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="about" element={<AboutUs />} />
-        <Route path="contact" element={<ContactUs />} />
-        <Route path="browse" element={<Browse />} />
-        <Route path="community/:communityId" element={<Community />} />
-        <Route path="auth" element={<AuthComponent />} />
-        <Route path="admin" element={<Admin />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <LoginProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="about" element={<AboutUs />} />
+          <Route path="contact" element={<ContactUs />} />
+          <Route path="browse" element={<Browse />} />
+          <Route path="community/:communityId" element={<Community />} />
+          <Route path="auth" element={<AuthComponent />} />
+          <Route path="admin" element={<Admin />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </LoginProvider>
+
   );
 }
 

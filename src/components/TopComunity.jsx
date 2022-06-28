@@ -70,7 +70,7 @@ const CommunityMembers = styled.span`
   font-size: 18px;
 `;
 
-const TopComunity = () => {
+const TopComunity = (props) => {
   const [topCommuities, settopCommuities] = useState([]);
 
 
@@ -81,9 +81,9 @@ const TopComunity = () => {
       headers: { Authorization: `Bearer ${token}` }
     };
     const response = await axios.get(API + `/trending`, config);
-    console.log('response topCommuities', response);
+    // console.log('response topCommuities', response);
 
-    settopCommuities(response.data);
+    !props.communities ? settopCommuities(response.data) : settopCommuities(props.communities);
   }
 
   useEffect(() => {
@@ -93,14 +93,14 @@ const TopComunity = () => {
 
   return (
     <Wrapper>
-      <h1 style={{ color: '#673ab7' }}>Top Community</h1>
+      <h1 style={{ color: '#673ab7' }}>{!`${props.communities}` ? 'Top Community' : 'My Community'}</h1>
       <TopComunityContainer>
         {topCommuities.map((item, idx) => (
           <CommunityCard key={idx}>
             <CommunityImage src='https://images.unsplash.com/photo-1612810806695-30f7a8258391?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80' />
             <CommunityMembers>
               {/* 500+ Members */}
-              {`{item.noOfusers}+12`}
+              {`${item.noOfusers}`}
             </CommunityMembers>
             <CommunityTitle>
               {/* Quit Smoking */}

@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { device } from '../../../media';
+import React from "react";
+import styled from "styled-components";
+import { device } from "../../../media";
 
 const Wrapper = styled.div`
   min-height: 40vh;

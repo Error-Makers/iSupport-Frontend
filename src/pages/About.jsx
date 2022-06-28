@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Card from "react-bootstrap/Card";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import goodTeam from "../assets/team5.jpg";
+import goodTeam from "../assets/team2.jpg";
 
 const Cards = styled.div`
   margin: auto;
@@ -25,7 +25,8 @@ const CardImage = styled.img`
   height: auto;
   width: 100%;
   object-fit: "cover";
-  border-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
   // box-shadow: 0 5px 10px var(--Accent-Light);
 
   &:hover {
@@ -57,8 +58,7 @@ font-size: 1em;
 
 
 &:hover{
-  font-size: 2em;
-  color:var(--Accent-Light)
+
 }
 `;
 const SocialIcon = styled.div`
@@ -67,16 +67,12 @@ const SocialIcon = styled.div`
   border-radius: 50%;
   color: white;
   background-color: #${(props) => props.color};
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // margin-top: 20px;
 `;
 const HeroImg = styled.img`
   height: 40%;
   width: 55%;
-  margin-left: 35%;
-  margin-top: 10px;
+  // margin-left: 35%;
+  // margin-top: 10px;
 `;
 
 const Major = styled.p`
@@ -87,10 +83,10 @@ const Major = styled.p`
 `;
 const Button = styled.button`
 z-index: 1;
-margin-top: 27%;
-position: absolute;
-left: 5%;
-width: 10%;
+// margin-top: 27%;
+// position: absolute;
+// left: 5%;
+width: 20%;
 font-weight: bold;
 background: #673ab7;
 color:white;
@@ -106,10 +102,10 @@ const Title = styled.h1`
 `;
 const P = styled.p`
   z-index: 1;
-  margin-top: 17%;
-  position: absolute;
-  left: 5%;
-  width: 30%;
+  // margin-top: 17%;
+  // position: absolute;
+  // left: 5%;
+  // width: 30%;
   font-weight: bold;
   color: #673ab7;
 
@@ -118,13 +114,11 @@ const AboutUs = () => {
   return (
     <div>
       <Header />
-      <div style={{ width: "100%", height: "40%" }}>
+      <div style={{ width: "100%", height: "auto",display:'flex',justifyContent:'space-around',alignItems:'center'}}>
+        <div style={{width:'30%'}}>
         <h1
           style={{
             zIndex: "1",
-            marginTop: "12%",
-            position: "absolute",
-            left: "5%",
             fontWeight: "bold",
             color: "#673ab7",
           }}
@@ -137,6 +131,7 @@ const AboutUs = () => {
           meaningful digital products that connect with people, just like you.
         </P>
         <Button>Login</Button>
+        </div>
         <HeroImg src={goodTeam} alt="img" />
       </div>
       <Title>Meet our Team </Title>
