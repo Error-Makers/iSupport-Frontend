@@ -59,13 +59,13 @@ const Admin = () => {
     }
   };
   return (
-    <Auth capability="delete all">
-      <Section>
-        <Button href="/">Return to Main View</Button>
-        <SideBar setView={setView} />
-        {showUsersSettings ? <DeleteUsers /> : <DeleteCommunities />}
-      </Section>
-    </Auth>
+    // <Auth capability="delete all">
+    <Section>
+      <Button href="/">Return to Main View</Button>
+      <SideBar setView={setView} />
+      {showUsersSettings ? <DeleteUsers /> : <DeleteCommunities />}
+    </Section>
+    // </Auth>
   );
 };
 

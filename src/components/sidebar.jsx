@@ -76,6 +76,13 @@ function SideBar(props) {
       >
         Manage Communities
       </SubTabs>
+      <SubTabs
+        onClick={() => {
+          props.setView("COMMUNITY");
+        }}
+      >
+        Dashboard
+      </SubTabs>
     </>
   );
 

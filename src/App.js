@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 
 
+
 import LoginProvider from "./context/auth/main";
 
 function App() {
@@ -32,7 +33,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </LoginProvider>
-
   );
 }
 

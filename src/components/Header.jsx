@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 import logo from "../assets/logo.png";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import avatar from "../assets/avatar.png";
+import { LoginContext } from "../context/auth/main";
 
 const MainHeader = styled.header`
   display: flex;
@@ -17,7 +18,6 @@ const MainHeader = styled.header`
     z-index: 999;
     box-shadow: 10px 5px 7px rgba(0, 0, 0, 0.2);
   }
-  
 `;
 
 const Title = styled.h1`
@@ -155,10 +155,12 @@ const Avatar = styled.img`
   width: 3rem;
   height: 3rem;
   background: transparent;
+  cursor: pointer;
 `;
 
 function HeaderBar() {
   const headerRef = useRef();
+  let context = useContext(LoginContext);
   const [show, setShow] = useState(false);
   const handleNav = (e) => {
     if (window.scrollY > 50) {
@@ -168,13 +170,9 @@ function HeaderBar() {
     }
   };
   window.addEventListener("scroll", handleNav);
-  const loggedIn = false ? (
+  const loggedIn = context.loggedIn ? (
     <LoginInfo>
-      <Avatar src={avatar} alt="logo" />
-      <UserInfo>
-        <UserName>Karam</UserName>
-      </UserInfo>
-      <Triangle onClick={() => setShow(!show)} />
+      <Avatar src={avatar} alt="logo" onClick={() => setShow(!show)} />
     </LoginInfo>
   ) : (
     <StyledButton href="/auth">Login</StyledButton>
@@ -188,14 +186,15 @@ function HeaderBar() {
           <Title>iSupport</Title>
         </div>
         <Nav>
-          <Link href="/browse">Home</Link>
+          <Link href="/">Home</Link>
           <Link href="/browse">Browse</Link>
-          <Link href="/browse">Profile</Link>
+          <Link href="/profile">Profile</Link>
         </Nav>
         {loggedIn}
       </MainHeader>
       {show && (
         <OptionsDiv>
+          <Option style={{ height: "15vh" }}>{context.user.username}</Option>
           <Option>Profile Settings</Option>
           <Option
             onClick={() => {
