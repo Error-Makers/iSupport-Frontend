@@ -10,6 +10,7 @@ const Wrapper = styled.section`
   width: 100%;
   padding: 60px 20px;
   display: flex;
+  background-color: #edf7f9;
 `;
 
 const Container = styled.div`
@@ -73,14 +74,16 @@ const FeatureText = styled.span`
 
 const Features = () => {
   return (
-    <Wrapper name="features" >
+    <Wrapper name='features'>
       <Container>
         <FeatureTitle>Features</FeatureTitle>
         <FeatureWrapper>
           <FeatureDiv>
             <FeatureImage src={Asset11} alt='a' />
             <FeatureName>Communities</FeatureName>
-            <FeatureText>connect, support, and compete with others.</FeatureText>
+            <FeatureText>
+              connect, support, and compete with others.
+            </FeatureText>
           </FeatureDiv>
           <FeatureDiv>
             <FeatureImage src={Asset10} alt='a' />
@@ -92,7 +95,9 @@ const Features = () => {
           <FeatureDiv>
             <FeatureImage src={Asset4} alt='a' />
             <FeatureName>Personal Progress</FeatureName>
-            <FeatureText>Track your progress and achive your goals.</FeatureText>
+            <FeatureText>
+              Track your progress and achive your goals.
+            </FeatureText>
           </FeatureDiv>
         </FeatureWrapper>
       </Container>

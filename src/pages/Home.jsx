@@ -6,7 +6,6 @@ import Footer2 from '../components/Footer2';
 import Navbar from '../components/landing/components/NavBar';
 import Segment from '../components/landing/components/Segment';
 import Stories from '../components/landing/components/Stories';
-import styled from 'styled-components';
 
 const Home = () => {
   return (
@@ -15,6 +14,7 @@ const Home = () => {
       <Hero />
       <Features  />
       <FeaturedCommunity  />
+      <Stories/>
       <Segment   />
       <Footer2 />
     </>
