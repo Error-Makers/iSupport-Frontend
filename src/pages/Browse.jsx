@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Community from "../components/Community";
-import HeaderBar from "../components/Header";
+import NavBar from "../components/landing/components/NavBar";
 import Footer from "../components/Footer";
 
 const Parent = styled.div`
@@ -16,19 +16,19 @@ const Parent = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background: #e91e63;
+  background: #673ab7;
   color: white;
-  &:hover {
-    opacity: 0.8;
-    background: #e91e63;
-    color: white;
-  }
-  &:focus {
-    box-shadow: 0px 0px 5px #e91e63;
-  }
+  // &:hover {
+  //   opacity: 0.8;
+  //   background: #e91e63;
+  //   color: white;
+  // }
+  // &:focus {
+  //   box-shadow: 0px 0px 5px #e91e63;
+  // }
 `;
 const Cards = styled.div`
-  width: 90%;
+  width: 80%;
 `;
 
 const ControlsContainer = styled.div`
@@ -40,18 +40,58 @@ const ControlsContainer = styled.div`
 `;
 
 const Search = styled.input`
-  width: 35vw;
-  height: 7.5vh;
-  border: 1px solid var(--Accent-Main);
-  border-radius: 0.5rem;
+  border: 1px solid #fff;
+  background-color: #fff;
   outline: none;
-  padding: 1rem;
-  background: none;
+  width: 40%;
+  height: 10%;
+  border-radius:7px;
+  position: absolute;
+  left: 2%;
+  top: 54%;
   z-index: 1;
   &:focus {
     box-shadow: 0px 0px 5px #e91e63;
   }
 `;
+
+const SearchButton = styled.button`
+hight:8%;
+`
+
+const Header1 = styled.div`
+  width: 100%;
+  height:100%;
+  background:#d1c4e9 ;
+  
+  // background-image:
+  //     linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
+     
+
+      // background-image:
+  //   linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+  //   url('https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFjdGl2aXR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1300&q=60');
+    object-fit: cover;
+    // background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const Image = styled.div`
+// background-image:
+//     linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
+
+// background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7))
+
+// color: #fff;
+position:absolute;
+ left:50%;
+top:20%;
+// z-index: 1;
+
+`
 
 let communites = [
   {
@@ -151,8 +191,35 @@ const Browse = (props) => {
 
   return (
     <>
-      <HeaderBar />
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <NavBar />
+
+
+      <Header1>
+     
+        {/* <ControlsContainer> */}
+
+        <h1 style={{color: 'white',position:'absolute', left:'10%',top:'40%',zIndex:'1'}}>Let's find community for you </h1>
+       
+       <Image>
+       <img  src="https://camo.githubusercontent.com/26ce91f48dc31312752120630a6b1b87d85df38b26302d8f0c15d0dbfcb4771b/68747470733a2f2f6d656469612e6973746f636b70686f746f2e636f6d2f70686f746f732f72656d6f74652d776f726b2d616e642d73747564792d6f6e6c696e652d6170706c69636174696f6e2d616e642d736f6369616c2d6e6574776f726b732d666f722d636861742d706963747572652d6964313330323938363334323f6b3d3230266d3d3133303239383633343226733d3631327836313226773d3026683d6b4756656d755463376f4b62414a34664a335677592d726f314f50466c4b434e4a556b42736672724e4b343d"/>
+       </Image>
+        <Search
+          onChange={(e) => setState(e.target.value.substr(0, 20))}
+          type="text"
+          placeholder="Search"
+        />
+
+
+
+        <Community />
+        </Header1>
+        {/* <Button style={{position: "absolute",right:'31%',top:'55.5%',zIndex:'1',width:'120px',borderRadius:'7px',backgroundColor:'#673ab7',borderColor:'#673ab7'}}> Search</Button> */}
+       
+        {/* <Community /> */}
+        {/* </ControlsContainer> */}
+     
+      
+      {/* <div style={{ display: "flex", justifyContent: "center" }}>
         <ControlsContainer>
           <Search
             onChange={(e) => setState(e.target.value.substr(0, 20))}
@@ -161,7 +228,7 @@ const Browse = (props) => {
           />
           <Community />
         </ControlsContainer>
-      </div>
+      </div> */}
       <div>
         <Parent style={{}}>
           {filterdCommunity.map((item, idx) => (
@@ -187,8 +254,8 @@ const Browse = (props) => {
 
                     <Button
                       style={{
-                        background: "#e91e63",
-                        borderColor: "#e91e63",
+                        background: "#673ab7",
+                        borderColor: "#673ab7",
                       }}
                     >
                       Go to
