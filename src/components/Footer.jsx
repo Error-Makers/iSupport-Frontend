@@ -5,12 +5,12 @@ import {
   FaPinterest,
   FaMapMarkerAlt,
   FaTwitter,
-} from 'react-icons/fa';
-import { IoMailOutline } from 'react-icons/io5';
-import styled from 'styled-components';
-import { device } from '../media';
-import logo from '../assets/logo.png'
-import mask2 from '../assets/mask2.png';
+} from "react-icons/fa";
+import { IoMailOutline } from "react-icons/io5";
+import styled from "styled-components";
+import { device } from "../media";
+import logo from "../assets/logo.png";
+import mask2 from "../assets/mask2.png";
 
 const Container = styled.div`
   display: flex;
@@ -101,25 +101,19 @@ const Footer = () => {
     <Container>
       <img
         src={mask2}
-        alt='xd'
+        alt="xd"
         style={{
-          position: 'absolute',
-          bottom: '-150px',
-          left: '-200px',
-          height: '500px',
-          width: '2000px',
-          zIndex: '1',
+          position: "absolute",
+          bottom: "-150px",
+          left: "-200px",
+          height: "500px",
+          width: "2000px",
+          zIndex: "-10",
         }}
       />
       <Left>
         <Logo>
-          <img
-            src={logo}
-            alt='iSupport'
-            width='45'
-            height='33'
-          ></img>{' '}
-          iSupport
+          <img src={logo} alt="iSupport" width="45" height="33"></img> iSupport
         </Logo>
         <Desc>
           There are many variations of passages of Lorem Ipsum available, but
@@ -127,16 +121,16 @@ const Footer = () => {
           humour, or randomised words which don’t look even slightly believable.
         </Desc>
         <SocialContainer>
-          <SocialIcon color='3B5999'>
+          <SocialIcon color="3B5999">
             <FaFacebook />
           </SocialIcon>
-          <SocialIcon color='E4405F'>
+          <SocialIcon color="E4405F">
             <FaInstagram />
           </SocialIcon>
-          <SocialIcon color='55ACEE'>
+          <SocialIcon color="55ACEE">
             <FaTwitter />
           </SocialIcon>
-          <SocialIcon color='E60023'>
+          <SocialIcon color="E60023">
             <FaPinterest />
           </SocialIcon>
         </SocialContainer>
@@ -158,13 +152,13 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <FaMapMarkerAlt style={{ marginRight: '10px' }} /> Ammn , Jordan
+          <FaMapMarkerAlt style={{ marginRight: "10px" }} /> Amman , Jordan
         </ContactItem>
         <ContactItem>
-          <FaPhone style={{ marginRight: '10px' }} /> +1 234 56 78
+          <FaPhone style={{ marginRight: "10px" }} /> +962 799999999
         </ContactItem>
         <ContactItem>
-          <IoMailOutline style={{ marginRight: '10px' }} /> contact@iSupport.com
+          <IoMailOutline style={{ marginRight: "10px" }} /> contact@iSupport.com
         </ContactItem>
       </Right>
     </Container>
