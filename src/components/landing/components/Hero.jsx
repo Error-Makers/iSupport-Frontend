@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { device } from '../../../media';
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -69,6 +70,7 @@ const HeroButton = styled.button`
 `;
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper name="hero">
       <Container>
@@ -77,7 +79,9 @@ const Hero = () => {
           Build the best version of yourself by mastering your habits
         </HeroText>
         <ButtonWrapper>
-          <HeroButton>Get Started</HeroButton>
+          <HeroButton  onClick={() => {
+              navigate("/auth");
+            }}>Get Started</HeroButton>
         </ButtonWrapper>
       </Container>
     </Wrapper>

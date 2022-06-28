@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { device } from "../../../media";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   min-height: 40vh;
@@ -60,12 +61,19 @@ const HeroButton = styled.button`
 `;
 
 const Segment = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <Container>
         <Text>Begin Your Journey</Text>
         <ButtonWrapper>
-          <HeroButton>Sign Up</HeroButton>
+          <HeroButton
+            onClick={() => {
+              navigate("/auth");
+            }}
+          >
+            Sign Up
+          </HeroButton>
         </ButtonWrapper>
       </Container>
     </Wrapper>
@@ -73,5 +81,3 @@ const Segment = () => {
 };
 
 export default Segment;
-
-
