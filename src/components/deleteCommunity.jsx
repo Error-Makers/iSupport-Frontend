@@ -8,7 +8,6 @@ const Section = styled.section`
   position: fixed;
   top: 20vh;
   left: 30vw;
-  height: 65vh;
   min-width: 60vw;
   background-color: var(--Default-Light);
   border-radius: 20px;
@@ -25,6 +24,9 @@ const IndexList = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-top: 2vh;
+  position: fixed;
+  top: 75vh;
+  left: 45vw;
 `;
 
 const Index = styled.div`
@@ -126,6 +128,7 @@ const DeleteCommunities = () => {
   };
 
   const handleDelete = async (id) => {
+    console.log(id);
     let response = await axios.delete(`${API}community/${id}`, config);
     console.log(response);
     if (response.status == 201) fetchData();

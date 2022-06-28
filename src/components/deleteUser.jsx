@@ -7,8 +7,7 @@ const Section = styled.section`
   position: fixed;
   top: 20vh;
   left: 30vw;
-  height: 65vh;
-  width: 60vw;
+  min-width: 60vw;
   background-color: var(--Default-Light);
   border-radius: 20px;
   box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
@@ -24,6 +23,9 @@ const IndexList = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-top: 2vh;
+  position: fixed;
+  top: 75vh;
+  left: 45vw;
 `;
 
 const Index = styled.div`
