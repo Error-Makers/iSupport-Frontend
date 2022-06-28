@@ -1,9 +1,11 @@
-import styled from "styled-components";
-import { keyframes } from "styled-components";
-import logo from "../assets/logo.png";
-import { useRef, useState, useContext } from "react";
-import avatar from "../assets/avatar.png";
-import { LoginContext } from "../context/auth/main";
+import styled from 'styled-components';
+import { keyframes } from 'styled-components';
+import logo from '../assets/logo.png';
+import { useRef, useState, useContext } from 'react';
+import avatar from '../assets/avatar.png';
+import { LoginContext } from '../context/auth/main';
+import './landing/components/navbar.css'
+
 
 const MainHeader = styled.header`
   display: flex;
@@ -12,19 +14,13 @@ const MainHeader = styled.header`
   background-color: var(--Paper-Light);
   height: 10vh;
   width: 100%;
-  &.active {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    box-shadow: 10px 5px 7px rgba(0, 0, 0, 0.2);
-  }
 `;
 
 const Title = styled.h1`
   font-size: 2rem;
   font-weight: 400;
   margin-left: 1vw;
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   color: var(--Primary-Dark);
 `;
 
@@ -159,42 +155,46 @@ const Avatar = styled.img`
 `;
 
 function HeaderBar() {
-  const headerRef = useRef();
   let context = useContext(LoginContext);
   const [show, setShow] = useState(false);
-  const handleNav = (e) => {
-    if (window.scrollY > 50) {
-      headerRef.current.classList.add("active");
-    } else {
-      headerRef.current.classList.remove("active");
-    }
+  const [isActive, setIsActive] = useState(false);
+  const handleScroll = (e) => {
+    setIsActive(e);
   };
-  window.addEventListener("scroll", handleNav);
+
+  window.addEventListener('scroll', function () {
+    var winTop = window.scrollY;
+    if (winTop >= 50) {
+      handleScroll(true);
+    } else {
+      handleScroll(false);
+    }
+  });
   const loggedIn = context.loggedIn ? (
     <LoginInfo>
-      <Avatar src={avatar} alt="logo" onClick={() => setShow(!show)} />
+      <Avatar src={avatar} alt='logo' onClick={() => setShow(!show)} />
     </LoginInfo>
   ) : (
-    <StyledButton href="/auth">Login</StyledButton>
+    <StyledButton href='/auth'>Login</StyledButton>
   );
 
   return (
     <>
-      <MainHeader ref={headerRef}>
-        <div style={{ display: "flex" }}>
+      <MainHeader className={isActive ? 'header' : ''}>
+        <div style={{ display: 'flex' }}>
           <Image src={logo} />
           <Title>iSupport</Title>
         </div>
         <Nav>
-          <Link href="/">Home</Link>
-          <Link href="/browse">Browse</Link>
-          <Link href="/profile">Profile</Link>
+          <Link href='/'>Home</Link>
+          <Link href='/browse'>Browse</Link>
+          <Link href='/profile'>Profile</Link>
         </Nav>
         {loggedIn}
       </MainHeader>
       {show && (
         <OptionsDiv>
-          <Option style={{ height: "15vh" }}>{context.user.username}</Option>
+          <Option style={{ height: '15vh' }}>{context.user.username}</Option>
           <Option>Profile Settings</Option>
           <Option
             onClick={() => {

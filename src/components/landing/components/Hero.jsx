@@ -70,7 +70,7 @@ const HeroButton = styled.button`
 
 const Hero = () => {
   return (
-    <Wrapper>
+    <Wrapper name="hero">
       <Container>
         <MainHeading>Build Habits, Unlock your Potential</MainHeading>
         <HeroText>

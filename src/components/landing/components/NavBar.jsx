@@ -1,31 +1,22 @@
-import React, { useState, useRef } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-scroll";
-import styled from "styled-components";
-import { device } from "../../../media";
-import logo from "../../../assets/logo.png";
+import React, { useState, useRef } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link } from 'react-scroll';
+import styled from 'styled-components';
+import { device } from '../../../media';
+import logo from '../../../assets/logo.png';
+import './navbar.css';
 
 const Nav = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
   background: transparent;
-  color: #000000;
   width: 100%;
   height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  &.active {
-    position: fixed;
-    top: 0;
-    z-index: 999;
-    box-shadow: 10px 5px 7px rgba(0, 0, 0, 0.2);
-    background-color: var(--Paper-Light);
-    height: 10vh;
-    width: 100%;
-  }
 `;
 
 const Logo = styled.h1`
@@ -104,50 +95,45 @@ const NavButton = styled.button`
 `;
 
 const NavBar = () => {
-  const [nav, setNav] = useState(false);
-  const headerRef = useRef();
-  const handleClick = () => setNav(!nav);
-  const handleNav = (e) => {
-    if (window.scrollY > 50) {
-      let array = [].slice.call(headerRef.current.classList);
-      if (array.indexOf("active") == -1) {
-        headerRef.current.classList.add("active");
-      }
-    } else {
-      headerRef.current.classList.remove("active");
-    }
+  const [isActive, setIsActive] = useState(false);
+  const handleScroll = (e) => {
+    setIsActive(e);
   };
-  window.addEventListener("scroll", handleNav);
+
+  window.addEventListener('scroll', function () {
+    var winTop = window.scrollY;
+    if (winTop >= 50) {
+      handleScroll(true);
+    } else {
+      handleScroll(false);
+    }
+  });
+
   return (
-    <Nav ref={headerRef}>
+    <Nav className={isActive ? 'header' : ''}>
       <Logo>
-        <img src={logo} alt="iSupport" width="45" height="33" />
+        <img src={logo} alt='iSupport' width='45' height='33' />
         iSupport
       </Logo>
       <Menu>
         <li>
-          <Link to="hero" smooth={true} duration={500}>
+          <Link to='hero' smooth={true} duration={200}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to='features' smooth={true} duration={200}>
             Features
           </Link>
         </li>
         <li>
-          <Link to="about" smooth={true} duration={500}>
+          <Link to='discover' smooth={true} duration={200}>
             Discover
           </Link>
         </li>
         <li>
-          <Link to="skills" smooth={true} duration={500}>
+          <Link to='stories' smooth={true} duration={200}>
             Stories
-          </Link>
-        </li>
-        <li>
-          <Link to="work" smooth={true} duration={500}>
-            Communities
-          </Link>
-        </li>
-        <li>
-          <Link to="contact" smooth={true} duration={500}>
-            Blog
           </Link>
         </li>
         <ButtonWrapper>
@@ -155,35 +141,30 @@ const NavBar = () => {
         </ButtonWrapper>
       </Menu>
       {/* Hamburger */}
-      <Hamburger onClick={handleClick}>
+      <Hamburger>
         <FaBars />
       </Hamburger>
 
       {/* Mobile menu */}
       <MobileMenu>
         <MenuItem>
-          <Link to="hero" smooth={true} duration={500} onClick={handleClick}>
+          <Link to='hero' smooth={true} duration={200}>
             Home
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to="about" smooth={true} duration={500} onClick={handleClick}>
-            About
+          <Link to='features' smooth={true} duration={200}>
+            Features
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to="skills" smooth={true} duration={500} onClick={handleClick}>
-            Skills
+          <Link to='discover' smooth={true} duration={200}>
+            Discover
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to="work" smooth={true} duration={500} onClick={handleClick}>
-            Work
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link to="contact" smooth={true} duration={500} onClick={handleClick}>
-            Contact
+          <Link to='stories' smooth={true} duration={200}>
+            Stories
           </Link>
         </MenuItem>
       </MobileMenu>

@@ -1,21 +1,21 @@
-import { Card, Button, Form, InputGroup } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useState, useRef, useEffect, useContext } from "react";
-import styled from "styled-components";
-import Community from "../components/Community";
-import HeaderBar from "../components/Header";
-
-import Footer from "../components/Footer";
-import axios from "axios";
-import { LoginContext } from "../context/auth/main";
-import { useNavigate } from "react-router-dom";
+import { Card, Button, Form, InputGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useRef, useEffect, useContext } from 'react';
+import styled from 'styled-components';
+import Community from '../components/Community';
+import HeaderBar from '../components/Header';
+import { FaSearch } from 'react-icons/fa';
+import Footer from '../components/Footer';
+import axios from 'axios';
+import { LoginContext } from '../context/auth/main';
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #fdfbff;
-  padding-top: 50px;
+  padding-top: 90px;
 `;
 
 const Parent = styled.div`
@@ -27,22 +27,11 @@ const Parent = styled.div`
   margin: 0 auto;
   gap: 20px;
   width: 90vw;
-  // padding-left: 25px;
-  // padding-top: 10px;
-  // width:70vw;
 `;
 
 const StyledButton = styled.button`
   background: #673ab7;
   color: white;
-  // &:hover {
-  //   opacity: 0.8;
-  //   background: #e91e63;
-  //   color: white;
-  // }
-  // &:focus {
-  //   box-shadow: 0px 0px 5px #e91e63;
-  // }
 `;
 const Cards = styled.div`
   width: 20vw;
@@ -52,136 +41,56 @@ const Search = styled.input`
   border: 1px solid #fff;
   background-color: #fff;
   outline: none;
-  width: 54%;
-  height: 10%;
+  width: 54vw;
+  height: 10vh;
   border-radius: 7px;
   position: absolute;
   left: 12%;
-  top: 45%;
-
+  top: 31vh;
   z-index: 1;
   font-size: 1.2rem;
+  padding: 0 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `;
 
-const SearchButton = styled.button`
-  hight: 8%;
-`;
-
-const Header1 = styled.div`
-  width: 100%;
-  height: 100%;
-  background: #d1c4e9;
-
-  // background-image:
-  //     linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
-
-  // background-image:
-  //   linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
-  //   url('https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFjdGl2aXR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1300&q=60');
-  object-fit: cover;
-  // background-size: 100%;
+const SearchButton = styled.div`
+  margin: auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-`;
-
-const Image = styled.div`
-  // background-image:
-  //     linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
-
-  // background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7))
-
-  // color: #fff;
   position: absolute;
-  left: 50%;
-  top: 20%;
-  // z-index: 1;
+  right: 35%;
+  top: 33vh;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  background-color: var(--Primary-Dark);
+  cursor: pointer;
 `;
 
-let communites = [
-  {
-    community_id: 1,
-    community_name: "Football",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:41.318Z",
-  },
-  {
-    community_id: 2,
-    community_name: "smoke",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-  {
-    community_id: 3,
-    community_name: "healthy life style",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:41.318Z",
-  },
-  {
-    community_id: 4,
-    community_name: "entreatment",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-  {
-    community_id: 5,
-    community_name: "reading",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-  {
-    community_id: 6,
-    community_name: "food",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:41.318Z",
-  },
-  {
-    community_id: 7,
-    community_name: "sport",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-  {
-    community_id: 8,
-    community_name: "Study",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:24.349Z",
-  },
-
-  {
-    community_id: 9,
-    community_name: "healthy life style",
-    aboutTheCommunity:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit inventore neque eaque nam corrupti ratione exercitationem soluta expedita dolores iste praesentium, unde excepturi, architecto nesciunt provident tempora. Minus, iste fuga",
-    url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-    createdAt: "2022-06-21T08:37:41.318Z",
-  },
-];
+const HeadPic = styled.div`
+  height: 36vh;
+  width: 100%;
+  margin-bottom: auto;
+  display: flex;
+  position: relative;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(59, 173, 227, 1) 0%,
+    rgba(87, 111, 230, 1) 25%,
+    rgba(152, 68, 183, 1) 51%,
+    rgba(255, 53, 127, 1) 100%
+  );
+  background-size: 300% 300%;
+  animation: AnimateBG 10s ease infinite;
+`;
 
 const Browse = (props) => {
   const navigate = useNavigate();
   const context = useContext(LoginContext);
   // const [state, setState] = useState("");
   const API = process.env.REACT_APP_SERVER;
-
+  const searchRef = useRef();
   const [communites, setCommunitites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(8);
@@ -193,7 +102,6 @@ const Browse = (props) => {
       };
       let response = await axios.get(`${API}communities`, config);
       setCommunitites(response.data);
-      console.log(response);
     };
     fetchData();
   }, [context.user.token]);
@@ -223,64 +131,49 @@ const Browse = (props) => {
   return (
     <>
       <HeaderBar />
-
-      <img
-        style={{
-          height: "50vh",
-          width: "100%",
-          backgroundSize: "cover",
-          backgroundPositionY: "80%",
-        }}
-        src="https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGdyYWRpZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
-      />
-      <h1
-        style={{
-          position: "absolute",
-          top: "31%",
-          left: "8%",
-          color: "#fff",
-          fontSize: "30px",
-        }}
-      >
-        Let's find community for you
-      </h1>
-      <Search
-        onChange={(e) => filterData(e.target.value.substr(0, 20))}
-        type="text"
-        placeholder="  Search"
-      />
-
-      <Community />
-
+      <HeadPic>
+        <h1 style={{ fontWeight: '500', color: 'white', margin: 'auto' }}>
+          Let's find a community for you
+        </h1>
+        <Search ref={searchRef} type='text' placeholder='  Search' />
+        <SearchButton
+          onClick={(e) => {
+            filterData(searchRef.current.value.substr(0, 20));
+            console.log(searchRef.current.value);
+          }}
+        >
+          <FaSearch style={{ width: '30px', height: '30px', color: 'white' }} />
+        </SearchButton>
+        <Community />
+      </HeadPic>
       <Wrapper>
         <Parent style={{}}>
           {communites.map((item, idx) => (
             <div key={idx}>
               {/* <Image src={item.url} /> */}
-
               <Cards>
                 <Card>
                   <Card.Body
                     style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                     }}
                   >
                     {/* <Image src={item.url} /> */}
                     <Card.Img
-                      variant="top"
-                      src={"https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg"}
+                      variant='top'
+                      src={'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg'}
                     />
-                    <Card.Title style={{ color: "#311B92" }}>
+                    <Card.Title style={{ color: '#311B92' }}>
                       {item.community_name}
                     </Card.Title>
                     <Card.Text
                       style={{
-                        fontSize: "14px",
-                        fontWeight: "bold",
-                        color: "#303030",
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        color: '#303030',
                       }}
                     >
                       {item.aboutTheCommunity.slice(0, 30)}
@@ -288,8 +181,8 @@ const Browse = (props) => {
 
                     <Button
                       style={{
-                        background: "#673ab7",
-                        borderColor: "#673ab7",
+                        background: '#673ab7',
+                        borderColor: '#673ab7',
                       }}
                       onClick={() => {
                         navigate(`/community/${item.community_id}`);
@@ -306,23 +199,23 @@ const Browse = (props) => {
 
         <div
           style={{
-            width: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginLeft: "25%",
-            marginTop: "3%",
+            width: '50%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginLeft: '25%',
+            marginTop: '3%',
           }}
         >
-          <nav style={{ textAlign: "center" }}>
-            <ul className="pagination">
+          <nav style={{ textAlign: 'center' }}>
+            <ul className='pagination'>
               {pageNumbers.map((number) => {
                 return (
-                  <li key={number} className="page-item">
+                  <li key={number} className='page-item'>
                     <StyledButton
                       onClick={() => paginate(number)}
-                      href="!#"
-                      className="page-link"
+                      href='!#'
+                      className='page-link'
                     >
                       {number}
                     </StyledButton>

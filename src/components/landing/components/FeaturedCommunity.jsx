@@ -98,7 +98,7 @@ const ButtonWrapper = styled.div`
 
 const TopdCommunity = () => {
   return (
-    <Wrapper>
+    <Wrapper name="discover">
       <img
         src={mask}
         alt='xd'

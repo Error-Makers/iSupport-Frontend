@@ -37,7 +37,7 @@ const HeadPic = styled.div`
     rgba(255, 53, 127, 1) 100%
   );
   background-size: 300% 300%;
-  animation: AnimateBG 20s ease infinite;
+  animation: AnimateBG 10s ease infinite;
 `;
 
 const Info = styled.div`
