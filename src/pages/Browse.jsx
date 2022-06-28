@@ -3,16 +3,30 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Community from "../components/Community";
-import NavBar from "../components/landing/components/NavBar";
+import  HeaderBar from "../components/Header";
+
 import Footer from "../components/Footer";
+
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfbff;
+  padding-top: 50px;
+`;
 
 const Parent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-left: 25px;
-  padding-top: 10px;
+  flex-wrap: wrap;
+  margin:0 auto;
+  gap: 20px;
+  width:90vw;
+  // padding-left: 25px;
+  // padding-top: 10px;
+  // width:70vw;
 `;
 
 const StyledButton = styled.button`
@@ -28,31 +42,25 @@ const StyledButton = styled.button`
   // }
 `;
 const Cards = styled.div`
-  width: 80%;
-`;
-
-const ControlsContainer = styled.div`
-  width: 50vw;
-  display: flex;
-  justify-content: center;
-  margin: 5vh 0;
-  align-items: center;
+  width: 20vw;
 `;
 
 const Search = styled.input`
   border: 1px solid #fff;
   background-color: #fff;
   outline: none;
-  width: 40%;
+  width: 54%;
   height: 10%;
-  border-radius:7px;
+  border-radius: 7px;
   position: absolute;
-  left: 2%;
-  top: 54%;
+  left: 12%;
+  top: 45%;
+
   z-index: 1;
-  &:focus {
-    box-shadow: 0px 0px 5px #e91e63;
-  }
+font-size:1.2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  
 `;
 
 const SearchButton = styled.button`
@@ -172,7 +180,7 @@ let communites = [
 const Browse = (props) => {
   const [state, setState] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(4);
+  const [postsPerPage, setPostsPerPage] = useState(8);
 
   const idxOfLst = currentPage * postsPerPage;
   const idxOfFirst = idxOfLst - postsPerPage;
@@ -184,6 +192,7 @@ const Browse = (props) => {
       item.community_name.toLowerCase().indexOf(state.toLowerCase()) !== -1
     );
   });
+
   let pageNumbers = [];
   for (let i = 1; i < Math.ceil(communites.length / postsPerPage); i++) {
     pageNumbers.push(i);
@@ -191,52 +200,49 @@ const Browse = (props) => {
 
   return (
     <>
-      <NavBar />
+      <HeaderBar />
 
+      <img
+        style={{
+          height: "50vh",
+          width: "100%",
+          backgroundSize: "cover",
+          backgroundPositionY: "80%",
+        }}
+        src="https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGdyYWRpZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
+      />
+      <h1 style={{
+        position: 'absolute',
+        top: '31%',
+        left: '8%',
+        color: '#fff',
+        fontSize:'30px'
+      }}>Let's find community for you</h1>
+      <Search
+        onChange={(e) => setState(e.target.value.substr(0, 20))}
+        type="text"
+        placeholder="  Search"
+      />
 
-      <Header1>
-     
-        {/* <ControlsContainer> */}
+      <Community />
 
-        <h1 style={{color: 'white',position:'absolute', left:'10%',top:'40%',zIndex:'1'}}>Let's find community for you </h1>
-       
-       <Image>
-       <img  src="https://camo.githubusercontent.com/26ce91f48dc31312752120630a6b1b87d85df38b26302d8f0c15d0dbfcb4771b/68747470733a2f2f6d656469612e6973746f636b70686f746f2e636f6d2f70686f746f732f72656d6f74652d776f726b2d616e642d73747564792d6f6e6c696e652d6170706c69636174696f6e2d616e642d736f6369616c2d6e6574776f726b732d666f722d636861742d706963747572652d6964313330323938363334323f6b3d3230266d3d3133303239383633343226733d3631327836313226773d3026683d6b4756656d755463376f4b62414a34664a335677592d726f314f50466c4b434e4a556b42736672724e4b343d"/>
-       </Image>
-        <Search
-          onChange={(e) => setState(e.target.value.substr(0, 20))}
-          type="text"
-          placeholder="Search"
-        />
+      <Wrapper>
 
-
-
-        <Community />
-        </Header1>
-        {/* <Button style={{position: "absolute",right:'31%',top:'55.5%',zIndex:'1',width:'120px',borderRadius:'7px',backgroundColor:'#673ab7',borderColor:'#673ab7'}}> Search</Button> */}
-       
-        {/* <Community /> */}
-        {/* </ControlsContainer> */}
-     
-      
-      {/* <div style={{ display: "flex", justifyContent: "center" }}>
-        <ControlsContainer>
-          <Search
-            onChange={(e) => setState(e.target.value.substr(0, 20))}
-            type="text"
-            placeholder="Search"
-          />
-          <Community />
-        </ControlsContainer>
-      </div> */}
-      <div>
         <Parent style={{}}>
           {filterdCommunity.map((item, idx) => (
             <div key={idx}>
               {/* <Image src={item.url} /> */}
+
               <Cards>
                 <Card>
-                  <Card.Body style={{ textAlign: "left" }}>
+                  <Card.Body
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
                     {/* <Image src={item.url} /> */}
                     <Card.Img variant="top" src={item.url} />
                     <Card.Title style={{ color: "#311B92" }}>
@@ -295,7 +301,7 @@ const Browse = (props) => {
             </ul>
           </nav>
         </div>
-      </div>
+      </Wrapper>
       <Footer />
     </>
   );

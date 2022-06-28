@@ -22,13 +22,16 @@ const Community = () => {
         onClick={handleShow}
         style={{
           // marginLeft: "38%",
-          backgroundColor: " #673ab7",
-          borderColor: "#673ab7",
-          width: '40%',
+          backgroundColor: " #fff",
+           borderColor: "transparent",
+          width: '20%',
           height: '10%',
           position: "absolute",
-          right: '58%',
-          top: '65%'
+          top: '45%',
+          left: '67%',
+          boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+          color:'black'
+
         }}
       >
         Create New Community
@@ -57,7 +60,16 @@ const Community = () => {
                 onChange={(e) => setCommunityDescription(e.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button
+              variant="primary"
+              type="submit"
+              style={{
+                backgroundColor:'#673ab7',
+                borderColor:'#673ab7',
+                boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+                // color:'black'
+              }}
+            >
 
               Submit
             </Button>
