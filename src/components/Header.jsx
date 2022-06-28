@@ -1,8 +1,7 @@
-
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 import logo from "../assets/logo.png";
-import { useRef, useState, useContext } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import avatar from "../assets/avatar.png";
 import { LoginContext } from "../context/auth/main";
 import "./landing/components/navbar.css";
@@ -141,6 +140,7 @@ function HeaderBar() {
   let context = useContext(LoginContext);
   const [show, setShow] = useState(false);
   const [isActive, setIsActive] = useState(false);
+
   const handleScroll = (e) => {
     setIsActive(e);
   };

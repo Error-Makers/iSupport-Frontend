@@ -65,11 +65,21 @@ const Icons = styled.div`
   width: 100%;
   gap: 10px;
 `;
+
+const Para = styled.p`
+  color: red;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 export default function Login(props) {
   let navigate = useNavigate();
   const context = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [wrong, setWrong] = useState(false);
   useEffect(() => {
     if (context.loggedIn) navigate("/browse");
   });
@@ -77,6 +87,7 @@ export default function Login(props) {
   const handleLogin = (e) => {
     e.preventDefault();
     context.login(username, password);
+    if (!context.loggedIn) setWrong(true);
   };
 
   const handleChange = (e) => {
@@ -126,6 +137,11 @@ export default function Login(props) {
                   name="password"
                 />
               </InputGroup>
+              {wrong && (
+                <InputGroup>
+                  <Para>Your account or password is incorrect.</Para>
+                </InputGroup>
+              )}
             </FormStyle>
 
             <Button
@@ -185,7 +201,7 @@ export default function Login(props) {
               }}
               onClick={props.toggleShow}
             >
-              Don't have an account,{" "}
+              Don't have an account,
               <span style={{ fontWeight: "bold" }}>Click here</span>
             </Button>
           </form>

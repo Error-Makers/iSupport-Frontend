@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { LoginContext } from "../context/auth/main";
 
 import InputGroup from "react-bootstrap/InputGroup";
@@ -70,13 +70,31 @@ const Icons1 = styled.div`
   gap: 10px;
 `;
 
+const StyledButton = styled(Button)`
+  border-color: #673ab7;
+  background: #673ab7;
+  text-align: center;
+  height: 39px;
+  width: 100%;
+  &.invalid {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+`;
+
 export default function Signup(props) {
   const context = useContext(LoginContext);
+  const submitRef = useRef();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [Email, setEmail] = useState("");
+  const [validPassword, setValidPassowrd] = useState(true);
+  const [validEmail, setValidEmail] = useState(true);
+  const [validFirst, setValidFirst] = useState(true);
+  const [validLast, setValidLast] = useState(true);
+  const [validUser, setValidUser] = useState(true);
 
   const signupHandller = (e) => {
     // e.preventDefault();
@@ -84,6 +102,47 @@ export default function Signup(props) {
   };
   const handleChange = (e) => {
     setUsername(e.target.value);
+  };
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+    if (password.length < 8) {
+      setValidPassowrd(false);
+    } else {
+      setValidPassowrd(true);
+    }
+  };
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+    if (username.length == 0) {
+      setValidUser(false);
+    } else {
+      setValidUser(true);
+    }
+  };
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+    if (Email.length == 0) {
+      setValidEmail(false);
+    } else {
+      setValidEmail(true);
+    }
+  };
+  const handleFirstName = (e) => {
+    setFirstname(e.target.value);
+    if (firstname.length == 0) {
+      setValidFirst(false);
+    } else {
+      setValidFirst(true);
+    }
+  };
+  const handleLastName = (e) => {
+    setLastname(e.target.value);
+    if (lastname.length == 0) {
+      setValidLast(false);
+    } else {
+      setValidLast(true);
+    }
   };
 
   return (
@@ -102,14 +161,14 @@ export default function Signup(props) {
                 <Form.Control
                   aria-label="FirstName"
                   placeholder="First Name"
-                  onChange={(e) => setFirstname(e.target.value)}
+                  onChange={(e) => handleFirstName(e)}
                   value={firstname}
                   aria-describedby="basic-addon1"
                 />
 
                 <Form.Control
                   aria-label="LastName"
-                  onChange={(e) => setLastname(e.target.value)}
+                  onChange={(e) => handleLastName(e)}
                   value={lastname}
                   placeholder="Last Name"
                   style={{ marginLeft: "2%" }}
@@ -119,7 +178,7 @@ export default function Signup(props) {
               <InputGroup className="mb-3">
                 {/* <InputGroup.Text id="basic-addon1">username</InputGroup.Text> */}
                 <Form.Control
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => handleUsername(e)}
                   value={username}
                   placeholder="User Name"
                   aria-label="Username"
@@ -130,7 +189,7 @@ export default function Signup(props) {
               <InputGroup className="mb-3">
                 {/* <InputGroup.Text id="basic-addon1">Email</InputGroup.Text> */}
                 <Form.Control
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => handleEmail(e)}
                   value={Email}
                   placeholder="Email"
                   type="Email"
@@ -142,7 +201,7 @@ export default function Signup(props) {
               <InputGroup className="mb-3">
                 {/* <InputGroup.Text id="basic-addon1">password</InputGroup.Text> */}
                 <Form.Control
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => handlePassword(e)}
                   value={password}
                   placeholder="Password"
                   type="password"
@@ -152,25 +211,25 @@ export default function Signup(props) {
               </InputGroup>
             </FormStyle1>
 
-            <Button
+            <StyledButton
               type="submit"
-              style={{
-                borderColor: "#673ab7",
-                background: "#673ab7",
-                textAlign: "center",
-                height: "39px",
-                width: "100%",
-              }}
+              className={
+                validPassword &&
+                validEmail &&
+                validFirst &&
+                validLast &&
+                validUser
+                  ? ""
+                  : "invalid"
+              }
             >
               Sign up
-            </Button>
+            </StyledButton>
 
             <p
               style={{
                 textAlign: "center",
                 color: "gray",
-
-                textAlign: "center",
                 borderBottom: "1px solid #000",
                 lineHeight: "0.1em",
                 margin: "10px 0 20px",

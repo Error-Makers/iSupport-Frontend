@@ -9,6 +9,7 @@ const Community = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [communityName, setCommunityName] = useState("");
+  const [validCommunityName, setValidCommunityName] = useState(false);
   const [communityDescription, setCommunityDescription] = useState("");
 
   const handleSubmit = async (e) => {
