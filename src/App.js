@@ -10,6 +10,7 @@ import Community from "./pages/Community";
 import AuthComponent from "./pages/AuthLogin";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+
 import LoginProvider from "./context/auth/main";
 
 function App() {
@@ -24,10 +25,12 @@ function App() {
           <Route path="community/:communityId" element={<Community />} />
           <Route path="auth" element={<AuthComponent />} />
           <Route path="admin" element={<Admin />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </LoginProvider>
+
   );
 }
 
