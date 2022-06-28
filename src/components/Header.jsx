@@ -27,6 +27,7 @@ const Title = styled.h1`
 const Image = styled.img`
   width: 3.3rem;
   height: 2rem;
+  cursor: pointer;
 `;
 
 const Nav = styled.nav`
@@ -163,7 +164,12 @@ function HeaderBar() {
     <>
       <MainHeader className={isActive ? "header" : ""}>
         <div style={{ display: "flex" }}>
-          <Image src={logo} />
+          <Image
+            src={logo}
+            onClick={() => {
+              navigate("/");
+            }}
+          />
           <Title>iSupport</Title>
         </div>
         <Nav>

@@ -195,7 +195,7 @@ const Browse = (props) => {
       <HeaderBar />
       <HeadPic>
         <h1 style={{ fontWeight: "500", color: "white", margin: "auto" }}>
-          Let's find a community for you
+          Let's Find a Community For You
         </h1>
         <Search
           ref={searchRef}
