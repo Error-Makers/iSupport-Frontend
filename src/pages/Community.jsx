@@ -93,23 +93,6 @@ const Community = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-<<<<<<< HEAD
-    <Wrapper>
-      <HeaderBar/>
-      <HeadPic />
-      <ThisCommunity />
-      <CommunityGrid>
-        <Top>
-          <PersonalProgress />
-          <Leaderboard />
-        </Top>
-        <Middle>
-          <Posts />
-        </Middle>
-      </CommunityGrid>
-      <Footer />
-    </Wrapper>
-=======
     <>
       <Wrapper>
         <HeaderBar />
@@ -137,7 +120,6 @@ const Community = () => {
         <Footer />
       </Wrapper>
     </>
->>>>>>> a8b93e0d5b10021a932824e56f508d0090a92f35
   );
 };
 

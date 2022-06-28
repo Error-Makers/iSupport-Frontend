@@ -43,6 +43,7 @@ const Wrapper = styled.div`
   display: flex;
   z-index: 0;
   position: relative;
+  
   @media ${device.tablet} {
     width: 70%;
   }
