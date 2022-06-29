@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { device } from "../media";
 import logo from "../assets/logo.png";
 import mask2 from "../assets/mask2.png";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -70,6 +71,7 @@ const Center = styled.div`
 const Title = styled.h3`
   margin-bottom: 30px;
   color: var(--Primary-Main);
+  cursor: pointer;
 `;
 
 const List = styled.ul`
@@ -100,6 +102,7 @@ const ContactItem = styled.div`
 `;
 
 const Footer = () => {
+  let navigate = useNavigate();
   return (
     <Container>
       <img
@@ -119,9 +122,9 @@ const Footer = () => {
           <img src={logo} alt="iSupport" width="45" height="33"></img> iSupport
         </Logo>
         <Desc>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
+          At Isupport, we bring together groups of people who share the same
+          interests and habits in order to provide support to one another in the
+          same community.
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">
@@ -153,7 +156,13 @@ const Footer = () => {
         </List>
       </Center>
       <Right>
-        <Title>Contact</Title>
+        <Title
+          onClick={() => {
+            navigate("/contact");
+          }}
+        >
+          Contact
+        </Title>
         <ContactItem>
           <FaMapMarkerAlt style={{ marginRight: "10px" }} /> Amman , Jordan
         </ContactItem>
