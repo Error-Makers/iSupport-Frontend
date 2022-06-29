@@ -9,8 +9,8 @@ const Community = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [communityName, setCommunityName] = useState("");
-  const [validCommunityName, setValidCommunityName] = useState(false);
   const [communityDescription, setCommunityDescription] = useState("");
+  const [communityImage, setCommunityImage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +19,7 @@ const Community = () => {
     let communityData = {
       community_name: communityName,
       community_desc: communityDescription,
+      community_photo: communityImage,
     };
     const config = {
       headers: {
@@ -71,6 +72,14 @@ const Community = () => {
                 type="text"
                 placeholder="Tell us about your community"
                 onChange={(e) => setCommunityDescription(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicdescription">
+              <Form.Label>image</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Add image link here"
+                onChange={(e) => setCommunityImage(e.target.value)}
               />
             </Form.Group>
             <Button

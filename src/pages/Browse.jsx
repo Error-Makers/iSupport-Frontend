@@ -1,4 +1,4 @@
-import { Card, Button, Form, InputGroup } from "react-bootstrap";
+import { Card, Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useRef, useEffect, useContext } from "react";
 import styled from "styled-components";
@@ -29,7 +29,6 @@ const Parent = styled.div`
   width: 90vw;
 `;
 
-const StyledButton = styled.button``;
 const Cards = styled.div`
   width: 20vw;
 `;
@@ -211,10 +210,9 @@ const Browse = (props) => {
         <Community />
       </HeadPic>
       <Wrapper>
-        <Parent style={{}}>
+        <Parent>
           {data.map((item, idx) => (
             <div key={idx}>
-              {/* <Image src={item.url} /> */}
               <Cards>
                 <Card>
                   <Card.Body
@@ -225,11 +223,7 @@ const Browse = (props) => {
                       justifyContent: "center",
                     }}
                   >
-                    {/* <Image src={item.url} /> */}
-                    <Card.Img
-                      variant="top"
-                      src={"https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg"}
-                    />
+                    <Card.Img variant="top" src={item.community_photo} />
                     <Card.Title style={{ color: "#311B92" }}>
                       {item.community_name}
                     </Card.Title>
