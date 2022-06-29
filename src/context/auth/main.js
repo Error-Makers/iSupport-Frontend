@@ -31,6 +31,7 @@ export default function LoginProvider(props) {
       email: email,
     };
     const response = await axios.post(`${API}signup`, userData);
+    console.log(response);
   };
 
   const validateMyUser = (data) => {

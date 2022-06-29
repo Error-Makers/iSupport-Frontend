@@ -27,9 +27,8 @@ function CreatePostModel(props) {
   return (
     <>
       <Button
-        variant='primary'
-        style={{ backgroundColor: '#EA1E63', border: 'none' }}
-
+        variant="primary"
+        style={{ backgroundColor: "#EA1E63", border: "none" }}
         onClick={handleShow}
       >
         Create Post
@@ -135,8 +134,7 @@ const Posts = (props) => {
   };
 
   let getPosts = async (id) => {
-    const response = await axios.get(`${API}community/${id}/get-posts`, config);
-    // console.log('response', response);
+    const response = await axios.get(`${API}posts/community/${id}`, config);
     console.log(response.data);
     setPosts(response.data);
   };
@@ -174,6 +172,7 @@ const Posts = (props) => {
   async function deletePost(id, postId) {
     await axios.delete(`${API}community/${id}/delete-post/${postId} `);
     getPosts(communityId);
+    console.log(posts);
   }
   useEffect(() => {
     getPosts(communityId);
@@ -181,7 +180,7 @@ const Posts = (props) => {
   return (
     <>
       <PostsContainer>
-        <h4 style={{ color: '#673ab7' }}>Recent Posts</h4>
+        <h4 style={{ color: "#673ab7" }}>Recent Posts</h4>
 
         <PostList>
           {posts.map((item, idx) => (
@@ -195,8 +194,7 @@ const Posts = (props) => {
                     fontSize: "16px",
                   }}
                 >
-                  Post title
-                  {/* {item.post_title} */}
+                  {item.post_title}
                 </p>
 
                 <p
@@ -207,8 +205,7 @@ const Posts = (props) => {
                     fontSize: "16px",
                   }}
                 >
-                  {" "}
-                  Community
+                  {item.author_name}
                 </p>
               </PostHeader>
               <PostBody>
@@ -220,11 +217,7 @@ const Posts = (props) => {
               <PostFooter>
                 <p>
                   {/* 8:57 PM 6/19/2022 */}
-                  {item.createdAt}
-                </p>
-                <p>
-                  {/* moath abu hamad */}
-                  {item.author_name}
+                  {new Date(item.createdAt).toLocaleTimeString()}
                 </p>
               </PostFooter>
             </PostCard>

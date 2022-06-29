@@ -100,7 +100,6 @@ const DeleteCommunities = () => {
   const [paginationIndex, setPaginationIndex] = useState(0);
   const fetchData = async () => {
     let response = await axios.get(`${API}communities`, config);
-    console.log(response.data);
     setRaw(response.data);
     setData(response.data.slice(0, 5));
     setPaginationIndex(Math.floor(response.data.length / 5));

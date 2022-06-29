@@ -9,8 +9,11 @@ import { device } from "../media";
 import Auth from "../context/auth/auth";
 import ThisCommunity from "../components/ThisCommunity";
 import HeaderBar from "../components/Header";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { BsFillChatFill } from "react-icons/bs";
+import { useParams } from "react-router-dom";
+import { LoginContext } from "../context/auth/main";
+import axios from "axios";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -89,9 +92,24 @@ const Logo = styled(BsFillChatFill)`
 `;
 
 const Community = () => {
+  const API = process.env.REACT_APP_SERVER;
+  const context = useContext(LoginContext);
+  const config = {
+    headers: { Authorization: `Bearer ${context.user.token}` },
+  };
+
+  let { communityId } = useParams();
   const [show, setShow] = useState(false);
+  const [data, setData] = useState({});
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await axios.get(`${API}community/${communityId}`, config);
+      setData(response.data);
+    };
+    fetchData();
+  });
   return (
     <>
       <Wrapper>
@@ -105,8 +123,8 @@ const Community = () => {
             handleClose={handleClose}
             handleShow={handleShow}
           />
-          <HeadPic />
-          <ThisCommunity />
+          <HeadPic data={data} />
+          <ThisCommunity data={data} />
           <CommunityGrid>
             <Top>
               <PersonalProgress />

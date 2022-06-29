@@ -1,6 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styled from 'styled-components';
-import { device } from '../media';
+import "bootstrap/dist/css/bootstrap.min.css";
+import styled from "styled-components";
+import { device } from "../media";
 
 const Card = styled.div`
   margin: auto;
@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   display: flex;
   z-index: 0;
   position: relative;
-  
+
   @media ${device.tablet} {
     width: 70%;
   }
@@ -80,23 +80,23 @@ const Image = styled.img`
 
 let community = {
   community_id: 1,
-  community_name: 'Football',
+  community_name: "Football",
   aboutTheCommunity:
-    'The football community. News, results and discussion about the beautiful game.',
-  url: 'https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg',
-  createdAt: '2022-06-21T08:37:41.318Z',
+    "The football community. News, results and discussion about the beautiful game.",
+  url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
+  createdAt: "2022-06-21T08:37:41.318Z",
 };
 
-const ThisCommunity = () => {
+const ThisCommunity = (props) => {
   return (
     <Wrapper>
       <Card>
         <Image src={community.url} />
         <CardBody>
-          <CardTitle>{community.community_name}</CardTitle>
-          <CardText>{community.aboutTheCommunity}</CardText>
+          <CardTitle>{props.data.community_name}</CardTitle>
+          <CardText>{props.data.community_desc}</CardText>
         </CardBody>
-        <JoinButton>Join {community.community_name}</JoinButton>
+        {/* <JoinButton>Join {community.community_name}</JoinButton> */}
       </Card>
     </Wrapper>
   );

@@ -90,7 +90,7 @@ const PersonalProgress = () => {
   const [personalProgress, setPersonalProgress] = useState({});
   let { communityId } = useParams();
 
-  const API = process.env.REACT_APP_API;
+  const API = process.env.REACT_APP_SERVER;
   const context = useContext(LoginContext);
   const token = context.user.token;
   const config = {
@@ -99,7 +99,7 @@ const PersonalProgress = () => {
 
   async function getPersonalProgress(communityId) {
     const response = await axios.get(
-      API + `/community/${communityId}/personalProgress`,
+      API + `community/${communityId}/personalProgress`,
       config
     );
     // console.log('response personal progress', response);

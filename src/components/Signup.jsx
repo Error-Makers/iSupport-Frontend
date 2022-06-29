@@ -100,12 +100,10 @@ export default function Signup(props) {
     // e.preventDefault();
     context.signup(username, password, firstname, lastname, Email);
   };
-  const handleChange = (e) => {
-    setUsername(e.target.value);
-  };
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
+
     if (password.length < 8) {
       setValidPassowrd(false);
     } else {
