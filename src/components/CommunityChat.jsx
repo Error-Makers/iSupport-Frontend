@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
-import io from "socket.io-client";
-import Messages from "./message";
-import NewMessage from "./newMessage";
-import styled from "styled-components";
-import { device } from "../media";
-import { Modal, Button } from "react-bootstrap";
-
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
+import Messages from './message';
+import NewMessage from './newMessage';
+import styled from 'styled-components';
+import { device } from '../media';
+import { Modal, Button } from 'react-bootstrap';
+import './chat.css';
 const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-  padding-top: 15px;
-  @media ${device.tablet} {
-    box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
-  }
+  height: 100%;
+  width: 100%;
+  background-color: rgba(190, 132, 237, 0.1);
+  position: relative;
+
 `;
 
-const StyledModal = styled(Modal)`
-  border-radius: 20px;
+const ChatBanner = styled.div`
+  width: 100%;
+  height: 10px;
+  background-color: var(--Accent-Light);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
+
+const StyledModal = styled(Modal)``;
 
 function CommunityChat(props) {
   const API = process.env.REACT_APP_SERVER;
@@ -38,9 +43,11 @@ function CommunityChat(props) {
           show={props.show}
           onHide={props.handleClose}
           centered
-          size="md"
+          size='md'
+          backdrop={false}
         >
-          <ChatContainer className="chat-container">
+          <ChatBanner/>
+          <ChatContainer className='chat-container'>
             <Messages socket={socket} />
             <NewMessage socket={socket} />
           </ChatContainer>
