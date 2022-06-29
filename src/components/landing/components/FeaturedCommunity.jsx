@@ -9,10 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.section`
   width: 100%;
-  padding: 60px 20px;
+  padding: 20px 20px;
   display: flex;
   position: relative;
   overflow: hidden;
+  background-color: var(--Primary-Dark);
 `;
 
 const Container = styled.div`
@@ -30,7 +31,7 @@ const TopTitle = styled.h2`
   font-size: 45px;
   margin: auto;
   font-weight: 700;
-  color: var(--Primary-Dark);
+  color: white;
 `;
 
 const TopWrapper = styled.div`
@@ -63,7 +64,7 @@ const TopName = styled.span`
   font-weight: 600;
   font-size: 30px;
   text-align: center;
-  color: var(--Accent-Dark);
+  color: white;
 `;
 const TopText = styled.span`
   font-weight: 600;
@@ -73,7 +74,7 @@ const TopText = styled.span`
 `;
 
 const TopButton = styled.button`
-  background-color: var(--Secondary-Main);
+  background-color: var(--Accent-Main);
   padding: 14px 30px;
   border-radius: 30px;
   border-style: none;
@@ -102,7 +103,7 @@ const TopdCommunity = () => {
 
   return (
     <Wrapper name="discover">
-      <img
+      {/* <img
         src={mask}
         alt="xd"
         style={{
@@ -114,7 +115,7 @@ const TopdCommunity = () => {
           width: "2500px",
           zIndex: "-1",
         }}
-      />
+      /> */}
       <Container>
         <TopTitle>Popular Communities</TopTitle>
         <TopWrapper>
@@ -164,3 +165,8 @@ const TopdCommunity = () => {
 };
 
 export default TopdCommunity;
+
+
+
+
+

@@ -23,8 +23,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  padding-top: 20px;
-
+  padding: 20px 20px 0 20px;
   @media ${device.tablet} {
     flex-direction: row;
     min-height: 45vh;

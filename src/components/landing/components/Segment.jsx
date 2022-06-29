@@ -54,9 +54,8 @@ const HeroButton = styled.button`
   font-weight: 500;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.05, 0.03, 0.35, 1);
-  &:active,
   &:hover {
-    scale: 5;
+    scale: 1.2;
   }
 `;
 

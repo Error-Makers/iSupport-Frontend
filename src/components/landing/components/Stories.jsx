@@ -1,206 +1,150 @@
-import React, { useState } from 'react';
-import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
-import { IconContext } from 'react-icons';
+import React from 'react';
 import styled from 'styled-components';
-import Slider from 'react-slick';
+import { device } from '../../../media';
 
-const Heading = styled.h2`
-  font-size: clamp(1.3rem, 13vw, 3.1rem);
-  color: #403ae3;
-  letter-spacing: 0.4rem;
-  line-height: 1.06;
+const Wrapper = styled.div`
+  width: 100%;
+  padding: 90px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e7f7f9;
+  gap: 50px;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  @media ${device.tablet} {
+    width: 50%;
+    gap: 0px;
+    flex-direction: row;
+  }
+`;
+const SubContainer = styled.div`
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+  padding: 0 10px;
+  flex-direction: column;
+  width: 100%;
+  @media ${device.tablet} {
+    flex-direction: row;
+    padding: 0 50px;
+  }
+`;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  width: 350px;
+  background-color: #fff;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0),
+    rgba(0, 188, 211, 1)
+  );
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 2px black;
+  border-radius: 10px;
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+  margin: 0 auto;
+  box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.1);
+  &:hover {
+    transform: translate3d(-40px, -40px, 0px);
+    transition: 0.4s ease-out;
+  }
+  @media ${device.tablet} {
+    margin-left: -50px;
+  }
+`;
+
+const Title = styled.h2`
   text-align: center;
+  font-size: 45px;
+  margin: auto;
+  font-weight: 700;
+  color: var(--Primary-Dark);
+`;
+
+const Bold = styled.p`
+  width: 100%;
+  font-size: 42px;
+  font-weight: bold;
+  color: var(--Primary-Dark);
+  text-align: center;
+  @media ${device.tablet} {
+    width: 33%;
+  }
 `;
 
 const TextWrapper = styled.span`
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 0.4rem 0 0;
-`;
-const Section = styled.section`
-  padding: 50px 70px;
-  margin: auto;
-  background: white;
-  max-width: 1280px;
-  height: auto;
-  max-height: auto;
-`;
-
-const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem;
-  width: auto;
-  min-width: auto;
-  max-width: auto;
-  height: auto;
-  max-height: auto;
-  min-height: auto;
-  flex-wrap: wrap;
+  font-weight: 600;
+  padding: 5px 10px;
+  text-align: left;
+  color: #3a3a3a;
+  font-size: 0.9rem;
 `;
 
 const CarouselImage = styled.img`
   width: 100%;
-  height: 300px;
+  height: 66%;
   border-radius: 10px 10px 0 0;
   object-fit: cover;
-  vertical-align: middle;
+  object-position: 0 15%;
 `;
-
-const ImageWrapper = styled.div`
-  width: 90%;
-  display: flex !important;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  outline: none;
-  height: 430px;
-
-  @media screen and (min-width: 440px) {
-    border: 1px solid #bebebe;
-  }
-`;
-
-const ButtonContainer = styled(Row)`
-  & svg {
-    margin: 0 1rem;
-    cursor: pointer;
-  }
-
-  & svg:hover {
-    opacity: 0.7;
-    transition: opacity 0.2s ease-in;
-  }
-  @media screen and (max-width: 960px) {
-    margin: 0 auto;
-  }
-`;
-
-const ReviewSlider = styled(Slider)`
-  width: 100%;
-
-  .slick-track {
-    display: flex;
-    padding: 30px;
-    gap: 3rem;
-  }
-  .slick-slide {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1;
-    outline: none;
-  }
-
-  .slick-list {
-    overflow: hidden;
-  }
-`;
-
-const CardButton = styled.button`
-  background-color: #1d609c;
-  font-size: 1.3rem;
-  padding: 5px 10px;
-  color: #fff;
-  cursor: pointer;
-  width: 100%;
-  font-weight: 600;
-  margin: auto 0 0 0;
-  border: none;
-  border-radius: 0 0 10px 10px;
-
-  &:hover {
-    background-color: #112f4a;
-    transition: background-color 0.2s ease-in;
-  }
-`;
-
 
 const data = [
   {
-    title: 'What our clients say',
+    title: 'Jane Doe',
     description:
-      'Our clients happily stay with our services for more several years now. See real reviews from our clients.',
-    image: 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?cs=srgb&dl=pexels-manuel-geissinger-325229.jpg&fm=jpg',
-  },
-  {
-    title: 'Our security ',
-    description:
-      'Learn more about our security systems to make sure your data is always safe',
-    image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?cs=srgb&dl=pexels-manuel-geissinger-325229.jpg&fm=jpg",
-  },
-  {
-    title: 'Our Team',
-    description:
-      'Our team consists of the best experts in the industry, learn about them',
-    image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?cs=srgb&dl=pexels-manuel-geissinger-325229.jpg&fm=jpg",
-  },
-  {
-    title: 'Our servers',
-    description: 'Find more about hardware and software used for your service',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
     image:
-      'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?cs=srgb&dl=pexels-manuel-geissinger-325229.jpg&fm=jpg',
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
   },
   {
-    title: 'Our top clients',
-    description: 'We have provided services to top clients in tech industry',
+    title: 'Jane Doe',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
     image:
-      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+  },
+  {
+    title: 'Jane Doe',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+    image:
+      'https://images.unsplash.com/photo-1619016984954-70f7f40d1f41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
   },
 ];
 
-const sliderSettings = {
-  arrows: false,
-  slidesToShow: 3,
-  focusOnselect: true,
-  accessability: false,
-  responsive: [
-    {
-      breakpoint: 1280,
-      settings: {
-        slidesToShow: 2,
-      },
-    },
-
-    {
-      breakpoint: 900,
-      settings: {
-        slidesToShow: 1,
-      },
-    },
-  ],
-};
-
-const Carousel = () => {
-  const [sliderRef, setSliderRef] = useState(null);
-
+const Stories = () => {
   return (
-    <Section>
-      <Row>
-        <Heading>
-          Find more about us
-        </Heading>
-      </Row>
-      <ReviewSlider {...sliderSettings} ref={setSliderRef}>
-        {data.map((el, index) => (
-          <ImageWrapper key={index}>
-            <CarouselImage src={el.image} />
-            <TextWrapper>{el.title}</TextWrapper> 
-            <TextWrapper size='0.9rem' margin='0.7rem' color='#4f4f4f'>
-              {el.description}
-            </TextWrapper>
-            <CardButton>Learn More</CardButton>
-          </ImageWrapper>
-        ))}
-      </ReviewSlider>
-        <ButtonContainer>
-          <IconContext.Provider value={{ size: '3rem', color: '#1d609c' }}>
-            <FaArrowCircleLeft onClick={sliderRef?.slickPrev} />
-            <FaArrowCircleRight onClick={sliderRef?.slickNext} />
-          </IconContext.Provider>
-        </ButtonContainer>
-    </Section>
+    <Wrapper>
+      <Title>Stories</Title>
+      <SubContainer>
+        <Bold>Join others and write your own story</Bold>
+        <Container>
+          {data.map((el, index) => (
+            <Card key={index}>
+              <CarouselImage src={el.image} />
+              <TextWrapper>{el.title}</TextWrapper>
+              <TextWrapper>{el.description}</TextWrapper>
+            </Card>
+          ))}
+        </Container>
+      </SubContainer>
+    </Wrapper>
   );
 };
 
-export default Carousel;
+export default Stories;
