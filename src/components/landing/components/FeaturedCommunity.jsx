@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.section`
   width: 100%;
-  padding: 30px 20px;
+  padding: 20px 20px;
   display: flex;
   position: relative;
   overflow: hidden;
