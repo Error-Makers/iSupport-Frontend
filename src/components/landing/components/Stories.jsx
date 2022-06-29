@@ -9,8 +9,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #e7f7f9;
+  background-color: #f1f7f8;
   gap: 50px;
+  min-height: 82vh;
 `;
 
 const Container = styled.div`
@@ -44,11 +45,11 @@ const Card = styled.div`
   flex-direction: column;
   height: 350px;
   width: 350px;
-  background-color: #fff;
+  /* background-color: rgba(103, 58, 183, 1); */
   background-image: linear-gradient(
     to bottom,
-    rgba(255, 0, 0, 0),
-    rgba(0, 188, 211, 1)
+    rgba(183, 58, 181, 0.2),
+    rgba(19, 11, 55, 1)
   );
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(12px);
@@ -84,6 +85,7 @@ const Bold = styled.p`
   text-align: center;
   @media ${device.tablet} {
     width: 33%;
+    text-align: Left;
   }
 `;
 
@@ -91,7 +93,7 @@ const TextWrapper = styled.span`
   font-weight: 600;
   padding: 5px 10px;
   text-align: left;
-  color: #3a3a3a;
+  color: #fefefe;
   font-size: 0.9rem;
 `;
 
@@ -129,7 +131,7 @@ const data = [
 
 const Stories = () => {
   return (
-    <Wrapper>
+    <Wrapper name='stories'>
       <Title>Stories</Title>
       <SubContainer>
         <Bold>Join others and write your own story</Bold>

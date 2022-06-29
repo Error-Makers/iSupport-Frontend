@@ -14,22 +14,21 @@ const Wrapper = styled.section`
   position: relative;
   overflow: hidden;
   background-color: var(--Primary-Dark);
+  min-height: 82vh;
 `;
 
 const Container = styled.div`
   width: 100%;
-  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 20px;
-  gap: 50px;
+  gap: 30px;
 `;
 
-const TopTitle = styled.h2`
+const TopTitle = styled.span`
   text-align: center;
   font-size: 45px;
-  margin: auto;
   font-weight: 700;
   color: white;
 `;
@@ -43,7 +42,6 @@ const TopWrapper = styled.div`
   @media ${device.tablet} {
     width: 90%;
     flex-direction: row;
-    gap: 40px;
   }
 `;
 
@@ -57,7 +55,7 @@ const TopDiv = styled.div`
 
 const TopImage = styled.img`
   width: 220px;
-  height: 300px;
+  height: 280px;
   border-radius: 10px;
 `;
 const TopName = styled.span`
@@ -103,19 +101,6 @@ const TopdCommunity = () => {
 
   return (
     <Wrapper name="discover">
-      {/* <img
-        src={mask}
-        alt="xd"
-        style={{
-          position: "absolute",
-          overflow: "hidden",
-          left: "-200px",
-          top: "-50px",
-          height: "1100px",
-          width: "2500px",
-          zIndex: "-1",
-        }}
-      /> */}
       <Container>
         <TopTitle>Popular Communities</TopTitle>
         <TopWrapper>
