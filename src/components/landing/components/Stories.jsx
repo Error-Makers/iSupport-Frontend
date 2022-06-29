@@ -109,21 +109,21 @@ const data = [
   {
     title: 'Jane Doe',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+      'This app helped me meet a lot of people which excites to learn a new thing every day.',
     image:
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
   },
   {
     title: 'Jane Doe',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+      'iSupport helped me learn origami from people who have experience with it.',
     image:
       'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
   },
   {
     title: 'Jane Doe',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+      'During the pandemic i formed many new friendships, They helped me get out of the distress I was facing',
     image:
       'https://images.unsplash.com/photo-1619016984954-70f7f40d1f41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
   },
@@ -134,7 +134,7 @@ const Stories = () => {
     <Wrapper name='stories'>
       <Title>Stories</Title>
       <SubContainer>
-        <Bold>Join others and write your own story</Bold>
+        <Bold>Join others and write your own story.</Bold>
         <Container>
           {data.map((el, index) => (
             <Card key={index}>
