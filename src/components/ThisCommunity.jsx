@@ -1,6 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import { device } from "../media";
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { LoginContext } from "../context/auth/main";
+import { useParams } from "react-router-dom";
 
 const Card = styled.div`
   margin: auto;
@@ -64,6 +68,9 @@ const JoinButton = styled.button`
   font-weight: 500;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.05, 0.03, 0.35, 1);
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
   &:active,
   &:hover {
     opacity: 0.7;
@@ -88,6 +95,39 @@ let community = {
 };
 
 const ThisCommunity = (props) => {
+  let { communityId } = useParams();
+  const API = process.env.REACT_APP_SERVER;
+  let context = useContext(LoginContext);
+  const token = context.user.token;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const [showJoin, setShowJoin] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      let posts = await axios.get(
+        `${API}posts/community/${communityId}`,
+        config
+      );
+      let users = posts.data.map((ele) => ele.author_name);
+      users.indexOf(context.user.username) >= 0
+        ? setShowJoin(false)
+        : setShowJoin(true);
+    };
+    fetchData(context.user.username);
+  }, []);
+  const handleJoin = async () => {
+    let body = {
+      post_title: "New User",
+      post_body: `${context.user.username} has joined the community`,
+    };
+    await axios.post(
+      `${API}community/${communityId}/create-post`,
+      body,
+      config
+    );
+    setShowJoin(false);
+  };
   return (
     <Wrapper>
       <Card>
@@ -96,7 +136,11 @@ const ThisCommunity = (props) => {
           <CardTitle>{props.data.community_name}</CardTitle>
           <CardText>{props.data.community_desc}</CardText>
         </CardBody>
-        {/* <JoinButton>Join {community.community_name}</JoinButton> */}
+        {showJoin && (
+          <JoinButton onClick={handleJoin}>
+            Join {props.data.community_name}
+          </JoinButton>
+        )}
       </Card>
     </Wrapper>
   );

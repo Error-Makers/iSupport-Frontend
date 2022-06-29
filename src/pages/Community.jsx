@@ -110,6 +110,7 @@ const Community = () => {
     };
     fetchData();
   });
+
   return (
     <>
       <Wrapper>

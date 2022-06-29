@@ -102,13 +102,11 @@ const PersonalProgress = () => {
       API + `community/${communityId}/personalProgress`,
       config
     );
-    // console.log('response personal progress', response);
     setPersonalProgress(response.data);
   }
   useEffect(() => {
     getPersonalProgress(communityId);
   }, []);
-  const percentage = 66;
   return (
     <Wrapper>
       {personalProgress && (
@@ -118,15 +116,18 @@ const PersonalProgress = () => {
             <ProgressCircle>
               <div style={{ width: "150px", height: "150px" }}>
                 <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
+                  value={Math.floor(personalProgress.numberOfTasks / 21)}
+                  text={`${Math.floor(personalProgress.numberOfTasks / 21)}%`}
                 />
               </div>
               <h5>Progress</h5>
             </ProgressCircle>
             <ProgressCircle>
               <div style={{ width: "150px", height: "150px" }}>
-                <CircularProgressbar value={100} text={`${7} Days`} />
+                <CircularProgressbar
+                  value={100}
+                  text={`${personalProgress.numberOfTasks} Days`}
+                />
               </div>
               <h5>Streak</h5>
             </ProgressCircle>
