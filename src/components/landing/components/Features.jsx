@@ -10,7 +10,8 @@ const Wrapper = styled.section`
   width: 100%;
   padding: 60px 20px;
   display: flex;
-  background-color: #edf7f9;
+  background-color: #f1f7f8;
+  min-height: 82vh;
 `;
 
 const Container = styled.div`
@@ -25,9 +26,9 @@ const Container = styled.div`
 
 const FeatureTitle = styled.h2`
   text-align: center;
-  font-size: 37px;
-  margin: 40px auto;
+  font-size: 45px;
   font-weight: 700;
+  margin: 0 auto;
   color: var(--Primary-Dark);
 `;
 
