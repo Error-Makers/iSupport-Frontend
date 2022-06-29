@@ -19,7 +19,7 @@ const Community = () => {
     let communityData = {
       community_name: communityName,
       community_desc: communityDescription,
-      community_banner: communityImage,
+      community_photo: communityImage,
     };
     const config = {
       headers: {

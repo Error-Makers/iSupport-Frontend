@@ -223,7 +223,7 @@ const Browse = (props) => {
                       justifyContent: "center",
                     }}
                   >
-                    <Card.Img variant="top" src={item.community_banner} />
+                    <Card.Img variant="top" src={item.community_photo} />
                     <Card.Title style={{ color: "#311B92" }}>
                       {item.community_name}
                     </Card.Title>
