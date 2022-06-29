@@ -34,7 +34,7 @@ function CreatePostModel(props) {
         Create Post
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Create New Post</Modal.Title>
         </Modal.Header>
