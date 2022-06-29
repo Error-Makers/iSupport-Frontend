@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import io from 'socket.io-client';
-import Messages from './message';
-import NewMessage from './newMessage';
-import styled from 'styled-components';
-import { device } from '../media';
-import { Modal, Button } from 'react-bootstrap';
-import './chat.css';
+import React, { useEffect, useState } from "react";
+import io from "socket.io-client";
+import Messages from "./message";
+import NewMessage from "./newMessage";
+import styled from "styled-components";
+import { device } from "../media";
+import { Modal, Button } from "react-bootstrap";
+import "./chat.css";
 const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,7 +13,6 @@ const ChatContainer = styled.div`
   width: 100%;
   background-color: rgba(190, 132, 237, 0.1);
   position: relative;
-
 `;
 
 const ChatBanner = styled.div`
@@ -37,17 +36,17 @@ function CommunityChat(props) {
   }, [setSocket]);
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       {socket ? (
         <StyledModal
           show={props.show}
           onHide={props.handleClose}
           centered
-          size='md'
-          backdrop={false}
+          size="md"
+          className={"modal-content-chat"}
         >
-          <ChatBanner/>
-          <ChatContainer className='chat-container'>
+          <ChatBanner />
+          <ChatContainer className="chat-container">
             <Messages socket={socket} />
             <NewMessage socket={socket} />
           </ChatContainer>

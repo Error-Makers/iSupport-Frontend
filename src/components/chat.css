@@ -1,10 +1,7 @@
-.modal-content {
+.modal-content-chat {
   border-radius: 10px;
   height: 450px;
   width: 350px;
-  position: absolute;
-  bottom: 50px;
-  right: -65%;
   padding: 2px;
 }
 .search {
