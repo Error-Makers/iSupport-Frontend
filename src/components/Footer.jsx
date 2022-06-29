@@ -5,17 +5,22 @@ import {
   FaPinterest,
   FaMapMarkerAlt,
   FaTwitter,
-} from 'react-icons/fa';
-import { IoMailOutline } from 'react-icons/io5';
-
-import styled from 'styled-components';
-import { device } from '../media';
+} from "react-icons/fa";
+import { IoMailOutline } from "react-icons/io5";
+import styled from "styled-components";
+import { device } from "../media";
+import logo from "../assets/logo.png";
+import mask2 from "../assets/mask2.png";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
   @media ${device.tablet} {
     flex-direction: row;
+    min-height: 400px;
   }
 `;
 
@@ -24,9 +29,14 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin-top: auto;
+  z-index: 2;
 `;
 
 const Logo = styled.h1`
+  display: flex;
+  align-items: center;
+  justify-content: left;
   color: var(--Primary-Main);
 `;
 
@@ -53,6 +63,8 @@ const SocialIcon = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
+  margin-top: auto;
+  z-index: 2;
 `;
 
 const Title = styled.h3`
@@ -76,7 +88,9 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
-  background-color: var(--Paper-Light);
+  margin-top: auto;
+  min-height: 273px;
+  z-index: 2;
 `;
 
 const ContactItem = styled.div`
@@ -88,15 +102,21 @@ const ContactItem = styled.div`
 const Footer = () => {
   return (
     <Container>
+      <img
+        src={mask2}
+        alt="xd"
+        style={{
+          position: "absolute",
+          bottom: "-150px",
+          left: "-200px",
+          height: "500px",
+          width: "2000px",
+          zIndex: "1",
+        }}
+      />
       <Left>
         <Logo>
-          <img
-            src='https://www.nicepng.com/png/full/475-4756895_yoga-transparent-lotus-flower-logo.png'
-            alt='iSupport'
-            width='45'
-            height='40'
-          ></img>{' '}
-          iSupport
+          <img src={logo} alt="iSupport" width="45" height="33"></img> iSupport
         </Logo>
         <Desc>
           There are many variations of passages of Lorem Ipsum available, but
@@ -104,16 +124,16 @@ const Footer = () => {
           humour, or randomised words which don’t look even slightly believable.
         </Desc>
         <SocialContainer>
-          <SocialIcon color='3B5999'>
+          <SocialIcon color="3B5999">
             <FaFacebook />
           </SocialIcon>
-          <SocialIcon color='E4405F'>
+          <SocialIcon color="E4405F">
             <FaInstagram />
           </SocialIcon>
-          <SocialIcon color='55ACEE'>
+          <SocialIcon color="55ACEE">
             <FaTwitter />
           </SocialIcon>
-          <SocialIcon color='E60023'>
+          <SocialIcon color="E60023">
             <FaPinterest />
           </SocialIcon>
         </SocialContainer>
@@ -135,13 +155,13 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <FaMapMarkerAlt style={{ marginRight: '10px' }} /> Ammn , Jordan
+          <FaMapMarkerAlt style={{ marginRight: "10px" }} /> Amman , Jordan
         </ContactItem>
         <ContactItem>
-          <FaPhone style={{ marginRight: '10px' }} /> +1 234 56 78
+          <FaPhone style={{ marginRight: "10px" }} /> +962 799999999
         </ContactItem>
         <ContactItem>
-          <IoMailOutline style={{ marginRight: '10px' }} /> contact@iSupport.com
+          <IoMailOutline style={{ marginRight: "10px" }} /> contact@iSupport.com
         </ContactItem>
       </Right>
     </Container>

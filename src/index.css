@@ -1,33 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-
-html, body, #root, .App {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap");
+html,
+body,
+#root,
+.App {
   height: 100vh;
   margin: 0;
 }
 
 #root {
   min-height: 100vh;
+  min-width: 99vw;
 }
 
 :root {
   --Primary-Main: #673ab7;
   --Primary-Light: #d1c4e9;
   --Primary-Dark: #311b92;
-
   --Secondary-Main: #00bcd4;
   --Secondary-Light: #b2ebf2;
   --Secondary-Dark: #006064;
-
   --Accent-Main: #e91e63;
   --Accent-Dark: #ad1457;
   --Accent-Light: #673ab7;
-
   --Text-Primary: rgba(0, 0, 0, 0.87);
   --Text-Secondary: rgba(0, 0, 0, 0.54);
   --Text-Secondary-Dark: rgba(255, 255, 255, 0.7);
   --Text-Disabled: rgba(0, 0, 0, 0.38);
   --Textfield: rgba(0, 0, 0, 0.42);
-
   --Paper-Light: #ffffff;
   --Paper-Dark: #424242;
   --Default-Light: #fafafa;
@@ -35,5 +35,45 @@ html, body, #root, .App {
 }
 
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::selection {
+  background: #673ab7;
+  color: #fefefe;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #673ab7;
+  border-radius: 30px;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(216, 216, 216);
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

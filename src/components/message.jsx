@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 const MainContanier = styled.div`
   height: 45vh;
   overflow-y: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  width: 100%;
 `;
 
 const MessageContanier = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 10vh;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   color: var(--Text-Primary);
-  margin-bottom: 0.2rem;
-  width: 40vw;
+  font-weight: 500;
+  margin-bottom: 0.15rem;
+  margin-left:8px;
 `;
 
 const Sender = styled.div`
@@ -29,29 +27,16 @@ const Sender = styled.div`
   justify-content: center;
   align-items: center;
   opacity: 0.8;
+  border: 1.5px solid var(--Accent-Main);
 `;
 
 const MessageText = styled.div`
-  display: flex;
-  height: 10vh;
-  padding: 0.5rem;
-  background-color: var(--Primary-Light);
-  color: var(--Text-Primary);
-  margin-bottom: 0.2rem;
-  width: 30vw;
-  display: flex;
-  margin-left: 3%;
-  border-radius: 15px;
-`;
-
-const Triangle = styled.div`
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 6px 10px 6px 0;
-  border-color: transparent #dd4397 transparent transparent;
-  display: inline-block;
-  vertical-align: middle;
+  margin: 10px 12px 6px;
+  padding: 4px 8px 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  background: #fc005495;
+  border-radius: 8px;
+  max-width: 240px;
 `;
 
 function Messages({ socket }) {
@@ -62,12 +47,12 @@ function Messages({ socket }) {
       setMessages((prevMessages) => [...prevMessages, message]);
     };
 
-    socket.emit("joinRoom", { username: "Karam", communityID: 1 });
-    socket.on("message", messageListener);
-    socket.emit("getMessages");
+    socket.emit('joinRoom', { username: 'Karam', communityID: 1 });
+    socket.on('message', messageListener);
+    socket.emit('getMessages');
 
     return () => {
-      socket.off("message", messageListener);
+      socket.off('message', messageListener);
     };
   }, [socket]);
 
@@ -79,7 +64,7 @@ function Messages({ socket }) {
           return (
             <MessageContanier key={message.id}>
               <Sender>{message.username.slice(0, 1)}</Sender>
-              <MessageText className="message">{message.text} </MessageText>
+              <MessageText className='message'>{message.text} </MessageText>
             </MessageContanier>
           );
         })}

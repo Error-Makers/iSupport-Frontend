@@ -1,40 +1,57 @@
-import React, { useEffect, useState } from "react";
-import io from "socket.io-client";
-import Messages from "./message";
-import NewMessage from "./newMessage";
-import styled from "styled-components";
-import { device } from "../media";
-
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
+import Messages from './message';
+import NewMessage from './newMessage';
+import styled from 'styled-components';
+import { device } from '../media';
+import { Modal, Button } from 'react-bootstrap';
+import './chat.css';
 const ChatContainer = styled.div`
-  width: 50vw;
-  height: 60vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 16px;
-  overflow-y: auto;
-  @media ${device.tablet} {
-    border-radius: 40px;
-    box-shadow: 0px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.06);
-  }
+  height: 100%;
+  width: 100%;
+  background-color: rgba(190, 132, 237, 0.1);
+  position: relative;
+
 `;
 
-function CommunityChat() {
+const ChatBanner = styled.div`
+  width: 100%;
+  height: 10px;
+  background-color: var(--Accent-Light);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+`;
+
+const StyledModal = styled(Modal)``;
+
+function CommunityChat(props) {
+  const API = process.env.REACT_APP_SERVER;
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io(`http://localhost:3030`);
+    const newSocket = io(API);
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
 
   return (
-    <div className="App">
+    <div>
       {socket ? (
-        <ChatContainer className="chat-container">
-          <Messages socket={socket} />
-          <NewMessage socket={socket} />
-        </ChatContainer>
+        <StyledModal
+          show={props.show}
+          onHide={props.handleClose}
+          centered
+          size='md'
+          backdrop={false}
+        >
+          <ChatBanner/>
+          <ChatContainer className='chat-container'>
+            <Messages socket={socket} />
+            <NewMessage socket={socket} />
+          </ChatContainer>
+        </StyledModal>
       ) : (
         <div>Not Connected</div>
       )}
