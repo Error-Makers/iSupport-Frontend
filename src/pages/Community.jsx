@@ -22,12 +22,27 @@ const Wrapper = styled.div`
   background-color: #fdfbff;
 `;
 
+// const HeadPic = styled.div`
+//   height: 33vh;
+//   width: 100%;
+//   background-size: cover;
+//   background-position-y: 80%;
+//   background-image: url(https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+// `;
+
 const HeadPic = styled.div`
   height: 33vh;
   width: 100%;
-  background-size: cover;
-  background-position-y: 80%;
-  background-image: url(https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+  margin-bottom: auto;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(59, 173, 227, 1) 0%,
+    rgba(87, 111, 230, 1) 25%,
+    rgba(152, 68, 183, 1) 51%,
+    rgba(255, 53, 127, 1) 100%
+  );
+  background-size: 300% 300%;
+  animation: AnimateBG 10s ease infinite;
 `;
 
 const CommunityGrid = styled.div`

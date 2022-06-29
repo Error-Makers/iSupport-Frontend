@@ -1,4 +1,4 @@
-import { Card, Button} from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useRef, useEffect, useContext } from "react";
 import styled from "styled-components";
@@ -133,6 +133,7 @@ const Browse = (props) => {
         headers: { Authorization: `Bearer ${token}` },
       };
       let response = await axios.get(`${API}communities`, config);
+      console.log(response.data, "TEST");
       setCommunitites(response.data);
       setFilteredCommunities(response.data);
       setDataLength(response.data.length);

@@ -135,7 +135,6 @@ const Posts = (props) => {
 
   let getPosts = async (id) => {
     const response = await axios.get(`${API}posts/community/${id}`, config);
-    console.log(response.data);
     setPosts(response.data);
   };
 

@@ -26,6 +26,7 @@ const Wrapper = styled.div`
 const LeaderboardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
 `;
 
 const LeaderboardCard = styled.div`
@@ -85,7 +86,9 @@ const Leaderboard = (props) => {
   return (
     <Wrapper>
       <LeaderboardContainer>
-        <h4 style={{ color: "#673ab7" }}>Leaderboard</h4>
+        <h4 style={{ color: "#673ab7", justifySelf: "flex-start" }}>
+          Leaderboard
+        </h4>
         {leaderboard.map((item, idx) => (
           <LeaderboardCard key={idx}>
             <LeaderboardImage
