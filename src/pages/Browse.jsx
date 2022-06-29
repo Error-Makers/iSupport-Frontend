@@ -115,6 +115,21 @@ const StyledIcon = styled(FaSearch)`
   color: #ffffff;
 `;
 
+const images = [
+  "https://cdn.discordapp.com/attachments/961538796887887896/991755817130938378/a0001052_parts_58d8d83188b7a.jpg",
+  "https://cdn.discordapp.com/attachments/961538796887887896/991755846658818149/acrylic-painting-ideas-thumbnail.jpg",
+  "https://cdn.discordapp.com/attachments/961538796887887896/991756137185693797/yoga-gettyimages-1142820079-promo.jpg",
+  "https://cdn.discordapp.com/attachments/961538796887887896/991757521675100230/books_1200-1.jpg",
+];
+
+const imagePath = (id) => {
+  if (id <= 3) {
+    return images[id];
+  } else {
+    return "";
+  }
+};
+
 const Browse = (props) => {
   const navigate = useNavigate();
   const context = useContext(LoginContext);
@@ -215,7 +230,7 @@ const Browse = (props) => {
           {data.map((item, idx) => (
             <div key={idx}>
               <Cards>
-                <Card>
+                <Card style={{ height: "50vh" }}>
                   <Card.Body
                     style={{
                       display: "flex",
@@ -224,7 +239,11 @@ const Browse = (props) => {
                       justifyContent: "center",
                     }}
                   >
-                    <Card.Img variant="top" src={item.community_photo} />
+                    <Card.Img
+                      variant="top"
+                      style={{ height: "150px", width: "150px" }}
+                      src={imagePath(idx)}
+                    />
                     <Card.Title style={{ color: "#311B92" }}>
                       {item.community_name}
                     </Card.Title>

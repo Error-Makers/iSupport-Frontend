@@ -27,6 +27,7 @@ const LeaderboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  align-items: center;
 `;
 
 const LeaderboardCard = styled.div`
@@ -39,8 +40,8 @@ const LeaderboardCard = styled.div`
 `;
 
 const LeaderboardImage = styled.img`
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border: 2px solid var(--Accent-Main);
   border-radius: 50%;
 `;
@@ -56,7 +57,7 @@ const LeaderboardMembers = styled.span`
   color: var(--Default-Main);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 const API = process.env.REACT_APP_SERVER;
