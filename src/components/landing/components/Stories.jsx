@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { device } from '../../../media';
+import React from "react";
+import styled from "styled-components";
+import { device } from "../../../media";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -107,31 +107,34 @@ const CarouselImage = styled.img`
 
 const data = [
   {
-    title: 'Jane Doe',
+    title: "Laura Page",
     description:
       'This app helped me meet a lot of people which excites to learn a new thing every day.',
+
     image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
   {
-    title: 'Jane Doe',
+    title: "Sarah Brin",
     description:
       'iSupport helped me learn origami from people who have experience with it.',
+
     image:
-      'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+      "https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
   {
     title: 'Jane Doe',
     description:
       'During the pandemic i formed many new friendships, They helped me get out of the distress I was facing',
+
     image:
-      'https://images.unsplash.com/photo-1619016984954-70f7f40d1f41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+      "https://images.unsplash.com/photo-1619016984954-70f7f40d1f41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
 ];
 
 const Stories = () => {
   return (
-    <Wrapper name='stories'>
+    <Wrapper name="stories">
       <Title>Stories</Title>
       <SubContainer>
         <Bold>Join others and write your own story.</Bold>

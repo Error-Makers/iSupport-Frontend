@@ -1,6 +1,6 @@
 import { Button, Form, InputGroup } from "react-bootstrap";
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import Header from "../components/landing/components/NavBar";
+import Footer from "../components/Footer";
 const ContactUs = () => {
   const sendMessage = () => {
     alert("your message has been sent");
@@ -8,26 +8,31 @@ const ContactUs = () => {
 
   return (
     <>
-    <Header/>
+      <Header />
       <h1
         style={{
-          marginLeft: "38%",
+          marginLeft: "28%",
           display: "flex",
           padding: "10px 10px 10px 10px",
-          marginTop:'5%',
-          fontWeight:'bold'
+          marginTop: "5%",
+          fontWeight: "bold",
         }}
       >
-        Contact Us
+        We’d love to hear from you
       </h1>
 
-      <p style={{width:'60%', textAlign:'center',marginLeft: "20%",color:'rgba(0, 0, 0, 0.54)'}}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At, blanditiis.
-        At odio ipsam expedita. Quibusdam deserunt praesentium vitae in
-        voluptates sint maxime, officia tenetur velit natus. Ut iure odit
-        adipisci.
+      <p
+        style={{
+          width: "60%",
+          textAlign: "center",
+          marginLeft: "20%",
+          color: "rgba(0, 0, 0, 0.54)",
+        }}
+      >
+        We’re here to help and answer any question you might have. We look
+        forward to hearing from you
       </p>
-      <Form style={{ width: "60%", marginLeft: "20%" ,marginBottom: "5%"}}>
+      <Form style={{ width: "60%", marginLeft: "20%", marginBottom: "5%" }}>
         <Form.Group className="mb-3">
           <InputGroup>
             <Form.Control
@@ -84,7 +89,7 @@ const ContactUs = () => {
         </Button>
       </Form>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };

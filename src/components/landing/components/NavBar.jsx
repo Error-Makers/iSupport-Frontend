@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link } from 'react-scroll';
-import styled from 'styled-components';
-import { device } from '../../../media';
-import logo from '../../../assets/logo.png';
-import { useNavigate } from 'react-router-dom';
-import './navbar.css';
+import React, { useState, useRef } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-scroll";
+import styled from "styled-components";
+import { device } from "../../../media";
+import logo from "../../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
+import "./navbar.css";
 
 const Nav = styled.div`
   position: fixed;
@@ -103,7 +103,7 @@ const NavBar = () => {
     setIsActive(e);
   };
 
-  window.addEventListener('scroll', function () {
+  window.addEventListener("scroll", function () {
     var winTop = window.scrollY;
     if (winTop >= 50) {
       handleScroll(true);
@@ -113,16 +113,16 @@ const NavBar = () => {
   });
 
   return (
-    <Nav className={isActive ? 'header' : ''}>
+    <Nav className={isActive ? "header" : ""}>
       <Logo>
-        <img src={logo} alt='iSupport' width='45' height='33' />
+        <img src={logo} alt="iSupport" width="45" height="33" />
         iSupport
       </Logo>
       <Menu>
         <li>
           <Link
-            onClick={() => navigate('/')}
-            to='hero'
+            onClick={() => navigate("/")}
+            to="hero"
             smooth={true}
             duration={200}
           >
@@ -131,8 +131,8 @@ const NavBar = () => {
         </li>
         <li>
           <Link
-            to='features'
-            onClick={() => navigate('/')}
+            to="features"
+            onClick={() => navigate("/")}
             smooth={true}
             duration={200}
             offset={-50}
@@ -142,8 +142,8 @@ const NavBar = () => {
         </li>
         <li>
           <Link
-            to='discover'
-            onClick={() => navigate('/')}
+            to="discover"
+            onClick={() => navigate("/")}
             smooth={true}
             duration={200}
             offset={-50}
@@ -153,8 +153,8 @@ const NavBar = () => {
         </li>
         <li>
           <Link
-            to='stories'
-            onClick={() => navigate('/')}
+            to="stories"
+            onClick={() => navigate("/")}
             smooth={true}
             duration={200}
             offset={-50}
@@ -162,11 +162,11 @@ const NavBar = () => {
             Stories
           </Link>
         </li>
-        <li onClick={() => navigate('/about')}>About</li>
+        <li onClick={() => navigate("/about")}>About</li>
         <ButtonWrapper>
           <NavButton
             onClick={() => {
-              navigate('/auth');
+              navigate("/auth");
             }}
           >
             Login
@@ -181,22 +181,22 @@ const NavBar = () => {
       {/* Mobile menu */}
       <MobileMenu>
         <MenuItem>
-          <Link to='#hero' smooth={true} duration={200}>
+          <Link to="#hero" smooth={true} duration={200}>
             Home
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to='features' smooth={true} duration={200}>
+          <Link to="features" smooth={true} duration={200}>
             Features
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to='discover' smooth={true} duration={200}>
+          <Link to="discover" smooth={true} duration={200}>
             Discover
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to='stories' smooth={true} duration={200}>
+          <Link to="stories" smooth={true} duration={200}>
             Stories
           </Link>
         </MenuItem>

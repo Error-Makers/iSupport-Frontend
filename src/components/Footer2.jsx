@@ -5,11 +5,12 @@ import {
   FaPinterest,
   FaMapMarkerAlt,
   FaTwitter,
-} from 'react-icons/fa';
-import { IoMailOutline } from 'react-icons/io5';
-import styled from 'styled-components';
-import { device } from '../media';
-import logo from '../assets/logo.png';
+} from "react-icons/fa";
+import { IoMailOutline } from "react-icons/io5";
+import styled from "styled-components";
+import { device } from "../media";
+import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -73,6 +74,7 @@ const Center = styled.div`
 const Title = styled.h3`
   margin-bottom: 30px;
   color: white;
+  cursor: pointer;
 `;
 
 const List = styled.ul`
@@ -103,31 +105,32 @@ const ContactItem = styled.div`
 `;
 
 const Footer2 = () => {
+  let navigate = useNavigate();
+
   return (
     <Wrapper>
       <Container>
         <Left>
           <Logo>
-            <img src={logo} alt='iSupport' width='45' height='33'></img>{' '}
+            <img src={logo} alt="iSupport" width="45" height="33"></img>{" "}
             iSupport
           </Logo>
           <Desc>
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised words which don’t look even slightly
-            believable.
+            At Isupport, we bring together groups of people who share the same
+            interests and habits in order to provide support to one another in
+            the same community.
           </Desc>
           <SocialContainer>
-            <SocialIcon color='3B5999'>
+            <SocialIcon color="3B5999">
               <FaFacebook />
             </SocialIcon>
-            <SocialIcon color='E4405F'>
+            <SocialIcon color="E4405F">
               <FaInstagram />
             </SocialIcon>
-            <SocialIcon color='55ACEE'>
+            <SocialIcon color="55ACEE">
               <FaTwitter />
             </SocialIcon>
-            <SocialIcon color='E60023'>
+            <SocialIcon color="E60023">
               <FaPinterest />
             </SocialIcon>
           </SocialContainer>
@@ -145,15 +148,21 @@ const Footer2 = () => {
           </List>
         </Center>
         <Right>
-          <Title>Contact</Title>
+          <Title
+            onClick={() => {
+              navigate("/contact");
+            }}
+          >
+            Contact
+          </Title>
           <ContactItem>
-            <FaMapMarkerAlt style={{ marginRight: '10px' }} /> Ammn , Jordan
+            <FaMapMarkerAlt style={{ marginRight: "10px" }} /> Ammn , Jordan
           </ContactItem>
           <ContactItem>
-            <FaPhone style={{ marginRight: '10px' }} /> +1 234 56 78
+            <FaPhone style={{ marginRight: "10px" }} /> +1 234 56 78
           </ContactItem>
           <ContactItem>
-            <IoMailOutline style={{ marginRight: '10px' }} />{' '}
+            <IoMailOutline style={{ marginRight: "10px" }} />{" "}
             contact@iSupport.com
           </ContactItem>
         </Right>

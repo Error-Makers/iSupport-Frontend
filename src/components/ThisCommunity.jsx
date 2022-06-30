@@ -85,14 +85,12 @@ const Image = styled.img`
   z-index: 1;
 `;
 
-let community = {
-  community_id: 1,
-  community_name: "Football",
-  aboutTheCommunity:
-    "The football community. News, results and discussion about the beautiful game.",
-  url: "https://pbs.twimg.com/media/E6WbTaBUUAYD_OD.jpg",
-  createdAt: "2022-06-21T08:37:41.318Z",
-};
+const images = [
+  "https://cdn.discordapp.com/attachments/961538796887887896/991755817130938378/a0001052_parts_58d8d83188b7a.jpg",
+  "https://cdn.discordapp.com/attachments/961538796887887896/991755846658818149/acrylic-painting-ideas-thumbnail.jpg",
+  "https://cdn.discordapp.com/attachments/961538796887887896/991756137185693797/yoga-gettyimages-1142820079-promo.jpg",
+  "https://cdn.discordapp.com/attachments/961538796887887896/991757521675100230/books_1200-1.jpg",
+];
 
 const ThisCommunity = (props) => {
   let { communityId } = useParams();
@@ -131,7 +129,7 @@ const ThisCommunity = (props) => {
   return (
     <Wrapper>
       <Card>
-        <Image src={community.url} />
+        <Image src={images[communityId - 1]} />
         <CardBody>
           <CardTitle>{props.data.community_name}</CardTitle>
           <CardText>{props.data.community_desc}</CardText>
