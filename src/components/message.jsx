@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const MainContanier = styled.div`
-  height: 45vh;
   overflow-y: auto;
   width: 100%;
+  border-radius: 15px;
+  padding-top: 10px;
+  max-height: 45vh;
 `;
 
 const MessageContanier = styled.div`

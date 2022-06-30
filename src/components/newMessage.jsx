@@ -20,7 +20,7 @@ const Input = styled.input`
 const ChatFooter = styled.div`
   width: 100%;
   height: 70px;
-  background-color: var(--Accent-Light);
+  background-color: var(--Secondary-Main);
   position: absolute;
   bottom: 0;
   border-bottom-left-radius: 10px;

@@ -11,16 +11,17 @@ const ChatContainer = styled.div`
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: rgba(190, 132, 237, 0.1);
+  background-color: white;
   position: relative;
 `;
 
 const ChatBanner = styled.div`
   width: 100%;
-  height: 10px;
-  background-color: var(--Accent-Light);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  height: 15px;
+  background-color: var(--Secondary-Main);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  z-index: 66;
 `;
 
 const StyledModal = styled(Modal)``;
@@ -43,7 +44,8 @@ function CommunityChat(props) {
           onHide={props.handleClose}
           centered
           size="md"
-          className={"modal-content-chat"}
+          id='chat'
+          backdrop={false}
         >
           <ChatBanner />
           <ChatContainer className="chat-container">
